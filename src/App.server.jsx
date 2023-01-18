@@ -16,7 +16,7 @@ import {
 import {HeaderFallback, EventsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
 
-function App({request}) {
+function App({routes, request}) {
   const pathname = new URL(request.normalizedUrl).pathname;
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
@@ -38,10 +38,9 @@ function App({request}) {
         <Seo
           type="defaultSeo"
           data={{
-            title: 'Hydrogen',
-            description:
-              "A custom storefront powered by Hydrogen, Shopify's React-based framework for building headless.",
-            titleTemplate: `%s · Hydrogen`,
+            title: 'Thameen London',
+            description: 'Luxury Fragrances Online',
+            // titleTemplate: `%s · Hydrogen`,
           }}
         />
         <CartProvider
@@ -51,13 +50,14 @@ function App({request}) {
           <Router>
             <FileRoutes
               basePath={countryCode ? `/${countryCode}/` : undefined}
+              routes={routes}
             />
             <Route path="*" page={<NotFound />} />
           </Router>
         </CartProvider>
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
-        <ShopifyAnalytics cookieDomain="hydrogen.shop" />
+        <ShopifyAnalytics cookieDomain="thameenlondon.com" />
       </ShopifyProvider>
     </Suspense>
   );

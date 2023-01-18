@@ -7,7 +7,7 @@ import {
   useMoney,
 } from '@shopify/hydrogen';
 
-import {Text} from '~/components';
+// import {Text} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 
@@ -35,17 +35,13 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[4/5] bg-primary/5">
-          <Text
-            as="label"
-            size="fine"
-            className="absolute top-0 right-0 m-4 text-right text-notice"
-          >
+        <div className="card-image aspect-[4/5] ">
+          <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
             {cardLabel}
-          </Text>
+          </h4>
           {image && (
             <Image
-              className="aspect-[4/5] w-full object-cover fadeIn"
+              className="aspect-[1/1] w-full object-cover  mix-blend-multiply"
               widths={[320]}
               sizes="320px"
               loaderOptions={{
@@ -61,15 +57,12 @@ export function ProductCard({product, label, className, loading, onClick}) {
             />
           )}
         </div>
-        <div className="grid gap-1">
-          <Text
-            className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
-            as="h3"
-          >
+        <div className="mt-2">
+          <h3 className="text-center font-semibold text-primary uppercase">
             {product.title}
-          </Text>
-          <div className="flex gap-4">
-            <Text className="flex gap-4">
+          </h3>
+          <div className="mt-1">
+            <span className="text-center font-medium">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
                 <CompareAtPrice
@@ -77,7 +70,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
                   data={compareAtPrice}
                 />
               )}
-            </Text>
+            </span>
           </div>
         </div>
       </div>

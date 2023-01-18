@@ -10,6 +10,8 @@ function withOpacityValue(variable) {
   };
 }
 
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -18,7 +20,12 @@ module.exports = {
         primary: withOpacityValue('--color-primary'),
         contrast: withOpacityValue('--color-contrast'),
         notice: withOpacityValue('--color-accent'),
+        'thameen-blue': withOpacityValue('--color-thameen-blue'),
+        'thameen-gold': withOpacityValue('--color-thameen-gold'),
         shopPay: 'var(--color-shop-pay)',
+      },
+      fontFamily: {
+        sans: ['var(--default-font-family)', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         sm: '32em',
@@ -45,10 +52,6 @@ module.exports = {
       },
       width: {
         mobileGallery: 'calc(100vw - 3rem)',
-      },
-      fontFamily: {
-        sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

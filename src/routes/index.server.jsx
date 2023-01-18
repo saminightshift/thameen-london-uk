@@ -13,6 +13,7 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {FeaturedCollections, Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
+import {HeroSwiper} from '../components/index';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -57,7 +58,7 @@ function HomepageContent() {
   );
 
   return (
-    <>
+    <div className="top-[-8rem] relative z-10">
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
@@ -72,7 +73,7 @@ function HomepageContent() {
         title="Collections"
       />
       {tertiaryHero && <Hero {...tertiaryHero} />}
-    </>
+    </div>
   );
 }
 
@@ -93,7 +94,7 @@ function SeoForHomepage() {
       data={{
         title: name,
         description,
-        titleTemplate: '%s · Powered by Hydrogen',
+        titleTemplate: '%s · Luxury Fragrances Online',
       }}
     />
   );
