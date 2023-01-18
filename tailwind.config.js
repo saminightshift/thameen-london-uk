@@ -25,7 +25,7 @@ module.exports = {
         shopPay: 'var(--color-shop-pay)',
       },
       fontFamily: {
-        sans: ['var(--default-font-family)', ...defaultTheme.fontFamily.sans],
+        sans: ['Metropolis, sans-serif', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         sm: '32em',
