@@ -7,6 +7,8 @@ export default defineConfig({
     defaultLocale: 'en-GB',
     storeDomain: import.meta.env.PUBLIC_STORE_DOMAIN,
     storefrontToken: import.meta.env.PUBLIC_STOREFRONT_API_TOKEN,
+    // privateStorefrontToken: import.meta.env.PRIVATE_STOREFRONT_API_TOKEN,
+    // storefrontId: import.meta.env.PUBLIC_STOREFRONT_ID,
     storefrontApiVersion: '2022-07',
   },
   session: CookieSessionStorage('__session', {

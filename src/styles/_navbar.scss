@@ -2,17 +2,47 @@
 
   z-index: 10000;
   box-sizing: border-box;
-    padding: 0 4.4rem;
-    height: 8.8rem;
-    min-width: 102.4rem;
+  padding: 1.25rem;
+/*
+  &:hover {
+    background-color: #fff;
+    transform: scaleX(1);
+    transition: top 0.5s ease;
+    transition: transform 0.5s ease;
     transition-duration: 320ms;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    vertical-align: baseline;
+    color: #000000;
+  }
+*/
     color: white;
 
+
+    .nav-items {
+      gap: 5rem;
+
+      .nav-link {
+          display: inline-block;
+          position: relative;
+          color: #fff;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #fff;
+          transform-origin: bottom right;
+          transition: transform 0.5s ease-out;
+        }
+
+        .nav-link:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+/*
     .main-menu {
       opacity: 1;
       height: 100%;
@@ -31,29 +61,7 @@
         padding: 4rem 1.6rem 2.8rem;
         font-weight: 500;
 
-        .nav-link {
-          display: inline-block;
-          position: relative;
-          color: #fff;
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          transform: scaleX(0);
-          height: 2px;
-          bottom: 0;
-          left: 0;
-          background-color: #fff;
-          transform-origin: bottom right;
-          transition: transform 0.25s ease-out;
-        }
-
-        .nav-link:hover::after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
-        }
-      }
+        
     }
 
     .mega-menu {
@@ -80,4 +88,30 @@
         transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0s 0.3s;
       }
     }
+  */
+}
+
+  .fade-out {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+  }
+
+  .fade-in {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+  }
+
+  .cart-badge {
+    right: 5px;
+    top: 32px;
+    padding: 10px
+  }
+
+ @media screen and (max-width: 768px) {
+  #pageHeader {
+    &:hover {
+      background-color: transparent !important;
+      color: #fff !important;
+    }
+  }
 }

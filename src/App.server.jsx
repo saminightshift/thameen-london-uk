@@ -40,7 +40,6 @@ function App({routes, request}) {
           data={{
             title: 'Thameen London',
             description: 'Luxury Fragrances Online',
-            // titleTemplate: `%s · Hydrogen`,
           }}
         />
         <CartProvider

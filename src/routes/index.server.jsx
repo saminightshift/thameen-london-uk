@@ -10,10 +10,8 @@ import {
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {getHeroPlaceholder} from '~/lib/placeholders';
 import {FeaturedCollections, Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
-import {HeroSwiper} from '../components/index';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -52,27 +50,19 @@ function HomepageContent() {
 
   const {heroBanners, featuredCollections, featuredProducts} = data;
 
-  // fill in the hero banners with placeholders if they're missing
-  const [primaryHero, secondaryHero, tertiaryHero] = getHeroPlaceholder(
-    heroBanners.nodes,
-  );
-
   return (
     <div className="top-[-8rem] relative z-10">
-      {primaryHero && (
-        <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
+      <Hero loading="eager" />
       <ProductSwimlane
         data={featuredProducts.nodes}
         title="Featured Products"
         divider="bottom"
       />
-      {secondaryHero && <Hero {...secondaryHero} />}
+
       <FeaturedCollections
         data={featuredCollections.nodes}
         title="Collections"
       />
-      {tertiaryHero && <Hero {...tertiaryHero} />}
     </div>
   );
 }

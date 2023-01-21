@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 
 import {Image, Link, Video} from '@shopify/hydrogen';
 import {Heading, Text} from '~/components';
-import {Navigation, Pagination, Virtual, EffectFade, Autoplay} from 'swiper';
+import {Pagination, EffectFade, Autoplay, A11y} from 'swiper';
 import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 
 export function Hero({
@@ -29,58 +29,71 @@ export function Hero({
       cta: 'Discover Riviere',
       id: 2,
     },
+    {
+      url: 'https://studio.thameenlondon.com/wp-content/uploads/2023/01/Fanfare.jpg',
+      title: 'Try something new',
+      cta: 'Discover Fanfare',
+      id: 3,
+    },
   ];
+
+  const pagination = {
+    clickable: true,
+    renderBullet(index, className) {
+      return '<span class="' + className + '">' + (index + 1) + '</span>';
+    },
+  };
 
   return (
     <>
       <Swiper
-        modules={[Navigation, Pagination, EffectFade]}
+        modules={[Pagination, EffectFade, Autoplay, A11y]}
         slidesPerView={1}
-        spaceBetween={30}
+        centeredSlides={true}
+        effect="fade"
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         loop={true}
-        autoplay={{delay: 200}}
-        pagination={{clickable: true}}
-        navigation={true}
+        pagination={pagination}
+        className="relative h-[100vh]"
       >
-        <div className="relative h-64">
-          {slides.map((slide) => (
-            <Link key={slide.id} href={`/products/${slide.id}`}>
-              <SwiperSlide key={slide.id}>
-                <Image
-                  className="w-full object-cover object-center"
-                  src={slide.url}
-                  alt={slide.title}
-                  width={`100%`}
-                  height={`100%`}
-                />
-                {/* Bottom call to action and link section */}
-                <div className="absolute bottom-2 flex justify-center mx-auto left-0 right-0 items-center w-2/3 md:w-1/3 lg:w-72 h-28 bg-white">
-                  <div className="flex flex-col justify-center items-center space-y-2">
-                    <Text
-                      format
-                      as="p"
-                      size="display"
-                      className="max-w-md uppercase text-center font-semibold"
-                    >
-                      {slide.title}
-                    </Text>
-                    <Text
-                      format
-                      width="narrow"
-                      as="p"
-                      size="lead"
-                      className="uppercase text-center tracking-widest font-medium"
-                    >
-                      {slide.cta}
-                    </Text>
-                  </div>
+        {slides.map((slide) => (
+          <Link key={slide.id} href={`/products/${slide.id}`}>
+            <SwiperSlide key={slide.id}>
+              <Image
+                className="w-full object-cover object-center h-full overflow-hidden"
+                src={slide.url}
+                alt={slide.title}
+                width={1920}
+                height={1080}
+              />
+              {/* Bottom call to action and link section */}
+              <div className="absolute bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-72 md:w-72 lg:w-80 h-28 bg-white">
+                <div className="flex flex-col justify-center items-center space-y-2">
+                  <Text
+                    format
+                    as="p"
+                    size="display"
+                    className="max-w-md uppercase text-center font-semibold"
+                  >
+                    {slide.title}
+                  </Text>
+                  <Text
+                    format
+                    width="narrow"
+                    as="p"
+                    size="lead"
+                    className="uppercase text-center tracking-widest font-medium"
+                  >
+                    {slide.cta}
+                  </Text>
                 </div>
-              </SwiperSlide>
-            </Link>
-          ))}
-          <SlidePrevButton />
-          <SlideNextButton />
-        </div>
+              </div>
+            </SwiperSlide>
+          </Link>
+        ))}
       </Swiper>
     </>
   );

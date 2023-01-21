@@ -5,10 +5,12 @@
 @import './custom-font.css';
 
 @import 'swiper/swiper.min.css';
+@import 'swiper/swiper-bundle.min.css';
 
 @import './_navbar.scss';
 @import './_dropdown-menu.scss';
 @import './_mega-menu.scss';
+@import './_swiper-custom.scss';
 
 /* Animation */
 @import './_animation.scss';

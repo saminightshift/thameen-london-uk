@@ -1,28 +1,17 @@
-import {Fragment, useState, useEffect} from 'react';
+import {Fragment, useState, useRef, useEffect} from 'react';
 import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
 import {useWindowScroll} from 'react-use';
-import gsap, {TweenMax} from 'gsap';
-import {Popover, Transition} from '@headlessui/react';
+
+import {Popover, Transition, Dialog, Tab} from '@headlessui/react';
 import {
   Bars3Icon,
-  BookmarkSquareIcon,
-  BriefcaseIcon,
-  BuildingOfficeIcon,
-  CheckCircleIcon,
-  ComputerDesktopIcon,
-  CursorArrowRaysIcon,
-  GlobeAltIcon,
-  InformationCircleIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  PlayIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
-  UserGroupIcon,
+  MagnifyingGlassIcon,
+  ShoppingCartIcon,
+  UserIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-
 import {ChevronDownIcon} from '@heroicons/react/24/solid';
+
 import {Input} from '~/components';
 
 import {CartDrawer} from './CartDrawer.client';
@@ -31,9 +20,6 @@ import {useDrawer} from './Drawer.client';
 
 import {NewsFlashBanner} from '../newsflash/NewsFlashBanner';
 
-/**
- * A client component that specifies the content of the header on the website
- */
 export function Header({title, menu}) {
   const {pathname} = useUrl();
 
@@ -54,95 +40,40 @@ export function Header({title, menu}) {
     closeDrawer: closeMenu,
   } = useDrawer();
 
+  const menuItems = menu?.items.map((item) => {
+    return {
+      title: item.title,
+      url: item.url,
+      children: item.children?.items.map((child) => {
+        return {
+          title: child.title,
+          url: child.url,
+        };
+      }),
+    };
+  });
+
+  console.log(menu);
+
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
+      <NewsFlashBanner />
       <DesktopHeader
         countryCode={countryCode}
         isHome={isHome}
         title={title}
         menu={menu}
         openCart={openCart}
+        openMenu={openMenu}
       />
     </>
   );
 }
 
-const solutions = [
-  {
-    name: 'Analytics',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: null,
-  },
-  {
-    name: 'Engagement',
-    description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: 'Security',
-    description: "Your customers' data will be safe and secure.",
-    href: '#',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Integrations',
-    description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: Squares2X2Icon,
-  },
-];
-const callsToAction = [
-  {name: 'Watch Demo', href: '#', icon: PlayIcon},
-  {name: 'View All Products', href: '#', icon: CheckCircleIcon},
-  {name: 'Contact Sales', href: '#', icon: PhoneIcon},
-];
-const company = [
-  {name: 'About', href: '#', icon: InformationCircleIcon},
-  {name: 'Customers', href: '#', icon: BuildingOfficeIcon},
-  {name: 'Press', href: '#', icon: NewspaperIcon},
-  {name: 'Careers', href: '#', icon: BriefcaseIcon},
-  {name: 'Privacy', href: '#', icon: ShieldCheckIcon},
-];
-const resources = [
-  {name: 'Community', href: '#', icon: UserGroupIcon},
-  {name: 'Partners', href: '#', icon: GlobeAltIcon},
-  {name: 'Guides', href: '#', icon: BookmarkSquareIcon},
-  {name: 'Webinars', href: '#', icon: ComputerDesktopIcon},
-];
-const blogPosts = [
-  {
-    id: 1,
-    name: 'Boost your conversion rate',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-  },
-  {
-    id: 2,
-    name: 'How to use search engine optimization to drive traffic to your site',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
-function DesktopHeader({countryCode, isHome, menu, openCart}) {
+function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const {y} = useWindowScroll();
 
   function Logo() {
     if (!isOpen) {
@@ -166,93 +97,112 @@ function DesktopHeader({countryCode, isHome, menu, openCart}) {
     }
   }
 
-  const onEnter = ({currentTarget}) => {
-    gsap.to(currentTarget, {
-      y: 0,
-      duration: 0.5,
-      ease: 'power4.out',
-      opacity: 1,
-      stagger: {
-        each: 0.1,
-        from: 'start',
-      },
-    });
-  };
+  const [isVisible, setIsVisible] = useState(true);
 
-  const onLeave = ({currentTarget}) => {
-    gsap.to(currentTarget, {
-      y: 20,
-      duration: 0.5,
-      ease: 'power4.out',
-      opacity: 0,
-      stagger: {
-        each: 0.1,
-        from: 'start',
-      },
-    });
-  };
-
-  // const styles = {
-  //   button:
-  //     'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-  //   container: `${
-  //     isHome
-  //       ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-  //       : 'bg-contrast/80 text-primary'
-  //   } ${
-  //     y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-  //   }hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`,
-  // };
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos > 0 && isVisible) {
+        setIsVisible(false);
+      } else if (currentScrollPos === 0 && !isVisible) {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
 
   return (
     <>
-      <NewsFlashBanner />
-      <div className="container mx-auto flex">
-        <div className="module__nav flex items-center justify-between w-full">
-          <div>
-            <Link to="/">
-              <Logo className="brand-logo" />
-            </Link>
-          </div>
-          <nav aria-label="main-menu" className="main-menu">
-            <ul
-              className={`flex items-center ${
-                isOpen ? 'text-black bg-white' : 'text-white'
-              }}`}
-              data-test="main-nav"
-              onMouseEnter={() => setIsOpen(true)}
-              onMouseLeave={() => setIsOpen(false)}
-            >
-              <li className="main-menu__item">
-                <Link className="nav-link" to="#">
-                  Fragrances
-                </Link>
-              </li>
-              <li className="main-menu__item">
-                <Link className="nav-link" to="#">
-                  Collections
-                </Link>
-              </li>
-              <li className="main-menu__item">
-                <Link className="nav-link" to="#">
-                  Gifting
-                </Link>
-              </li>
-              <li className="main-menu__item">
-                <Link className="nav-link" to="#">
-                  Journal
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div className={`relative bg-white ${isOpen ? 'block' : 'hidden'}`}>
-            <div className="grid grid-cols-3">
-              <div className="py-2 px-4">Menu Item 1</div>
-              <div className="py-2 px-4">Menu Item 2</div>
-              <div className="py-2 px-4">Menu Item 3</div>
+      <div
+        className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center ${
+          !isVisible ? 'fade-out' : 'fade-in'
+        }`}
+        id="pageHeader"
+      >
+        <div className="relative max-w-screen-2xl w-full">
+          <div className="flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
+            {/* Desktop Logo */}
+            <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1">
+              <a
+                href="/"
+                className="mr-4 hidden lg:block"
+                aria-label="Thameen London"
+              >
+                <Logo className="logo-nav" onMouseEnter={isOpen} />
+                <span className="sr-only">Thameen London</span>
+              </a>
+            </div>
+            {/* Mobile Logo */}
+            <div className="lg:hidden flex items-center">
+              <a href="/" className="mr-4 block" aria-label="Thameen London">
+                <Logo />
+              </a>
+            </div>
+
+            <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
+              <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm">
+                {/* Top level menu items */}
+                {(menu?.items || []).map((item) => (
+                  <Link
+                    className="nav-link"
+                    key={item.id}
+                    to={item.to}
+                    target={item.target}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+            {/* Mobile Icons */}
+            <div className="flex lg:hidden">
+              <button className="relative flex items-center p-2">
+                <IconSearch />
+              </button>
+              <button
+                className="relative flex items-center p-2"
+                onClick={openCart}
+              >
+                <IconBag />
+              </button>
+              <button
+                className="relative flex items-center p-2"
+                aria-label="Toggle Cart"
+              >
+                <Bars3Icon className="w-6 h-6" onClick={openMenu} />
+              </button>
+            </div>
+            {/* Desktop Icons */}
+            <div className="hidden lg:flex justify-end">
+              <button className="hidden lg:flex items-center mr-2 p-2">
+                <IconSearch />
+              </button>
+              <Link
+                to="/account"
+                className="items-center mr-2 relative hover:border-white p-2"
+                aria-expanded="false"
+                aria-label="Account"
+              >
+                <IconAccount />
+              </Link>
+              <button
+                onClick={openCart}
+                className="hidden lg:flex items-center p-2"
+              >
+                <IconBag />
+                <CartBadge dark={isHome} />
+              </button>
             </div>
           </div>
-          ;<div className="flex items-center"></div>
+          <div className="hidden h-full lg:flex">
+            {/* Mega menu */}
+            <Popover.Group className="ml-8">
+              <div className="flex h-full justify-center space-x-8"></div>
+            </Popover.Group>
+          </div>
         </div>
       </div>
     </>
@@ -266,7 +216,7 @@ function CartBadge() {
     return null;
   }
   return (
-    <div className="text-white bg-black absolute bottom-[-2px] right-[-2px] text-[0.625rem] font-medium subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full px-[0.125rem] pb-px">
+    <div className="cart-badge text-white bg-black absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full mx-auto">
       <span>{totalQuantity}</span>
     </div>
   );
@@ -330,4 +280,55 @@ function IconSearch() {
       />
     </svg>
   );
+}
+
+{
+  /* <div className="container mx-auto flex">
+  <div className="module__nav flex items-center justify-between w-full">
+    <div>
+      <Link to="/">
+        <Logo className="brand-logo" />
+      </Link>
+    </div>
+    <nav aria-label="main-menu" className="main-menu">
+      <ul
+        className={`flex items-center ${
+          isOpen ? 'text-black bg-white' : 'text-white'
+        }}`}
+        data-test="main-nav"
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        <li className="main-menu__item">
+          <Link className="nav-link" to="#">
+            Fragrances
+          </Link>
+        </li>
+        <li className="main-menu__item">
+          <Link className="nav-link" to="#">
+            Collections
+          </Link>
+        </li>
+        <li className="main-menu__item">
+          <Link className="nav-link" to="#">
+            Gifting
+          </Link>
+        </li>
+        <li className="main-menu__item">
+          <Link className="nav-link" to="#">
+            Journal
+          </Link>
+        </li>
+      </ul>
+    </nav>
+    <div className={`relative bg-white ${isOpen ? 'block' : 'hidden'}`}>
+      <div className="grid grid-cols-3">
+        <div className="py-2 px-4">Menu Item 1</div>
+        <div className="py-2 px-4">Menu Item 2</div>
+        <div className="py-2 px-4">Menu Item 3</div>
+      </div>
+    </div>
+    ;<div className="flex items-center"></div>
+  </div>
+</div>; */
 }

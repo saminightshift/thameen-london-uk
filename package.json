@@ -1,6 +1,6 @@
 {
   "name": "thameen-london",
-  "description": "Demo store template for @shopify/hydrogen",
+  "description": "Thameen London Headless Storefront",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -44,6 +44,7 @@
     "heroicons": "^2.0.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-slick": "^0.29.0",
     "react-use": "^17.4.0",
     "swiper": "^8.4.5",
     "typographic-base": "^1.0.4"
