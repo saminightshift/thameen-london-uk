@@ -1,14 +1,4 @@
-import React, {useEffect} from 'react';
-// import DOMPurify from 'dompurify';
-
 export function ProductInfo({descriptionHtml}) {
-  // useEffect(() => {
-  //   const purifyMarkup = (dirtyMarkup) => {
-  //     return DOMPurify.sanitize(dirtyMarkup);
-  //   };
-  // }, []);
-
-  // const purifiedDescription = purifyMarkup(descriptionHtml);
   return (
     <>
       <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">

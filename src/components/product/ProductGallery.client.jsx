@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {MediaFile} from '@shopify/hydrogen/client';
 import {ATTR_LOADING_EAGER} from '~/lib/const';
 import Slider from 'react-slick';
@@ -7,25 +7,6 @@ import Slider from 'react-slick';
  * A client component that defines a media gallery for hosting images, 3D models, and videos of products
  */
 export function ProductGallery({media, className}) {
-  // Fade in/out animation
-
-  // const [isVisible, setIsVisible] = useState(true);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollPos = window.scrollY;
-  //     if (currentScrollPos > 320 && isVisible) {
-  //       setIsVisible(false);
-  //     } else if (currentScrollPos === 0 && !isVisible) {
-  //       setIsVisible(true);
-  //     }
-  //   };
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [isVisible]);
-
   if (!media.length) {
     return null;
   }

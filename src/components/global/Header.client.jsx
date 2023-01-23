@@ -88,20 +88,22 @@ function HomepageHeader({countryCode, isHome, menu, openCart, openMenu}) {
 
   const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      if (currentScrollPos > 0 && isVisible) {
-        setIsVisible(false);
-      } else if (currentScrollPos === 0 && !isVisible) {
-        setIsVisible(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isVisible]);
+  //Does not work in deployment - need to fix this use tailwind?
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollPos = window.scrollY;
+  //     if (currentScrollPos > 0 && isVisible) {
+  //       setIsVisible(false);
+  //     } else if (currentScrollPos === 0 && !isVisible) {
+  //       setIsVisible(true);
+  //     }
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [isVisible]);
 
   return (
     <>

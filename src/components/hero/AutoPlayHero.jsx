@@ -1,50 +1,168 @@
-import React, {useState, useRef} from 'react';
-import {Image} from '@shopify/hydrogen';
-import Slider from 'react-slick';
+import React, {useRef} from 'react';
 
-const slides = [
-  {
-    url: 'https://via.placeholder.com/1200x600.png?text=Slide+1',
-    title: 'Slide 1',
-  },
-  {
-    url: 'https://via.placeholder.com/1200x600.png?text=Slide+2',
-    title: 'Slide 2',
-  },
-  {
-    url: 'https://via.placeholder.com/1200x600.png?text=Slide+3',
-    title: 'Slide 3',
-  },
-];
+import {Image, Link, Video} from '@shopify/hydrogen';
+import {Heading, Text} from '~/components';
+import {Pagination, EffectFade, Autoplay, A11y} from 'swiper';
+import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 
-const AutoPlayHero = () => {
-  const sliderRef = useRef(null);
+export function Hero({
+  byline,
+  cta,
+  handle,
+  heading,
+  height,
+  loading,
+  spread,
+  spreadSecondary,
+  top,
+}) {
+  const slides = [
+    {
+      url: 'https://images.ctfassets.net/t5tvnt0pg52s/1gCoBHteh1bGXCZcLbUQMY/6a1d8081f8945f1f3ad120257a548e89/Hero-1.png',
+      title: 'our latest fragrance',
+      cta: 'shop insignia',
+      id: 1,
+    },
+    {
+      url: 'https://images.ctfassets.net/t5tvnt0pg52s/1et4S3o8hcPTQ6JoEhcejZ/0515456a899adce1392cd7b86751bffa/Hero-2.png',
+      title: 'Amber & Sandalwood',
+      cta: 'Discover Riviere',
+      id: 2,
+    },
+    {
+      url: 'https://studio.thameenlondon.com/wp-content/uploads/2023/01/Fanfare.jpg',
+      title: 'Try something new',
+      cta: 'Discover Fanfare',
+      id: 3,
+    },
+  ];
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
+  const pagination = {
+    clickable: true,
+    renderBullet(index, className) {
+      return '<span class="' + className + '">' + (index + 1) + '</span>';
+    },
   };
 
   return (
-    <div className="relative h-64">
-      <div className="absolute inset-0"></div>
-      <Slider ref={(slider) => (sliderRef.current = slider)} {...settings}>
+    <>
+      <Swiper
+        modules={[Pagination, EffectFade, Autoplay, A11y]}
+        slidesPerView={1}
+        centeredSlides={true}
+        effect="fade"
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        pagination={pagination}
+        className="relative h-[100vh]"
+      >
         {slides.map((slide) => (
-          <div key={slide.title}>
-            <Image
-              className="w-full h-full object-cover object-center"
-              src={slide.url}
-              alt={slide.title}
-            />
-          </div>
+          <Link key={slide.id} href={`/products/${slide.id}`}>
+            <SwiperSlide key={slide.id}>
+              <Image
+                className="w-full object-cover object-center h-full overflow-hidden"
+                src={slide.url}
+                alt={slide.title}
+                width={1920}
+                height={1080}
+              />
+              {/* Bottom call to action and link section */}
+              <div className="absolute bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-72 md:w-72 lg:w-80 h-28 bg-white">
+                <div className="flex flex-col justify-center items-center space-y-2">
+                  <Text
+                    format
+                    as="p"
+                    size="display"
+                    className="max-w-md uppercase text-center font-semibold"
+                  >
+                    {slide.title}
+                  </Text>
+                  <Text
+                    format
+                    width="narrow"
+                    as="p"
+                    size="lead"
+                    className="uppercase text-center tracking-widest font-medium"
+                  >
+                    {slide.cta}
+                  </Text>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Link>
         ))}
-      </Slider>
-    </div>
+      </Swiper>
+    </>
   );
-};
+}
 
-export default AutoPlayHero;
+function SpreadMedia({data, loading, scale, sizes, width, widths}) {
+  if (data.mediaContentType === 'VIDEO') {
+    return (
+      <Video
+        previewImageOptions={{scale, src: data.previewImage.url}}
+        width={scale * width}
+        className="block object-cover w-full h-full"
+        data={data}
+        controls={false}
+        muted
+        loop
+        playsInline
+        autoPlay
+      />
+    );
+  }
+
+  if (data.mediaContentType === 'IMAGE') {
+    return (
+      <Image
+        widths={widths}
+        sizes={sizes}
+        alt={data.alt || 'Marketing Banner Image'}
+        className="block object-cover w-full h-full"
+        // @ts-ignore
+        data={data.image}
+        loading={loading}
+        width={width}
+        loaderOptions={{scale, crop: 'center'}}
+      />
+    );
+  }
+
+  return null;
+}
+
+function SlideNextButton() {
+  const swiper = useSwiper();
+  return (
+    <button onClick={() => swiper.slideNext()}>Slide to the next slide</button>
+  );
+}
+
+function SlidePrevButton() {
+  const swiper = useSwiper();
+  return (
+    <button onClick={() => swiper.slidePrev()}>
+      Slide to the previous slide
+    </button>
+  );
+}
+
+function imgUrl(slides) {
+  return slides.map((slide) => slide.url);
+}
+
+function createSlide() {
+  return (
+    <SwiperSlide>
+      <img
+        className="w-full h-full object-cover object-center"
+        src={slide.url}
+        alt={slide.title}
+      />
+    </SwiperSlide>
+  );
+}
