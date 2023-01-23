@@ -39,6 +39,7 @@
     "@heroicons/react": "^2.0.13",
     "@shopify/hydrogen": "^1.6.5",
     "clsx": "^1.1.1",
+    "daisyui": "^2.47.0",
     "graphql-tag": "^2.12.6",
     "gsap": "^3.11.4",
     "heroicons": "^2.0.13",
