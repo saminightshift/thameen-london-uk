@@ -100,29 +100,29 @@ export function ProductGallery({media, className}) {
   );
 }
 
-function MobileImageSwiper({media}) {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+// function MobileImageSwiper({media}) {
+//   const settings = {
+//     dots: false,
+//     infinite: true,
+//     speed: 500,
+//     fade: true,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//   };
 
-  return (
-    <div className="w-full">
-      <Slider {...settings}>
-        {media.map((med, i) => {
-          <div>
-            <img
-              src={med.image.url}
-              alt={med.image.id}
-              className="block w-full "
-            />
-          </div>;
-        })}
-      </Slider>
-    </div>
-  );
-}
+//   return (
+//     <div className="w-full">
+//       <Slider {...settings}>
+//         {media.map((med, i) => {
+//           <div>
+//             <img
+//               src={med.image.url}
+//               alt={med.image.id}
+//               className="block w-full "
+//             />
+//           </div>;
+//         })}
+//       </Slider>
+//     </div>
+//   );
+// }

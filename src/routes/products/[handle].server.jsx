@@ -12,15 +12,15 @@ import {
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
-import {NotFound, Layout} from '~/components/index.server';
+import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
+  Heading,
   ProductDetail,
   ProductForm,
   ProductGallery,
   Section,
   Text,
 } from '~/components';
-import {ProductInfo} from '../../components/index';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -81,35 +81,29 @@ export default function Product() {
       </Suspense>
       <ProductOptionsProvider data={product}>
         <Section padding="x" className="px-0">
-          <div className="grid justify-start md:gap-6 lg:gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
             <ProductGallery
               media={media.nodes}
               className="w-screen md:w-full lg:col-span-2"
             />
-            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll w-full mx-auto lg:col-span-2 h-screen">
-              <section className="flex flex-col w-full gap-8 p-6 ">
-                <div className="border-t-2 border-black pb-6" />
-                <div className="flex justify-between">
-                  <span className="uppercase text-[1.25rem] font-semibold tracking-widest inline-block">
+            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+              <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+                <div className="grid gap-2">
+                  <Heading as="h1" format className="whitespace-normal">
                     {title}
-                  </span>
-                  <span className="text-[1.25rem] font-semibold">
-                    {parseFloat(priceV2.amount).toLocaleString('en-GB', {
-                      style: 'currency',
-                      currency: priceV2.currencyCode,
-                    })}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  {productType && (
-                    <Text className={'text-black font-medium'}>
-                      {productType}
-                    </Text>
+                  </Heading>
+                  {vendor && (
+                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                   )}
                 </div>
                 <ProductForm />
-                <ProductInfo descriptionHtml={descriptionHtml} />
                 <div className="grid gap-4 py-4">
+                  {descriptionHtml && (
+                    <ProductDetail
+                      title="Product Details"
+                      content={descriptionHtml}
+                    />
+                  )}
                   {shippingPolicy?.body && (
                     <ProductDetail
                       title="Shipping"
@@ -129,7 +123,9 @@ export default function Product() {
             </div>
           </div>
         </Section>
-        <Section padding="y" className="py-10" />
+        <Suspense>
+          <ProductSwimlane title="Related Products" data={id} />
+        </Suspense>
       </ProductOptionsProvider>
     </Layout>
   );
