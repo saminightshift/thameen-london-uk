@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
-import {missingClass, formatText} from '~/lib/utils';
+// import {missingClass, formatText} from '~/lib/utils';
+import {formatText} from '~/lib/utils';
 
 export function Text({
   as: Component = 'span',
@@ -33,9 +34,9 @@ export function Text({
   };
 
   const styles = clsx(
-    missingClass(className, 'max-w-') && widths[width],
-    missingClass(className, 'whitespace-') && 'whitespace-pre-wrap',
-    missingClass(className, 'text-') && colors[color],
+    // missingClass(className, 'max-w-') && widths[width],
+    // missingClass(className, 'whitespace-') && 'whitespace-pre-wrap',
+    // missingClass(className, 'text-') && colors[color],
     sizes[size],
     className,
   );

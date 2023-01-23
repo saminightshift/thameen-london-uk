@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import {Link} from '@shopify/hydrogen';
 
-import {missingClass} from '~/lib/utils';
+// import {missingClass} from '~/lib/utils';
 
 export function Button({
   as = 'button',
@@ -27,8 +27,8 @@ export function Button({
   };
 
   const styles = clsx(
-    missingClass(className, 'bg-') && variants[variant],
-    missingClass(className, 'w-') && widths[width],
+    // missingClass(className, 'bg-') && variants[variant],
+    // missingClass(className, 'w-') && widths[width],
     className,
   );
 

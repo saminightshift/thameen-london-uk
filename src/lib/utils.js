@@ -18,14 +18,14 @@ export function useRenderServerComponents() {
   }, [serverProps, setServerProps]);
 }
 
-export function missingClass(string, prefix) {
-  if (!string) {
-    return true;
-  }
+// export function missingClass(string, prefix) {
+//   if (!string) {
+//     return true;
+//   }
 
-  const regex = new RegExp(` ?${prefix}`, 'g');
-  return string.match(regex) === null;
-}
+//   const regex = new RegExp(` ?${prefix}`, 'g');
+//   return string.match(regex) === null;
+// }
 
 export function formatText(input) {
   if (!input) {
