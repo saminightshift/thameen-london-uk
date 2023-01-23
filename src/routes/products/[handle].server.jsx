@@ -16,6 +16,7 @@ import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
+  ProductInfo,
   ProductForm,
   ProductGallery,
   Section,
@@ -92,15 +93,12 @@ export default function Product() {
                   <Heading as="h1" format className="whitespace-normal">
                     {title}
                   </Heading>
-                  {vendor && (
-                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                  )}
                 </div>
                 <ProductForm />
                 <div className="grid gap-4 py-4">
                   {descriptionHtml && (
-                    <ProductDetail
-                      title="Product Details"
+                    <ProductInfo
+                      title="More Information"
                       content={descriptionHtml}
                     />
                   )}

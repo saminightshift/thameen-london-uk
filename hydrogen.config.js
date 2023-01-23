@@ -11,6 +11,7 @@ export default defineConfig({
     // storefrontId: import.meta.env.PUBLIC_STOREFRONT_ID,
     storefrontApiVersion: '2022-07',
   },
+  showQueryTiming: true,
   session: CookieSessionStorage('__session', {
     path: '/',
     httpOnly: true,
