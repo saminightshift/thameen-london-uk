@@ -70,7 +70,7 @@ function OptionsDropdown({values, name, handleChange}) {
           return (
             <>
               <Listbox.Button
-                className={`flex items-center justify-between w-full py-3 px-4 border border-primary ${
+                className={`${
                   open ? 'rounded-b md:rounded-t md:rounded-b-none' : 'rounded'
                 }`}
               >

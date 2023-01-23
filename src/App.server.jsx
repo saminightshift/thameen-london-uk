@@ -56,7 +56,7 @@ function App({routes, request}) {
         </CartProvider>
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
-        <ShopifyAnalytics cookieDomain="thameenlondon.com" />
+        <ShopifyAnalytics cookieDomain="shopify.com" />
       </ShopifyProvider>
     </Suspense>
   );
