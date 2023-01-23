@@ -53,8 +53,6 @@ export function Header({title, menu}) {
     };
   });
 
-  console.log(menu);
-
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
