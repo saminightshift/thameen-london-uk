@@ -139,7 +139,6 @@ const HOMEPAGE_CONTENT_QUERY = gql`
         }
       }
     }
-
     featuredCollections: collections(
       first: 10
       query: "collection_type:custom"

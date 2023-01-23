@@ -1,4 +1,4 @@
-import {Suspense, useState, useEffect} from 'react';
+import {Suspense} from 'react';
 import {
   gql,
   ProductOptionsProvider,
@@ -12,7 +12,7 @@ import {
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
-import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import {NotFound, Layout} from '~/components/index.server';
 import {
   ProductDetail,
   ProductForm,

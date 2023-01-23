@@ -15,6 +15,7 @@ import {
 } from '@shopify/hydrogen';
 import {HeaderFallback, EventsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
+import {CookiesProvider} from 'react-cookie';
 
 function App({routes, request}) {
   const pathname = new URL(request.normalizedUrl).pathname;
@@ -56,7 +57,7 @@ function App({routes, request}) {
         </CartProvider>
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
-        <ShopifyAnalytics cookieDomain="thameenlondon.com" />
+        <ShopifyAnalytics cookieDomain="thameenlondon.com" sameSite="none" />
       </ShopifyProvider>
     </Suspense>
   );

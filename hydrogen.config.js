@@ -15,7 +15,8 @@ export default defineConfig({
     path: '/',
     httpOnly: true,
     secure: import.meta.env.PROD,
-    sameSite: 'Strict',
+    sameSite: 'None',
+    secure: true,
     maxAge: 60 * 60 * 24 * 30,
   }),
 });
