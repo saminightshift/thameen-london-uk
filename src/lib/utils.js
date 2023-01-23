@@ -42,11 +42,14 @@ export function formatText(input) {
   );
 }
 
+// This function may need editing after go live to remove the 60 day limit
 export function isNewArrival(date, daysOld = 30) {
-  return (
-    new Date(date).valueOf() >
-    new Date().setDate(new Date().getDate() - daysOld).valueOf()
-  );
+  if (Date(date) === Date() + 60) {
+    return (
+      new Date(date).valueOf() >
+      new Date().setDate(new Date().getDate() - daysOld).valueOf()
+    );
+  }
 }
 
 export function isDiscounted(price, compareAtPrice) {
