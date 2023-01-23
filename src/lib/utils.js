@@ -1,5 +1,6 @@
 import {useCallback} from 'react';
-import {useServerProps} from '@shopify/hydrogen';
+import { useServerProps } from '@shopify/hydrogen';
+
 
 // @ts-expect-error types not available
 import typographicBase from 'typographic-base';
@@ -243,3 +244,7 @@ export function passwordValidation(password) {
 
   return 'Password must be at least 6 characters';
 }
+
+
+
+

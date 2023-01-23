@@ -14,13 +14,13 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
 import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
-  Heading,
   ProductDetail,
   ProductForm,
   ProductGallery,
   Section,
   Text,
 } from '~/components';
+import {ProductInfo} from '../../components/index';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -108,22 +108,7 @@ export default function Product() {
                   )}
                 </div>
                 <ProductForm />
-                <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">
-                  <span className="text-black font-semibold text-left">
-                    Two complimentary samples with your purchase.
-                  </span>
-                </div>
-
-                <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">
-                  <span className="text-black font-semibold text-left">
-                    More Information
-                  </span>
-                  <p
-                    className="text-black font-medium text-left prose w-full"
-                    dangerouslySetInnerHTML={{__html: descriptionHtml}}
-                  />
-                </div>
-
+                <ProductInfo descriptionHtml={descriptionHtml} />
                 <div className="grid gap-4 py-4">
                   {shippingPolicy?.body && (
                     <ProductDetail
