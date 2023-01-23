@@ -4,7 +4,6 @@ import {
   CartLineQuantityAdjustButton,
   CartLinePrice,
   CartLineQuantity,
-  Image,
   Link,
 } from '@shopify/hydrogen';
 
@@ -17,15 +16,12 @@ export function CartLineItem() {
   return (
     <li key={lineId} className="flex gap-4">
       <div className="flex-shrink">
-        <Image
+        <img
           width={112}
           height={112}
           widths={[112]}
-          data={merchandise.image}
-          loaderOptions={{
-            scale: 2,
-            crop: 'center',
-          }}
+          src={merchandise.image.url}
+          alt={merchandise.title}
           className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
         />
       </div>

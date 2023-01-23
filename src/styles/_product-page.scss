@@ -1,0 +1,19 @@
+.product-page-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  top: -120px;
+  z-index: 1;
+
+  img {
+    background-color: pink;
+    mix-blend-mode: multiply;
+  }
+}
+
+hr {
+  border: 0;
+  height: 1.5px;
+  background-color: black;
+}

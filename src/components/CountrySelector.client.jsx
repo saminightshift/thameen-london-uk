@@ -21,7 +21,7 @@ export function CountrySelector() {
 
     return {
       name: regionNamesInEnglish.of(isoCode),
-      isoCode: isoCode,
+      isoCode,
     };
   }, [isoCode]);
 
@@ -30,8 +30,8 @@ export function CountrySelector() {
       const currentPath = window.location.pathname;
       let redirectPath;
 
-      if (newIsoCode !== 'US') {
-        if (currentCountry.isoCode === 'US') {
+      if (newIsoCode !== 'GB') {
+        if (currentCountry.isoCode === 'GB') {
           redirectPath = `/${newIsoCode.toLowerCase()}${currentPath}`;
         } else {
           redirectPath = `/${newIsoCode.toLowerCase()}${currentPath.substring(

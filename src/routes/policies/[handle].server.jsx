@@ -76,18 +76,14 @@ export default function Policy({params}) {
           heading={page.title}
           className="grid items-start flex-grow gap-4 md:sticky top-36 md:w-5/12"
         >
-          <Button
-            className="justify-self-start"
-            variant="inline"
-            to={'/policies'}
-          >
-            &larr; Back to Policies
-          </Button>
+          <a href="/policies">
+            <span className="justify-self-start">&larr; Back to Policies</span>
+          </a>
         </PageHeader>
         <div className="flex-grow w-full md:w-7/12">
           <div
             dangerouslySetInnerHTML={{__html: page.body}}
-            className="prose dark:prose-invert"
+            className="prose"
           />
         </div>
       </Section>

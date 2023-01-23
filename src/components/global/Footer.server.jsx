@@ -25,7 +25,7 @@ export function Footer({menu}) {
       role="contentinfo"
       className={`grid min-h-[25rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 
         border-b md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
-        bg-primary dark:bg-contrast dark:text-primary text-contrast overflow-hidden`}
+        overflow-hidden  bg-black text-white md:bg-white md:text-black relative`}
     >
       <FooterMenu menu={menu} />
       <section className="grid gap-4 w-full md:max-w-[335px] md:ml-auto">
@@ -35,10 +35,11 @@ export function Footer({menu}) {
         <CountrySelector />
       </section>
       <div
-        className={`self-end pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
+        className={`text-center pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
       >
-        &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
-        Licensed Open Source project. This website is carbon&nbsp;neutral.
+        &copy; {new Date().getFullYear()} Thameen London. All rights reserved.
+        <br />
+        <span className="text-xs">Powered by Daze DGTL</span>
       </div>
     </Section>
   );

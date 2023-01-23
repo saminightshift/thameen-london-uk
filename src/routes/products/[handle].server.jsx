@@ -1,4 +1,4 @@
-import {Suspense} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import {
   gql,
   ProductOptionsProvider,
@@ -81,29 +81,50 @@ export default function Product() {
       </Suspense>
       <ProductOptionsProvider data={product}>
         <Section padding="x" className="px-0">
-          <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid justify-start md:gap-6 lg:gap-10 md:grid-cols-2 lg:grid-cols-4">
             <ProductGallery
               media={media.nodes}
               className="w-screen md:w-full lg:col-span-2"
             />
-            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-              <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-                <div className="grid gap-2">
-                  <Heading as="h1" format className="whitespace-normal">
+            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll w-full mx-auto lg:col-span-2 h-screen">
+              <section className="flex flex-col w-full gap-8 p-6 ">
+                <div className="border-t-2 border-black pb-6" />
+                <div className="flex justify-between">
+                  <span className="uppercase text-[1.25rem] font-semibold tracking-widest inline-block">
                     {title}
-                  </Heading>
-                  {vendor && (
-                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                  </span>
+                  <span className="text-[1.25rem] font-semibold">
+                    {parseFloat(priceV2.amount).toLocaleString('en-GB', {
+                      style: 'currency',
+                      currency: priceV2.currencyCode,
+                    })}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  {productType && (
+                    <Text className={'text-black font-medium'}>
+                      {productType}
+                    </Text>
                   )}
                 </div>
                 <ProductForm />
+                <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">
+                  <span className="text-black font-semibold text-left">
+                    Two complimentary samples with your purchase.
+                  </span>
+                </div>
+
+                <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">
+                  <span className="text-black font-semibold text-left">
+                    More Information
+                  </span>
+                  <p
+                    className="text-black font-medium text-left prose w-full"
+                    dangerouslySetInnerHTML={{__html: descriptionHtml}}
+                  />
+                </div>
+
                 <div className="grid gap-4 py-4">
-                  {descriptionHtml && (
-                    <ProductDetail
-                      title="Product Details"
-                      content={descriptionHtml}
-                    />
-                  )}
                   {shippingPolicy?.body && (
                     <ProductDetail
                       title="Shipping"
@@ -123,9 +144,7 @@ export default function Product() {
             </div>
           </div>
         </Section>
-        <Suspense>
-          <ProductSwimlane title="Related Products" data={id} />
-        </Suspense>
+        <Section padding="y" className="py-10" />
       </ProductOptionsProvider>
     </Layout>
   );

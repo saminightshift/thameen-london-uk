@@ -6,9 +6,9 @@ import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
 
 const HEADER_MENU_HANDLE = 'main-menu';
-const FOOTER_MENU_HANDLE = 'footer';
+const FOOTER_MENU_HANDLE = 'footer-1';
 
-const SHOP_NAME_FALLBACK = 'Hydrogen';
+const SHOP_NAME_FALLBACK = 'Thameen London';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app

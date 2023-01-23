@@ -7,16 +7,120 @@ import {Heading, IconCaret} from '~/components';
 /**
  * A server component that specifies the content of the footer on the website
  */
-export function FooterMenu({menu}) {
-  const styles = {
-    section: 'grid gap-4',
-    nav: 'grid gap-2 pb-6',
-  };
+export function FooterMenu() {
+  const footerMenu = [
+    {id: 'footer-menu'},
+    {
+      title: 'Account',
+      href: '/account',
+      items: [],
+    },
+    {
+      title: 'Shipping To',
+      href: '',
+      items: [
+        {
+          title: 'United Kingdom (£)',
+          href: '/',
+        },
+        {
+          title: 'United States ($)',
+          href: 'https://us.thameenlondon.com',
+        },
+      ],
+    },
+    {
+      title: 'Contact',
+      href: '',
+      items: [
+        {
+          title: 'Email Customer Care',
+          href: 'mailto:support@thameenlondon.com',
+        },
+      ],
+    },
+    {
+      title: 'Customer Care',
+      href: '',
+      items: [
+        {
+          title: 'Shipping',
+          href: '/policy/shipping',
+        },
+        {
+          title: 'Ordering & Payment',
+          href: '/policy/ordering',
+        },
+        {
+          title: 'Refunds & Returns',
+          href: '/policy/refund-policy',
+        },
+      ],
+    },
+    {
+      title: 'Legal & Cookies',
+      href: '',
+      items: [
+        {
+          title: 'Terms & Conditions',
+          href: '/policy/terms-of-service',
+        },
+        {
+          title: 'Privacy & Cookie Policy',
+          href: '/policy/privacy-policy',
+        },
+      ],
+    },
+    {
+      title: 'Our Story',
+      href: '',
+      items: [
+        {
+          title: 'Our Story',
+          href: '/about',
+        },
+        {
+          title: 'Careers',
+          href: '/careers',
+        },
+        {
+          title: 'Site Map',
+          href: '/sitemap',
+        },
+      ],
+    },
+    {
+      title: 'Follow Us',
+      href: '',
+      items: [
+        {
+          title: 'Instagram',
+          href: 'https://www.instagram.com/thameenfragrance',
+        },
+        {
+          title: 'Facebook',
+          href: 'https://www.facebook.com/thameenlondon',
+        },
+        {
+          title: 'LinkedIn',
+          href: 'https://www.linkedin.com/company/thameenlondon',
+        },
+      ],
+    },
+    {
+      title: 'Store Locator',
+      href: '/store-locator',
+    },
+    {
+      title: 'Thameen Services',
+      href: '',
+    },
+  ];
 
   return (
     <>
-      {(menu?.items || []).map((item) => (
-        <section key={item.id} className={styles.section}>
+      {(footerMenu?.items || []).map((item) => (
+        <section key={item.id} className="grid gap-4">
           <Disclosure>
             {/* @ts-expect-error @headlessui/react incompatibility with node16 resolution */}
             {({open}) => (

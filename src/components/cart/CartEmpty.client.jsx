@@ -24,8 +24,8 @@ export function CartEmpty({onClose, layout = 'drawer'}) {
     <div ref={scrollRef} className={container[layout]}>
       <section className="grid gap-6">
         <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
+          Looks like you haven&rsquo;t added anything yet. Check out some of our
+          best sellers below.
         </Text>
         <div>
           <Button onClick={onClose}>Continue shopping</Button>

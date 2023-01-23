@@ -1,46 +1,50 @@
 import {Link, Image} from '@shopify/hydrogen';
 
-import {Heading, Section, Grid} from '~/components';
+import {Section} from '~/components';
 
 export function FeaturedCollections({data, title = 'Collections', ...props}) {
   const items = data.filter((item) => item.image).length;
-  const haveCollections = data.length > 0;
+  const haveCollections = data.length > 2;
 
   if (!haveCollections) return null;
 
   return (
-    <Section {...props} heading={title}>
-      <Grid items={items}>
-        {data.map((collection) => {
-          if (!collection?.image) {
-            return null;
-          }
-          // TODO: Refactor to use CollectionCard
-          return (
-            <Link key={collection.id} to={`/collections/${collection.handle}`}>
-              <div className="grid gap-4">
-                <div className="card-image bg-primary/5 aspect-[3/2]">
-                  {collection?.image && (
-                    <Image
-                      alt={`Image of ${collection.title}`}
-                      data={collection.image}
-                      height={400}
-                      sizes="(max-width: 32em) 100vw, 33vw"
-                      width={600}
-                      widths={[400, 500, 600, 700, 800, 900]}
-                      loaderOptions={{
-                        scale: 2,
-                        crop: 'center',
-                      }}
-                    />
-                  )}
-                </div>
-                <Heading size="copy">{collection.title}</Heading>
-              </div>
-            </Link>
-          );
-        })}
-      </Grid>
-    </Section>
+    <div className="md:container md:mx-auto">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mx-auto">
+        <>
+          {data.map((collection) => {
+            if (!collection?.image) {
+              return null;
+            }
+            return (
+              <>
+                {' '}
+                {collection?.image && (
+                  <Link
+                    key={collection.id}
+                    to={`/collections/${collection.handle}`}
+                  >
+                    <div className="relative py-4">
+                      <div className="card-image aspect-square">
+                        {collection?.image && (
+                          <img
+                            src={collection.image.url}
+                            alt={collection.title}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
+                      </div>
+                      <h4 className="text-center font-medium text-lg text-primary uppercase tracking-widest py-4">
+                        {collection.title}
+                      </h4>
+                    </div>
+                  </Link>
+                )}
+              </>
+            );
+          })}
+        </>
+      </div>
+    </div>
   );
 }

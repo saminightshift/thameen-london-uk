@@ -20,6 +20,10 @@ import {useDrawer} from './Drawer.client';
 
 import {NewsFlashBanner} from '../newsflash/NewsFlashBanner';
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export function Header({title, menu}) {
   const {pathname} = useUrl();
 
@@ -40,27 +44,12 @@ export function Header({title, menu}) {
     closeDrawer: closeMenu,
   } = useDrawer();
 
-  const menuItems = menu?.items.map((item) => {
-    return {
-      title: item.title,
-      url: item.url,
-      children: item.children?.items.map((child) => {
-        return {
-          title: child.title,
-          url: child.url,
-        };
-      }),
-    };
-  });
-
-  console.log(menu);
-
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
       <NewsFlashBanner />
-      <DesktopHeader
+      <HomepageHeader
         countryCode={countryCode}
         isHome={isHome}
         title={title}
@@ -72,7 +61,7 @@ export function Header({title, menu}) {
   );
 }
 
-function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
+function HomepageHeader({countryCode, isHome, menu, openCart, openMenu}) {
   const [isOpen, setIsOpen] = useState(false);
 
   function Logo() {
@@ -101,7 +90,7 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.scrollY;
       if (currentScrollPos > 0 && isVisible) {
         setIsVisible(false);
       } else if (currentScrollPos === 0 && !isVisible) {
@@ -117,7 +106,7 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
   return (
     <>
       <div
-        className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center ${
+        className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center sticky ${
           !isVisible ? 'fade-out' : 'fade-in'
         }`}
         id="pageHeader"
@@ -142,21 +131,71 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
               </a>
             </div>
 
-            <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
-              <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm">
-                {/* Top level menu items */}
-                {(menu?.items || []).map((item) => (
-                  <Link
-                    className="nav-link"
-                    key={item.id}
-                    to={item.to}
-                    target={item.target}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
+            <Popover.Group className="align-middle">
+              <nav className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
+                <div className="flex nav-items font-semibold tracking-widest text-sm">
+                  {/* Top level menu items */}
+                  {(menu?.items || []).map((item) => (
+                    <Popover className="nav-link" key={item.id}>
+                      {({openMenu}) => (
+                        <>
+                          <div className="relative flex">
+                            <Popover.Button
+                              className={classNames(
+                                openMenu
+                                  ? 'border-b-2 border-black'
+                                  : 'border-transparent',
+                                'transition duration-150 ease-in-out uppercase tracking-widest',
+                              )}
+                            >
+                              <Link to={item.to} target={item.target}>
+                                {item.title}
+                              </Link>
+                            </Popover.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Popover.Panel className="absolute inset-x-0 top-full text-black sm:text-sm opacity-100 dropdown-panel">
+                              <div
+                                className="absolute inset-0 top-1/2 bg-white shadow"
+                                aria-hidden="true"
+                              />
+                              <div className="relative bg-white">
+                                <div className="mx-auto max-7xl px-8">
+                                  <div className="grid grid-cols-2 items-start gap-y-10 gap-x-8 pt-10 pb-12">
+                                    <div className="gird grid-cols-2 gap-y-10 gap-x-8">
+                                      {item?.items.length > 0 && (
+                                        <ul
+                                          role="list"
+                                          aria-labelledby={`desktop-featured-heading-${item.id}`}
+                                          className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                        >
+                                          {(item?.items || []).map((sub) => (
+                                            <li key={sub.id}>{sub.title}</li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Popover.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  ))}
+                </div>
               </nav>
-            </div>
+            </Popover.Group>
+
             {/* Mobile Icons */}
             <div className="flex lg:hidden">
               <button className="relative flex items-center p-2">
@@ -167,6 +206,7 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
                 onClick={openCart}
               >
                 <IconBag />
+                <CartBadgeMobile dark={isHome} />
               </button>
               <button
                 className="relative flex items-center p-2"
@@ -197,11 +237,197 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
               </button>
             </div>
           </div>
-          <div className="hidden h-full lg:flex">
-            {/* Mega menu */}
-            <Popover.Group className="ml-8">
-              <div className="flex h-full justify-center space-x-8"></div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function AltHeader({countryCode, menu, openCart, openMenu}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function Logo() {
+    if (!isOpen) {
+      return (
+        <img
+          src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg"
+          alt="Thameen London"
+          width={150}
+          height={50}
+        />
+      );
+    } else {
+      return (
+        <img
+          src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+          alt="Thameen London"
+          width={150}
+          height={50}
+        />
+      );
+    }
+  }
+
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      if (currentScrollPos > 0 && isVisible) {
+        setIsVisible(false);
+      } else if (currentScrollPos === 0 && !isVisible) {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
+
+  return (
+    <>
+      <div
+        className={`module__nav bg-white text-black flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center sticky ${
+          !isVisible ? 'fade-out' : 'fade-in'
+        }`}
+        id="pageHeader"
+      >
+        <div className="relative max-w-screen-2xl w-full">
+          <div className="flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
+            {/* Desktop Logo */}
+            <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1">
+              <a
+                href="/"
+                className="mr-4 hidden lg:block"
+                aria-label="Thameen London"
+              >
+                <img
+                  src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+                  alt="Thameen London"
+                  width={150}
+                  height={50}
+                />
+                <span className="sr-only">Thameen London</span>
+              </a>
+            </div>
+            {/* Mobile Logo */}
+            <div className="lg:hidden flex items-center">
+              <a href="/" className="mr-4 block" aria-label="Thameen London">
+                <img
+                  src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+                  alt="Thameen London"
+                  width={150}
+                  height={50}
+                />
+              </a>
+            </div>
+
+            <Popover.Group className="align-middle">
+              <nav className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
+                <div className="flex nav-items font-semibold tracking-widest text-sm">
+                  {/* Top level menu items */}
+                  {(menu?.items || []).map((item) => (
+                    <Popover className="nav-link" key={item.id}>
+                      {({openMenu}) => (
+                        <>
+                          <div className="relative flex">
+                            <Popover.Button
+                              className={classNames(
+                                openMenu
+                                  ? 'border-b-2 border-black'
+                                  : 'border-transparent',
+                                'transition duration-150 ease-in-out uppercase tracking-widest',
+                              )}
+                            >
+                              <Link to={item.to} target={item.target}>
+                                {item.title}
+                              </Link>
+                            </Popover.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Popover.Panel className="absolute inset-x-0 top-full text-black sm:text-sm opacity-100 dropdown-panel">
+                              <div
+                                className="absolute inset-0 top-1/2 bg-white shadow"
+                                aria-hidden="true"
+                              />
+                              <div className="relative bg-white">
+                                <div className="mx-auto max-7xl px-8">
+                                  <div className="grid grid-cols-2 items-start gap-y-10 gap-x-8 pt-10 pb-12">
+                                    <div className="gird grid-cols-2 gap-y-10 gap-x-8">
+                                      {item?.items.length > 0 && (
+                                        <ul
+                                          role="list"
+                                          aria-labelledby={`desktop-featured-heading-${item.id}`}
+                                          className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                        >
+                                          {(item?.items || []).map((sub) => (
+                                            <li key={sub.id}>{sub.title}</li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Popover.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  ))}
+                </div>
+              </nav>
             </Popover.Group>
+
+            {/* Mobile Icons */}
+            <div className="flex lg:hidden">
+              <button className="relative flex items-center p-2">
+                <IconSearch />
+              </button>
+              <button
+                className="relative flex items-center p-2"
+                onClick={openCart}
+              >
+                <IconBag />
+                <CartBadgeMobile dark={isHome} />
+              </button>
+              <button
+                className="relative flex items-center p-2"
+                aria-label="Toggle Cart"
+              >
+                <Bars3Icon className="w-6 h-6" onClick={openMenu} />
+              </button>
+            </div>
+            {/* Desktop Icons */}
+            <div className="hidden lg:flex justify-end">
+              <button className="hidden lg:flex items-center mr-2 p-2">
+                <IconSearch />
+              </button>
+              <Link
+                to="/account"
+                className="items-center mr-2 relative hover:border-white p-2"
+                aria-expanded="false"
+                aria-label="Account"
+              >
+                <IconAccount />
+              </Link>
+              <button
+                onClick={openCart}
+                className="hidden lg:flex items-center p-2"
+              >
+                <IconBag />
+                <CartBadge dark={isHome} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -209,17 +435,37 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
   );
 }
 
-function CartBadge() {
+function TotalQuantityHelper() {
   const {totalQuantity} = useCart();
 
   if (totalQuantity < 1) {
     return null;
   }
-  return (
-    <div className="cart-badge text-white bg-black absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full mx-auto">
-      <span>{totalQuantity}</span>
-    </div>
-  );
+  return <>{totalQuantity}</>;
+}
+
+function CartBadge() {
+  if (TotalQuantityHelper() === null) {
+    return null;
+  } else {
+    return (
+      <div className="text-white bg-black absolute text-xs font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none top-4 right-0 text-center rounded-full mx-auto">
+        <TotalQuantityHelper />
+      </div>
+    );
+  }
+}
+
+function CartBadgeMobile() {
+  if (TotalQuantityHelper() === null) {
+    return null;
+  } else {
+    return (
+      <div className="rounded-full bg-black text-white text-xs font-semibold w-4 h-4 flex items-center justify-center absolute top-2 right-0">
+        <TotalQuantityHelper />
+      </div>
+    );
+  }
 }
 
 function IconAccount() {

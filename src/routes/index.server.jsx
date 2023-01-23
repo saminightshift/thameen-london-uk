@@ -48,21 +48,20 @@ function HomepageContent() {
     preload: true,
   });
 
-  const {heroBanners, featuredCollections, featuredProducts} = data;
+  const {featuredCollections, featuredProducts} = data;
 
   return (
     <div className="top-[-8rem] relative z-10">
       <Hero loading="eager" />
-      <ProductSwimlane
-        data={featuredProducts.nodes}
-        title="Featured Products"
-        divider="bottom"
-      />
+      <div className="container mx-auto px-4">
+        <ProductSwimlane
+          data={featuredProducts.nodes}
+          title="Featured Products"
+          divider="bottom"
+        />
+      </div>
 
-      <FeaturedCollections
-        data={featuredCollections.nodes}
-        title="Collections"
-      />
+      <FeaturedCollections data={featuredCollections.nodes} />
     </div>
   );
 }
@@ -140,9 +139,10 @@ const HOMEPAGE_CONTENT_QUERY = gql`
         }
       }
     }
+
     featuredCollections: collections(
-      first: 3
-      query: "collection_type:smart"
+      first: 10
+      query: "collection_type:custom"
       sortKey: UPDATED_AT
     ) {
       nodes {

@@ -35,7 +35,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[4/5] ">
+        <div className="card-image aspect-[4/5] hover:grayscale hover:transition-opacity duration-500">
           <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
             {cardLabel}
           </h4>

@@ -9,9 +9,9 @@ import {
   ShopPayButton,
 } from '@shopify/hydrogen';
 
-import {Heading, Text, Button, ProductOptions} from '~/components';
+import {Heading, Text, ProductOptions} from '~/components';
 
-export function ProductForm() {
+export function ProductForm({product, title, descriptionHtml}) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
@@ -71,7 +71,7 @@ export function ProductForm() {
   );
 
   return (
-    <form className="grid gap-10">
+    <form className="grid gap-8">
       {
         <div className="grid gap-4">
           {options.map(({name, values}) => {
@@ -106,37 +106,23 @@ export function ProductForm() {
           disabled={isOutOfStock}
           type="button"
         >
-          <Button
-            width="full"
-            variant={isOutOfStock ? 'secondary' : 'primary'}
-            as="span"
-          >
-            {isOutOfStock ? (
-              <Text>Sold out</Text>
-            ) : (
-              <Text
-                as="span"
-                className="flex items-center justify-center gap-2"
-              >
-                <span>Add to bag</span> <span>·</span>{' '}
-                <Money
-                  withoutTrailingZeros
-                  data={selectedVariant.priceV2}
-                  as="span"
-                />
-                {isOnSale && (
-                  <Money
-                    withoutTrailingZeros
-                    data={selectedVariant.compareAtPriceV2}
-                    as="span"
-                    className="opacity-50 strike"
-                  />
-                )}
+          {isOutOfStock ? (
+            <div
+              disabled={true}
+              className="w-full border-black border-2 text-black font-semibold uppercase text-left p-4"
+            >
+              <Text as="span" className="flex pl-6">
+                Sold out
               </Text>
-            )}
-          </Button>
+            </div>
+          ) : (
+            <div className="w-full bg-black text-white tracking-widest uppercase font-semibold p-4 text-left cursor-pointer">
+              <Text as="span" className="flex pl-6">
+                <span>Add to bag</span>
+              </Text>
+            </div>
+          )}
         </AddToCartButton>
-        {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id]} />}
       </div>
     </form>
   );

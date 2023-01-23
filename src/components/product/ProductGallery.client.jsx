@@ -1,17 +1,38 @@
+import React, {useEffect, useState} from 'react';
 import {MediaFile} from '@shopify/hydrogen/client';
 import {ATTR_LOADING_EAGER} from '~/lib/const';
+import Slider from 'react-slick';
 
 /**
  * A client component that defines a media gallery for hosting images, 3D models, and videos of products
  */
 export function ProductGallery({media, className}) {
+  // Fade in/out animation
+
+  // const [isVisible, setIsVisible] = useState(true);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollPos = window.scrollY;
+  //     if (currentScrollPos > 320 && isVisible) {
+  //       setIsVisible(false);
+  //     } else if (currentScrollPos === 0 && !isVisible) {
+  //       setIsVisible(true);
+  //     }
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [isVisible]);
+
   if (!media.length) {
     return null;
   }
 
   return (
     <div
-      className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
+      className={`swimlane product-page-image md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 w-full ${className}`}
     >
       {media.map((med, i) => {
         let mediaProps = {};
@@ -64,9 +85,9 @@ export function ProductGallery({media, className}) {
         }
 
         const style = [
-          isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
-          isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-full',
+          isFullWidth ? 'md:col-span-2' : 'md:col-span-3',
+          isFirst || isFourth ? `` : 'md:aspect-[4/5]',
+          'aspect-square snap-center card-image w-mobileGallery md:w-full',
         ].join(' ');
 
         return (
@@ -77,7 +98,7 @@ export function ProductGallery({media, className}) {
           >
             <MediaFile
               tabIndex="0"
-              className={`w-full h-full aspect-square fadeIn object-cover`}
+              className={`w-full h-full aspect-square fadeIn object-cover `}
               data={data}
               sizes={
                 isFullWidth
@@ -94,6 +115,33 @@ export function ProductGallery({media, className}) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function MobileImageSwiper({media}) {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  return (
+    <div className="w-full">
+      <Slider {...settings}>
+        {media.map((med, i) => {
+          <div>
+            <img
+              src={med.image.url}
+              alt={med.image.id}
+              className="block w-full "
+            />
+          </div>;
+        })}
+      </Slider>
     </div>
   );
 }
