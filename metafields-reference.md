@@ -18,6 +18,12 @@ product.metafields.fragrance.notes
 product.metafields.variant.item
 ```
 
+- Exclusive Product - this will render a different product page where the add to cart button is swapped out for a link to external site
+
+```
+product.metafields.exclusive_product.link
+```
+
 # Blog Post Metafields
 
 - Default Author - workaround whilst using Shopify as CMS

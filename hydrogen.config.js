@@ -12,6 +12,9 @@ export default defineConfig({
     storefrontApiVersion: '2022-07',
   },
   showQueryTiming: true,
+  logger: {
+    level: 'debug',
+  },
   session: CookieSessionStorage('__session', {
     path: '/',
     httpOnly: true,

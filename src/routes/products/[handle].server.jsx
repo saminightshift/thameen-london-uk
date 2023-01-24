@@ -24,6 +24,7 @@ import {
   Section,
   Text,
 } from '~/components';
+import {ProductVariantSelector} from '../../components/index';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -34,7 +35,7 @@ export default function Product() {
   } = useLocalization();
 
   const {
-    data: {product, shop},
+    data: {product, shop, products},
   } = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
@@ -49,8 +50,20 @@ export default function Product() {
     return <NotFound type="product" />;
   }
 
-  const {media, title, vendor, descriptionHtml, id, productType, notes, text} =
-    product;
+  const {
+    media,
+    title,
+    vendor,
+    descriptionHtml,
+    productType,
+    notes,
+    boxed,
+    id,
+    has_variant,
+    exclusive,
+  } = product;
+
+  const {tags} = products;
 
   const {shippingPolicy, refundPolicy} = shop;
 
@@ -79,6 +92,7 @@ export default function Product() {
           category: productType,
           price: priceV2.amount,
           sku,
+          tags,
         },
       ],
     },
@@ -145,9 +159,19 @@ export default function Product() {
                     </Text>
                   )}
                 </div>
+                <div className="flex flex-col gap-2">
+                  <ProductVariantSelector
+                    data={product}
+                    handle={handle}
+                    title={title}
+                    tags={tags}
+                  />
+                </div>
+
                 <ProductForm />
                 <div className="grid">
                   {descriptionHtml && <ProductInfo content={descriptionHtml} />}
+                  {/* Fragrance Notes */}
                   {notes ? (
                     <ProductDetail
                       title="Fragrance Notes"
@@ -155,14 +179,25 @@ export default function Product() {
                       className="capitalize"
                     />
                   ) : null}
+                  {/* Gift Set Details */}
+                  {boxed ? (
+                    <ProductDetail
+                      title="More Information"
+                      content={boxed.value}
+                      className="capitalize"
+                    />
+                  ) : null}
+                  {/* Shipping Policy Details */}
                   {shippingPolicy?.body && (
                     <>
                       <ProductDetail
                         title="Shipping"
-                        content="Free shipping on all orders UK orders"
+                        content="Free shipping on all orders UK orders. <br/> Delivery within 2-4 working days."
+                        learnMore={`/policies/${shippingPolicy.handle}`}
                       />
                     </>
                   )}
+                  {/* Refund Policy */}
                   {refundPolicy?.body && (
                     <ProductDetail
                       title="Returns"
@@ -199,6 +234,18 @@ const PRODUCT_QUERY = gql`
       vendor
       descriptionHtml
       notes: metafield(namespace: "fragrance", key: "notes") {
+        value
+        id
+      }
+      boxed: metafield(namespace: "box_product", key: "items") {
+        value
+        id
+      }
+      has_variant: metafield(namespace: "variant", key: "item") {
+        value
+        id
+      }
+      exclusive: metafield(namespace: "exclusive_product", key: "link") {
         value
         id
       }
@@ -242,6 +289,14 @@ const PRODUCT_QUERY = gql`
       seo {
         description
         title
+      }
+    }
+    products(first: 250) {
+      edges {
+        node {
+          id
+          handle
+        }
       }
     }
     shop {
