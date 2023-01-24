@@ -9,6 +9,7 @@ import {
   useServerAnalytics,
   useShopQuery,
   Money,
+  Metafield,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -26,6 +27,7 @@ import {
 
 export default function Product() {
   const {handle} = useRouteParams();
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -47,8 +49,11 @@ export default function Product() {
     return <NotFound type="product" />;
   }
 
-  const {media, title, vendor, descriptionHtml, id, productType} = product;
+  const {media, title, vendor, descriptionHtml, id, productType, notes, text} =
+    product;
+
   const {shippingPolicy, refundPolicy} = shop;
+
   const {
     priceV2,
     id: variantId,
@@ -141,8 +146,15 @@ export default function Product() {
                   )}
                 </div>
                 <ProductForm />
-                <div className="grid gap-4 py-4">
+                <div className="grid">
                   {descriptionHtml && <ProductInfo content={descriptionHtml} />}
+                  {notes ? (
+                    <ProductDetail
+                      title="Fragrance Notes"
+                      content={notes.value}
+                      className="capitalize"
+                    />
+                  ) : null}
                   {shippingPolicy?.body && (
                     <>
                       <ProductDetail
@@ -186,6 +198,10 @@ const PRODUCT_QUERY = gql`
       title
       vendor
       descriptionHtml
+      notes: metafield(namespace: "fragrance", key: "notes") {
+        value
+        id
+      }
       media(first: 7) {
         nodes {
           ...Media
