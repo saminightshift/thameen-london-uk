@@ -8,6 +8,7 @@ import {
   useRouteParams,
   useServerAnalytics,
   useShopQuery,
+  Money,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -54,6 +55,9 @@ export default function Product() {
     sku,
     title: variantTitle,
   } = product.variants.nodes[0];
+
+  const isOnSale =
+    product?.priceV2?.amount < product?.compareAtPriceV2?.amount || false;
 
   useServerAnalytics({
     shopify: {
@@ -118,10 +122,15 @@ export default function Product() {
                     {title}
                   </span>
                   <span className="text-[1.25rem] font-semibold">
-                    {parseFloat(priceV2.amount).toLocaleString('en-GB', {
-                      style: 'currency',
-                      currency: priceV2.currencyCode,
-                    })}
+                    <Money withoutTrailingZeros data={priceV2} as="span" />
+                    {isOnSale && (
+                      <Money
+                        withoutTrailingZeros
+                        data={priceV2}
+                        as="span"
+                        className="opacity-50 strike"
+                      />
+                    )}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">

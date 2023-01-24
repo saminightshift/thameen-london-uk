@@ -110,6 +110,7 @@ export function ProductForm() {
             width="full"
             variant={isOutOfStock ? 'secondary' : 'primary'}
             as="span"
+            className="btn btn-wide"
           >
             {isOutOfStock ? (
               <Text>Sold out</Text>
