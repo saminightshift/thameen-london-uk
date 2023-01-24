@@ -134,25 +134,25 @@ export default function Product() {
               </div>
             </div>
             <div className="w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
-              <section className="flex flex-col w-full gap-8 p-6 ">
-                <div className="border-t-2 border-black pb-6" />
-                <div className="flex justify-between">
-                  <span className="uppercase text-[1.25rem] font-semibold tracking-widest inline-block">
-                    {title}
-                  </span>
-                  <span className="text-[1.25rem] font-semibold">
+              <section className="flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
+                <div className="md:border-t-2 md:border-black md:pb-6" />
+                <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
+                  <span className="uppercase md:inline-block">{title}</span>
+                  <span className="">
                     <Money withoutTrailingZeros data={priceV2} as="span" />
                     {isOnSale && (
-                      <Money
-                        withoutTrailingZeros
-                        data={priceV2}
-                        as="span"
-                        className="opacity-50 strike"
-                      />
+                      <div>
+                        <Money
+                          withoutTrailingZeros
+                          data={priceV2}
+                          as="span"
+                          className="opacity-50 line-through"
+                        />
+                      </div>
                     )}
                   </span>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="border-b-2 border-black pb-6 px-4 md:px-0">
                   {productType && (
                     <Text className={'text-black font-medium'}>
                       {productType}

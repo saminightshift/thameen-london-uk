@@ -11,6 +11,7 @@
 @import './_dropdown-menu.scss';
 @import './_mega-menu.scss';
 @import './_swiper-custom.scss';
+@import './_global-elements.scss';
 
 /* Animation */
 @import './_animation.scss';

@@ -6,7 +6,6 @@ import {
   useUrl,
   AddToCartButton,
   Money,
-  ShopPayButton,
 } from '@shopify/hydrogen';
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
@@ -71,7 +70,7 @@ export function ProductForm() {
   );
 
   return (
-    <form className="grid gap-10">
+    <form className="grid md:gap-10">
       {
         <div className="grid gap-4">
           {options.map(({name, values}) => {
@@ -110,7 +109,7 @@ export function ProductForm() {
             width="full"
             variant={isOutOfStock ? 'secondary' : 'primary'}
             as="span"
-            className="btn btn-wide"
+            className="btn btn-checkout btn-block"
           >
             {isOutOfStock ? (
               <Text>Sold out</Text>
@@ -137,7 +136,6 @@ export function ProductForm() {
             )}
           </Button>
         </AddToCartButton>
-        {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id]} />}
       </div>
     </form>
   );
