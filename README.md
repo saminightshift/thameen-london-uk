@@ -1,3 +1,11 @@
+# To point your Shopify theme to your headless URL
+
+Edit './theme.liquid' and replace the following:
+
+```
+loc.host = 'staging.thameenlondon.com' // to be changed to thameenlondon.com at go live
+```
+
 # Project To Do's after go live:
 
 - Refactor the 60 day limit on new products in './src/lib/utils.js'
