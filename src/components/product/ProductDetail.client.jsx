@@ -6,7 +6,7 @@ import {Text, IconClose} from '~/components';
 
 export function ProductDetail({title, content, learnMore}) {
   return (
-    <Disclosure key={title} as="div" className="grid w-full gap-2">
+    <Disclosure key={title} as="div" className=" w-full gap-2 block">
       {/* @ts-expect-error @headlessui/react incompatibility with node16 resolution */}
       {({open}) => (
         <>
@@ -23,13 +23,13 @@ export function ProductDetail({title, content, learnMore}) {
             </div>
           </Disclosure.Button>
 
-          <Disclosure.Panel className={'pb-4 pt-2 grid gap-2'}>
+          <Disclosure.Panel className={`relative pb-4 pt-4 grid gap-2`}>
             <div
-              className="prose"
+              className="font-medium inline-block"
               dangerouslySetInnerHTML={{__html: content}}
             />
             {learnMore && (
-              <div className="">
+              <div className="inline-block">
                 <Link
                   className="pb-px border-b border-primary/30 text-primary/50"
                   to={learnMore}

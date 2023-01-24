@@ -81,38 +81,71 @@ export default function Product() {
         <Seo type="product" data={product} />
       </Suspense>
       <ProductOptionsProvider data={product}>
-        <Section padding="x" className="px-0">
-          <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-            <ProductGallery
-              media={media.nodes}
-              className="w-screen md:w-full lg:col-span-2"
-            />
-            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-              <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-                <div className="grid gap-2">
-                  <Heading as="h1" format className="whitespace-normal">
+        <section className="top">
+          <div className="flex flex-wrap md:flex-row flex-col">
+            <div className="w-full md:w-1/2 sticky top md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ">
+              {/* TODO use DaisyUI vertical carousel to create desktop slider */}
+              {/* <ProductGallery
+                media={media.nodes}
+                className="w-screen md:w-full"
+              /> */}
+              <div className="w-screen md:w-full">
+                <div className="mb-4">
+                  <img
+                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
+                    alt="Product Image"
+                  />
+                </div>
+                <div className="mb-4">
+                  <img
+                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
+                    alt="Product Image"
+                  />
+                </div>
+                <div className="mb-4">
+                  <img
+                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
+                    alt="Product Image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
+              <section className="flex flex-col w-full gap-8 p-6 ">
+                <div className="border-t-2 border-black pb-6" />
+                <div className="flex justify-between">
+                  <span className="uppercase text-[1.25rem] font-semibold tracking-widest inline-block">
                     {title}
-                  </Heading>
+                  </span>
+                  <span className="text-[1.25rem] font-semibold">
+                    {parseFloat(priceV2.amount).toLocaleString('en-GB', {
+                      style: 'currency',
+                      currency: priceV2.currencyCode,
+                    })}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  {productType && (
+                    <Text className={'text-black font-medium'}>
+                      {productType}
+                    </Text>
+                  )}
                 </div>
                 <ProductForm />
                 <div className="grid gap-4 py-4">
-                  {descriptionHtml && (
-                    <ProductInfo
-                      title="More Information"
-                      content={descriptionHtml}
-                    />
-                  )}
+                  {descriptionHtml && <ProductInfo content={descriptionHtml} />}
                   {shippingPolicy?.body && (
-                    <ProductDetail
-                      title="Shipping"
-                      content={getExcerpt(shippingPolicy.body)}
-                      learnMore={`/policies/${shippingPolicy.handle}`}
-                    />
+                    <>
+                      <ProductDetail
+                        title="Shipping"
+                        content="Free shipping on all orders UK orders"
+                      />
+                    </>
                   )}
                   {refundPolicy?.body && (
                     <ProductDetail
                       title="Returns"
-                      content={getExcerpt(refundPolicy.body)}
+                      content="14 day Returns Policy"
                       learnMore={`/policies/${refundPolicy.handle}`}
                     />
                   )}
@@ -120,9 +153,12 @@ export default function Product() {
               </section>
             </div>
           </div>
-        </Section>
+          <div className="md:hidden my-32 relative" />
+        </section>
         <Suspense>
-          <ProductSwimlane title="Related Products" data={id} />
+          <Section padding="y" className="py-18 relative flex">
+            <ProductSwimlane title="Related Products" data={id} />
+          </Section>
         </Suspense>
       </ProductOptionsProvider>
     </Layout>

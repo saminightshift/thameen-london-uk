@@ -10,7 +10,7 @@ export function ProductInfo({content, title}) {
       <div className="w-full flex flex-col gap-4 border-b-2 border-black pb-8">
         <span className="text-black font-semibold text-left">{title}</span>
         <div
-          className="text-black font-medium text-left prose w-full"
+          className="inner-block text-black font-medium text-left prose w-full"
           dangerouslySetInnerHTML={{__html: content}}
         />
       </div>
