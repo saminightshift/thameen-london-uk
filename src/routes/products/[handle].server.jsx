@@ -160,11 +160,13 @@ export default function Product() {
                   )}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <ProductVariantSelector
-                    data={product}
-                    handle={handle}
-                    has_variant={has_variant}
-                  />
+                  {has_variant && (
+                    <ProductVariantSelector
+                      data={product}
+                      handle={handle}
+                      has_variant={has_variant}
+                    />
+                  )}
                 </div>
 
                 <ProductForm />
