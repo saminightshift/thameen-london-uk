@@ -12,3 +12,11 @@ loc.host = 'staging.thameenlondon.com' // to be changed to thameenlondon.com at 
 - Better utilisation of styling and applying with Tailwind
 - Finalise CMS - we aren't using graphql for the data from our CMS as we should, this is a high priority item
 - Refactor nested footer - this should also come from our CMS as it has pages that we will need to refer to such as Careers, Store Locator and more
+
+## Custom metafields
+
+Reference can be found in:
+
+```
+metafields-reference.md
+```
