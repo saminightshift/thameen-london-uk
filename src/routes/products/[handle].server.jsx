@@ -163,8 +163,7 @@ export default function Product() {
                   <ProductVariantSelector
                     data={product}
                     handle={handle}
-                    title={title}
-                    tags={tags}
+                    has_variant={has_variant}
                   />
                 </div>
 

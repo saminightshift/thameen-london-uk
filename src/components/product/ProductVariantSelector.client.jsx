@@ -5,7 +5,7 @@ import {Text, IconCaret} from '~/components';
 // Can we refactor this to update the ProductForm component instead of redirecting to a new page?
 
 export function ProductVariantSelector({data, handle}) {
-  const {title, id, slug, tags} = data;
+  const {title} = data;
 
   // Create a new handle for the link depending on if the handle includes '100ml' or '50ml'
   const handle100ml = handle.replace('50ml', '100ml');
@@ -17,7 +17,7 @@ export function ProductVariantSelector({data, handle}) {
       <Disclosure key={title} as="div" className="w-full gap-2 block">
         {({open}) => (
           <>
-            <Disclosure.Button className="text-left inner-block border-b-2 border-black">
+            <Disclosure.Button className="text-left inner-block border-t-2 border-black">
               <div className="flex justify-between">
                 <Text size="lead" as="h4">
                   100ml

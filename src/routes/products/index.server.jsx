@@ -113,14 +113,3 @@ const PAGINATE_ALL_PRODUCTS_QUERY = gql`
     }
   }
 `;
-
-// const PRODUCT_VARIANT_FRAGMENT = gql`
-//   query ProductById($id: ID!) {
-//     product(id: $id) {
-//       handle
-//       id
-//       title
-//       tags
-//     }
-//   }
-// `;
