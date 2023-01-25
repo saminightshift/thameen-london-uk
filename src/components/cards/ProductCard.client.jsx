@@ -35,19 +35,20 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[4/5] ">
+        <div className="card-image aspect-[1/1] hover:scale-110 transition-all duration-700 cursor-pointer">
           <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
             {cardLabel}
           </h4>
           {image && (
             <Image
-              className="aspect-[1/1] w-full object-cover  mix-blend-multiply"
-              widths={[320]}
+              className="w-full object-contain mix-blend-multiply "
+              width={[400]}
+              height={400}
               sizes="320px"
               loaderOptions={{
                 crop: 'center',
                 scale: 2,
-                width: 320,
+                width: 400,
                 height: 400,
               }}
               // @ts-ignore Stock type has `src` as optional
