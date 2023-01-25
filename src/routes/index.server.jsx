@@ -54,11 +54,7 @@ function HomepageContent() {
   return (
     <div className="top-[-8rem] relative z-10">
       <Hero loading="lazy" />
-      <ProductSwimlane
-        data={featuredProducts.nodes}
-        title="Featured Products"
-        divider="bottom"
-      />
+      <ProductSwimlane data={featuredProducts.nodes} divider="bottom" />
 
       <HomepageCollections
         data={featuredCollections.nodes}
