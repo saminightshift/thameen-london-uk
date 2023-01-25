@@ -114,24 +114,8 @@ export function ProductForm() {
             {isOutOfStock ? (
               <Text>Sold out</Text>
             ) : (
-              <Text
-                as="span"
-                className="flex items-center justify-center gap-2"
-              >
-                <span>Add to bag</span> <span>·</span>{' '}
-                <Money
-                  withoutTrailingZeros
-                  data={selectedVariant.priceV2}
-                  as="span"
-                />
-                {isOnSale && (
-                  <Money
-                    withoutTrailingZeros
-                    data={selectedVariant.compareAtPriceV2}
-                    as="span"
-                    className="opacity-50 strike"
-                  />
-                )}
+              <Text as="span" className="text-left">
+                Add to bag
               </Text>
             )}
           </Button>

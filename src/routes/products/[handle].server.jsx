@@ -152,12 +152,17 @@ export default function Product() {
                     )}
                   </span>
                 </div>
-                <div className="border-b-2 border-black pb-6 px-4 md:px-0">
+                {/* Quick fix: If has variant then show the border line, this needs tidying up */}
+                <div className="">
                   {productType && (
-                    <Text className={'text-black font-medium'}>
-                      {productType}
-                    </Text>
+                    <div className="pb-6 px-4 md:px-0">
+                      <Text className={'text-black font-medium'}>
+                        {productType}
+                      </Text>
+                    </div>
                   )}
+
+                  {has_variant && <div className="border-b-2 border-black" />}
                 </div>
                 <div className="flex flex-col gap-2">
                   {has_variant && (

@@ -1,5 +1,5 @@
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
-import {Disclosure} from '@headlessui/react';
+import {Disclosure, Transition} from '@headlessui/react';
 import {Link} from '@shopify/hydrogen';
 
 import {Text, IconClose} from '~/components';
@@ -23,22 +23,32 @@ export function ProductDetail({title, content, learnMore}) {
             </div>
           </Disclosure.Button>
 
-          <Disclosure.Panel className="relative pb-4 pt-4 grid gap-2 inner-block">
-            <div
-              className="font-medium inline-block "
-              dangerouslySetInnerHTML={{__html: content}}
-            />
-            {learnMore && (
-              <div className="inline-block">
-                <Link
-                  className="pb-px border-b border-primary/30 text-primary/50"
-                  to={learnMore}
-                >
-                  Learn more
-                </Link>
-              </div>
-            )}
-          </Disclosure.Panel>
+          <Transition
+            show={open}
+            enter="transform transition ease-in-out duration-500 sm:duration-700"
+            enterFrom="translate-y-0 opacity-0"
+            enterTo="translate-y-3 opacity-100"
+            leave="transform transition ease-in-out duration-500 sm:duration-700"
+            leaveFrom="translate-y-4 opacity-100"
+            leaveTo="translate-y-0 opacity-0"
+          >
+            <Disclosure.Panel className="relative pb-4 pt-4 grid gap-2 inner-block">
+              <div
+                className="font-medium inline-block "
+                dangerouslySetInnerHTML={{__html: content}}
+              />
+              {learnMore && (
+                <div className="inline-block">
+                  <Link
+                    className="pb-px border-b border-primary/30 text-primary/50"
+                    to={learnMore}
+                  >
+                    Learn more
+                  </Link>
+                </div>
+              )}
+            </Disclosure.Panel>
+          </Transition>
         </>
       )}
     </Disclosure>
