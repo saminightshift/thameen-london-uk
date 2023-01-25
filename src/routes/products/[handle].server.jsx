@@ -21,9 +21,12 @@ import {
   ProductInfo,
   ProductForm,
   ProductGallery,
+  MobileProductGallery,
+  DesktopProductGallery,
   Section,
   Text,
 } from '~/components';
+import {ProductVariantSelector} from '../../components/index';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -34,7 +37,7 @@ export default function Product() {
   } = useLocalization();
 
   const {
-    data: {product, shop},
+    data: {product, shop, products},
   } = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
@@ -49,8 +52,20 @@ export default function Product() {
     return <NotFound type="product" />;
   }
 
-  const {media, title, vendor, descriptionHtml, id, productType, notes, text} =
-    product;
+  const {
+    media,
+    title,
+    vendor,
+    descriptionHtml,
+    productType,
+    notes,
+    boxed,
+    id,
+    has_variant,
+    exclusive,
+  } = product;
+
+  const {tags} = products;
 
   const {shippingPolicy, refundPolicy} = shop;
 
@@ -79,6 +94,7 @@ export default function Product() {
           category: productType,
           price: priceV2.amount,
           sku,
+          tags,
         },
       ],
     },
@@ -92,62 +108,58 @@ export default function Product() {
       <ProductOptionsProvider data={product}>
         <section className="top">
           <div className="flex flex-wrap md:flex-row flex-col">
-            <div className="w-full md:w-1/2 sticky top md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ">
-              {/* TODO use DaisyUI vertical carousel to create desktop slider */}
-              {/* <ProductGallery
+            <div className="w-screen md:w-1/2 carousel-wrapper">
+              <MobileProductGallery
                 media={media.nodes}
-                className="w-screen md:w-full"
-              /> */}
-              <div className="w-screen md:w-full">
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-              </div>
+                className="block md:hidden"
+              />
+              <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
-            <div className="w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
-              <section className="flex flex-col w-full gap-8 p-6 ">
-                <div className="border-t-2 border-black pb-6" />
-                <div className="flex justify-between">
-                  <span className="uppercase text-[1.25rem] font-semibold tracking-widest inline-block">
-                    {title}
-                  </span>
-                  <span className="text-[1.25rem] font-semibold">
+            <div className="top-0 sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
+              <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
+                <div className="md:border-t-2 md:border-black md:pb-6" />
+                <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
+                  <span className="uppercase md:inline-block">{title}</span>
+                  <span className="">
                     <Money withoutTrailingZeros data={priceV2} as="span" />
                     {isOnSale && (
-                      <Money
-                        withoutTrailingZeros
-                        data={priceV2}
-                        as="span"
-                        className="opacity-50 strike"
-                      />
+                      <div>
+                        <Money
+                          withoutTrailingZeros
+                          data={priceV2}
+                          as="span"
+                          className="opacity-50 line-through"
+                        />
+                      </div>
                     )}
                   </span>
                 </div>
-                <div className="flex flex-col gap-2">
+                {/* Quick fix: If has variant then show the border line, this needs tidying up */}
+                <div className="">
                   {productType && (
-                    <Text className={'text-black font-medium'}>
-                      {productType}
-                    </Text>
+                    <div className="pb-6 px-4 md:px-0">
+                      <Text className={'text-black font-medium'}>
+                        {productType}
+                      </Text>
+                    </div>
+                  )}
+
+                  {has_variant && <div className="border-b-2 border-black" />}
+                </div>
+                <div className="flex flex-col gap-2">
+                  {has_variant && (
+                    <ProductVariantSelector
+                      data={product}
+                      handle={handle}
+                      has_variant={has_variant}
+                    />
                   )}
                 </div>
+
                 <ProductForm />
                 <div className="grid">
                   {descriptionHtml && <ProductInfo content={descriptionHtml} />}
+                  {/* Fragrance Notes */}
                   {notes ? (
                     <ProductDetail
                       title="Fragrance Notes"
@@ -155,14 +167,25 @@ export default function Product() {
                       className="capitalize"
                     />
                   ) : null}
+                  {/* Gift Set Details */}
+                  {boxed ? (
+                    <ProductDetail
+                      title="More Information"
+                      content={boxed.value}
+                      className="capitalize"
+                    />
+                  ) : null}
+                  {/* Shipping Policy Details */}
                   {shippingPolicy?.body && (
                     <>
                       <ProductDetail
                         title="Shipping"
-                        content="Free shipping on all orders UK orders"
+                        content="Free shipping on all orders UK orders. <br/> Delivery within 2-4 working days."
+                        learnMore={`/policies/${shippingPolicy.handle}`}
                       />
                     </>
                   )}
+                  {/* Refund Policy */}
                   {refundPolicy?.body && (
                     <ProductDetail
                       title="Returns"
@@ -177,7 +200,8 @@ export default function Product() {
           <div className="md:hidden my-32 relative" />
         </section>
         <Suspense>
-          <Section padding="y" className="py-18 relative flex">
+          {/* Hidden lower carousel whilst fixing page */}
+          <Section padding="y" className="py-18 relative hidden">
             <ProductSwimlane title="Related Products" data={id} />
           </Section>
         </Suspense>
@@ -199,6 +223,18 @@ const PRODUCT_QUERY = gql`
       vendor
       descriptionHtml
       notes: metafield(namespace: "fragrance", key: "notes") {
+        value
+        id
+      }
+      boxed: metafield(namespace: "box_product", key: "items") {
+        value
+        id
+      }
+      has_variant: metafield(namespace: "variant", key: "item") {
+        value
+        id
+      }
+      exclusive: metafield(namespace: "exclusive_product", key: "link") {
         value
         id
       }
@@ -242,6 +278,14 @@ const PRODUCT_QUERY = gql`
       seo {
         description
         title
+      }
+    }
+    products(first: 250) {
+      edges {
+        node {
+          id
+          handle
+        }
       }
     }
     shop {

@@ -12,6 +12,7 @@ import {
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {FeaturedCollections, Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
+import {HomepageCollections} from '../components/index';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -52,16 +53,12 @@ function HomepageContent() {
 
   return (
     <div className="top-[-8rem] relative z-10">
-      <Hero loading="eager" />
-      <ProductSwimlane
-        data={featuredProducts.nodes}
-        title="Featured Products"
-        divider="bottom"
-      />
+      <Hero loading="lazy" />
+      <ProductSwimlane data={featuredProducts.nodes} divider="bottom" />
 
-      <FeaturedCollections
+      <HomepageCollections
         data={featuredCollections.nodes}
-        title="Collections"
+        title="Discover your thameen fragrance"
       />
     </div>
   );
@@ -141,8 +138,8 @@ const HOMEPAGE_CONTENT_QUERY = gql`
       }
     }
     featuredCollections: collections(
-      first: 3
-      query: "collection_type:smart"
+      first: 5
+      query: "collection_type:custom"
       sortKey: UPDATED_AT
     ) {
       nodes {

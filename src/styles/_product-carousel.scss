@@ -1,0 +1,48 @@
+.carousel-wrapper {
+  margin: 0 auto;
+  padding-top: 80px !important;
+  top: -108px !important;
+  position: relative;
+  background-color: #F3ECEE;
+  height: 100vh !important;
+
+  .carousel-item-first {
+    padding: 30px !important;
+  }
+  .carousel-item-middle {
+    padding: 30px !important;
+  }
+  .carousel-item-last {
+    padding: 0px !important;
+  }
+
+  .carousel-item-last {
+    padding: 0px !important;
+  }
+}
+
+.transactional_pane {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: auto;
+  position: sticky;
+  transform: translateZ(0px);
+  margin: 0;
+}
+
+
+@media only screen and (max-width: 1919px) {
+  .carousel-wrapper {
+      max-height: 942px;
+  }
+}
+
+.mobile-carousel-image {
+  padding: 20px !important;
+}
