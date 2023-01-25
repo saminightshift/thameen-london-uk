@@ -21,6 +21,8 @@ import {
   ProductInfo,
   ProductForm,
   ProductGallery,
+  MobileProductGallery,
+  DesktopProductGallery,
   Section,
   Text,
 } from '~/components';
@@ -106,34 +108,19 @@ export default function Product() {
       <ProductOptionsProvider data={product}>
         <section className="top">
           <div className="flex flex-wrap md:flex-row flex-col">
-            <div className="w-full md:w-1/2 sticky top md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ">
+            <div className="w-screen md:w-1/2">
               {/* TODO use DaisyUI vertical carousel to create desktop slider */}
               {/* <ProductGallery
                 media={media.nodes}
                 className="w-screen md:w-full"
               /> */}
-              <div className="w-screen md:w-full">
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-                <div className="mb-4">
-                  <img
-                    src="https://via.placeholder.com/960x1080.png?text=Product+Image"
-                    alt="Product Image"
-                  />
-                </div>
-              </div>
+              <MobileProductGallery
+                media={media.nodes}
+                className="block md:hidden"
+              />
+              <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
-            <div className="w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
+            <div className="top-0 sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
               <section className="flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
                 <div className="md:border-t-2 md:border-black md:pb-6" />
                 <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
