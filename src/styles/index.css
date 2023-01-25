@@ -12,6 +12,7 @@
 @import './_mega-menu.scss';
 @import './_swiper-custom.scss';
 @import './_global-elements.scss';
+@import './_product-carousel.scss';
 
 /* Animation */
 @import './_animation.scss';

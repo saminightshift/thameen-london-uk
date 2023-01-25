@@ -7,9 +7,12 @@ export function DesktopProductGallery({media}) {
   }
 
   return (
-    <div className="h-screen carousel carousel-vertical w-full hidden md:flex">
+    <div className="h-screen w-full hidden md:flex flex-col">
       {media.map((med, i) => {
         let mediaProps = {};
+        const isFirst = i === 0;
+        const isMiddle = i === 1;
+        const isLast = i === media.length - 1;
         const isFullWidth = i % 3 === 0;
 
         const data = {
@@ -55,26 +58,35 @@ export function DesktopProductGallery({media}) {
         if (i === 0 && med.mediaContentType === 'IMAGE') {
           mediaProps.loading = ATTR_LOADING_EAGER;
         }
+
+        const styles = [
+          isFirst ? 'carousel-item-first' : '',
+          isMiddle ? 'carousel-item-middle' : '',
+          isLast ? 'carousel-item-last' : '',
+        ].join(' ');
+
         return (
           <div
-            className="carousel-item h-auto w-full"
+            className="carousel-item h-auto w-full carousel-wrapper"
             key={med.id || med.image.id}
           >
-            <MediaFile
-              tabIndex="0"
-              data={data}
-              sizes={
-                isFullWidth
-                  ? '(min-width: 64em) 60vw, (min-width: 48em) 50vw, 90vw'
-                  : '(min-width: 64em) 30vw, (min-width: 48em) 25vw, 90vw'
-              }
-              options={{
-                crop: 'center',
-                scale: 2,
-              }}
-              className="w-full h-auto object-fill"
-              {...mediaProps}
-            />
+            <div className="carousel-wrapper__inner h-auto w-full">
+              <MediaFile
+                tabIndex="0"
+                data={data}
+                sizes={
+                  isFullWidth
+                    ? '(min-width: 64em) 60vw, (min-width: 48em) 50vw, 90vw'
+                    : '(min-width: 64em) 30vw, (min-width: 48em) 25vw, 90vw'
+                }
+                options={{
+                  crop: 'center',
+                  scale: 2,
+                }}
+                className={`${styles} w-full h-auto object-cover mix-blend-multiply carousel-image`}
+                {...mediaProps}
+              />
+            </div>
           </div>
         );
       })}

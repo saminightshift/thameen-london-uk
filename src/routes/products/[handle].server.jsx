@@ -108,12 +108,7 @@ export default function Product() {
       <ProductOptionsProvider data={product}>
         <section className="top">
           <div className="flex flex-wrap md:flex-row flex-col">
-            <div className="w-screen md:w-1/2">
-              {/* TODO use DaisyUI vertical carousel to create desktop slider */}
-              {/* <ProductGallery
-                media={media.nodes}
-                className="w-screen md:w-full"
-              /> */}
+            <div className="w-screen md:w-1/2 carousel-wrapper">
               <MobileProductGallery
                 media={media.nodes}
                 className="block md:hidden"
@@ -121,7 +116,7 @@ export default function Product() {
               <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
             <div className="top-0 sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
-              <section className="flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
+              <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
                 <div className="md:border-t-2 md:border-black md:pb-6" />
                 <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
                   <span className="uppercase md:inline-block">{title}</span>
@@ -205,7 +200,8 @@ export default function Product() {
           <div className="md:hidden my-32 relative" />
         </section>
         <Suspense>
-          <Section padding="y" className="py-18 relative flex">
+          {/* Hidden lower carousel whilst fixing page */}
+          <Section padding="y" className="py-18 relative hidden">
             <ProductSwimlane title="Related Products" data={id} />
           </Section>
         </Suspense>

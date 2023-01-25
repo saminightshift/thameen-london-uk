@@ -12,7 +12,7 @@ export function MobileProductGallery({media}) {
   }
 
   return (
-    <div className="w-full h-full carousel flex md:hidden pb-5">
+    <div className="w-full h-full carousel flex md:hidden pb-5 bg-[#F3ECEE]">
       {media.map((med, i) => {
         let mediaProps = {};
         const isFullWidth = i % 3 === 0;
@@ -60,8 +60,12 @@ export function MobileProductGallery({media}) {
         if (i === 0 && med.mediaContentType === 'IMAGE') {
           mediaProps.loading = ATTR_LOADING_EAGER;
         }
+
         return (
-          <div className="carousel-item w-full" key={med.id || med.image.id}>
+          <div
+            className="carousel-item w-full mix-blend-multiply"
+            key={med.id || med.image.id}
+          >
             <MediaFile
               tabIndex="0"
               data={data}
@@ -74,7 +78,7 @@ export function MobileProductGallery({media}) {
                 crop: 'center',
                 scale: 2,
               }}
-              className="w-full h-auto object-fill"
+              className="w-full object-contain mobile-carousel-image"
               {...mediaProps}
             />
           </div>

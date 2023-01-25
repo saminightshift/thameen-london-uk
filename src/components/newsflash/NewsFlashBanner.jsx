@@ -1,4 +1,4 @@
-export function NewsFlashBanner() {
+export function NewsFlashBanner({isHome}) {
   return (
     <div
       id="newsflash-banner"
