@@ -1,6 +1,6 @@
 import {Link} from '@shopify/hydrogen';
 
-export function HomepageCollections({data, title, ...props}) {
+export function HomepageCollections({data, title}) {
   const items = data.filter((item) => item.image).length;
   const haveCollections = data.length > 2;
 
@@ -25,6 +25,7 @@ export function HomepageCollections({data, title, ...props}) {
                   <Link
                     key={collection.id}
                     to={`/collections/${collection.handle}`}
+                    className="hover:scale-105 transform transition duration-300 ease-in-out"
                   >
                     <div className="relative py-4">
                       <div className="card-image aspect-[1/1] aspect-square">
