@@ -32,7 +32,7 @@ function App({routes, request}) {
   });
 
   return (
-    <Suspense fallback={<HeaderFallback isHome={isHome} />}>
+    <Suspense>
       <EventsListener />
       <ShopifyProvider countryCode={countryCode}>
         <Seo
