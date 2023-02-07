@@ -4,7 +4,6 @@
   top: -108px !important;
   position: relative;
   background-color: #F3ECEE;
-  height: 100vh !important;
 
   .carousel-item-first {
     padding: 30px !important;
@@ -32,17 +31,17 @@
   justify-content: center;
   height: auto;
   position: sticky;
-  transform: translateZ(0px);
   margin: 0;
 }
 
-
+/*
+Find a work around as this causes breaking side effects
 @media only screen and (max-width: 1919px) {
   .carousel-wrapper {
       max-height: 942px;
   }
 }
-
+*/
 .mobile-carousel-image {
   padding: 20px !important;
 }

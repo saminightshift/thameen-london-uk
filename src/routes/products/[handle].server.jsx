@@ -117,7 +117,7 @@ export default function Product() {
               <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
             <div className="top-0 sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
-              <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 ">
+              <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 sticky-top">
                 <div className="md:border-t-2 md:border-black md:pb-6" />
                 <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
                   <span className="uppercase md:inline-block">{title}</span>

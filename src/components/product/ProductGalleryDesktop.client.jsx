@@ -7,7 +7,7 @@ export function DesktopProductGallery({media}) {
   }
 
   return (
-    <div className="h-screen w-full hidden md:flex flex-col">
+    <div className="h-full w-full hidden md:flex flex-col">
       {media.map((med, i) => {
         let mediaProps = {};
         const isFirst = i === 0;
