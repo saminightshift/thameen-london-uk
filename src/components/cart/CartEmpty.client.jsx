@@ -22,18 +22,12 @@ export function CartEmpty({onClose, layout = 'drawer'}) {
 
   return (
     <div ref={scrollRef} className={container[layout]}>
-      <section className="grid gap-6">
-        <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
-        </Text>
-        <div>
-          <Button onClick={onClose}>Continue shopping</Button>
-        </div>
+      <section className="grid gap-6 border-b-[1px] border-gray-600 pb-8">
+        <Text format>Your shopping bag is empty.</Text>
       </section>
       <section className="grid gap-8 pt-4">
         <Heading format size="copy">
-          Shop Best Sellers
+          Shop bestsellers
         </Heading>
         <div
           className={`grid grid-cols-2 gap-x-6 gap-y-8 ${topProductsContainer[layout]}`}
@@ -41,6 +35,19 @@ export function CartEmpty({onClose, layout = 'drawer'}) {
           <Suspense fallback={<Loading />}>
             <TopProducts onClose={onClose} />
           </Suspense>
+        </div>
+        <div>
+          <Button
+            width="full"
+            variant="primary"
+            as="span"
+            className="btn btn-checkout btn-block"
+            onClick={onClose}
+          >
+            <Text as="span" className="mx-auto">
+              CONTINUE SHOPPING
+            </Text>
+          </Button>
         </div>
       </section>
     </div>
@@ -60,7 +67,14 @@ function TopProducts({onClose}) {
   const products = response.json();
 
   if (products.length === 0) {
-    return <Text format>No products found.</Text>;
+    return (
+      <div className="text-center">
+        <Text format>
+          Chat to our knowledgeable customer care team to find your perfect
+          fragrance
+        </Text>
+      </div>
+    );
   }
 
   return (

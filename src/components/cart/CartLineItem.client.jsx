@@ -22,6 +22,7 @@ export function CartLineItem() {
           height={112}
           widths={[112]}
           data={merchandise.image}
+          alt={merchandise.product.title}
           loaderOptions={{
             scale: 2,
             crop: 'center',
@@ -37,14 +38,6 @@ export function CartLineItem() {
               {merchandise.product.title}
             </Link>
           </Heading>
-
-          <div className="grid pb-2">
-            {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
-                {option.name}: {option.value}
-              </Text>
-            ))}
-          </div>
 
           <div className="flex items-center gap-2">
             <div className="flex justify-start text-copy">
