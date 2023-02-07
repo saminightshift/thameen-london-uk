@@ -51,9 +51,7 @@ export function Footer() {
               You can unsubscribe any time by using the link in our emails.
             </p>
           </div>
-          {/* Footer menu section
-            col-span-6 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:col-span-6 lg:col-start-3
-          */}
+          {/* Footer menu section */}
           <div className="mt-12 grid grid-cols-1 col-span-6 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:col-span-10 lg:col-start-6 text-white lg:text-black">
             <div className="gap-y-12">
               <div className="space-y-10">
@@ -137,13 +135,17 @@ export function Footer() {
                     className="mt-2 space-y-2 text-xs tracking-wider"
                   >
                     <li>
-                      <a href="mailto:support@thameenlondon.com">Instagram</a>
+                      <a href="https://instagram.com/thameenfragrance">
+                        Instagram
+                      </a>
                     </li>
                     <li>
-                      <a href="tel:+440207233333">Facebook</a>
+                      <a href="https://facebook.com/thameenlondon">Facebook</a>
                     </li>
                     <li>
-                      <a href="tel:+440207233333">LinkedIn</a>
+                      <a href="https://linkedin.com/company/thameen-fragrance">
+                        LinkedIn
+                      </a>
                     </li>
                   </ul>
                 </div>
