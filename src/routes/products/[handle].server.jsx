@@ -27,6 +27,7 @@ import {
   Text,
 } from '~/components';
 import {ProductVariantSelector} from '../../components/index';
+import KlaviyoPublishProductView from '../../components/klaviyo/KlaviyoPublishProductView.client';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -205,6 +206,7 @@ export default function Product() {
             <ProductSwimlane title="Related Products" data={id} />
           </Section>
         </Suspense>
+        <KlaviyoPublishProductView product={product} />
       </ProductOptionsProvider>
     </Layout>
   );
@@ -285,6 +287,13 @@ const PRODUCT_QUERY = gql`
         node {
           id
           handle
+        }
+      }
+    }
+    collections(first: 10) {
+      edges {
+        node {
+          title
         }
       }
     }
