@@ -107,8 +107,8 @@ export default function Product() {
         <Seo type="product" data={product} />
       </Suspense>
       <ProductOptionsProvider data={product}>
-        <section className="top">
-          <div className="flex flex-wrap md:flex-row flex-col">
+        <Section padding="x" className="top flex flex-col min-h-screen">
+          <div className="flex md:flex-row flex-col min-h-screen">
             <div className="w-screen md:w-1/2 carousel-wrapper">
               <MobileProductGallery
                 media={media.nodes}
@@ -199,7 +199,7 @@ export default function Product() {
             </div>
           </div>
           <div className="md:hidden my-32 relative" />
-        </section>
+        </Section>
         <Suspense>
           {/* Hidden lower carousel whilst fixing page */}
           <Section padding="y" className="py-18 relative hidden">

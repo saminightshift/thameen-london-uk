@@ -13,6 +13,7 @@ import {Suspense} from 'react';
 import {CustomFont, PageHeader, Section} from '~/components';
 import {Layout, NotFound} from '~/components/index.server';
 import {ATTR_LOADING_EAGER} from '~/lib/const';
+import Parser from '../../lib/utils';
 
 const BLOG_HANDLE = 'journal';
 
@@ -82,10 +83,7 @@ export default function Post({params, response}) {
             }}
           />
         )}
-        <div
-          dangerouslySetInnerHTML={{__html: contentHtml}}
-          className="article"
-        />
+        <div className="article prose">{Parser(contentHtml)}</div>
       </Section>
     </Layout>
   );
