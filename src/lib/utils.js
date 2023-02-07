@@ -1,5 +1,6 @@
 import {useCallback} from 'react';
 import {useServerProps} from '@shopify/hydrogen';
+import parse from 'html-react-parser';
 
 // @ts-expect-error types not available
 import typographicBase from 'typographic-base';
@@ -50,6 +51,12 @@ export function isNewArrival(date, daysOld = 30) {
       new Date().setDate(new Date().getDate() - daysOld).valueOf()
     );
   }
+}
+
+
+export default function Parser(props) {
+  const parsed = parse(props);
+  return parsed;
 }
 
 export function isDiscounted(price, compareAtPrice) {

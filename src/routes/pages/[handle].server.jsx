@@ -8,6 +8,8 @@ import {
 } from '@shopify/hydrogen';
 import {Suspense} from 'react';
 
+import Parser from '../../lib/utils';
+
 import {PageHeader} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
 
@@ -40,8 +42,24 @@ export default function Page({params}) {
       <Suspense>
         <Seo type="page" data={page} />
       </Suspense>
-      <PageHeader heading={page.title}>
-        <div dangerouslySetInnerHTML={{__html: page.body}} className="prose" />
+      <PageHeader heading={page.title} className="text-4xl">
+        <div className="prose">
+          {Parser(page.body, {
+            replace: (domNode) => {
+              if (domNode.name === 'a') {
+                return (
+                  <a
+                    href={domNode.attribs.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {domNode.children[0].data}
+                  </a>
+                );
+              }
+            },
+          })}
+        </div>
       </PageHeader>
     </Layout>
   );
