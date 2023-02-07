@@ -9,6 +9,7 @@ import {
   useShopQuery,
   useServerAnalytics,
 } from '@shopify/hydrogen';
+import KlaviyoIdentify from '../../components/klaviyo/KlaviyoIdentify.client';
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {getApiErrorMessage} from '~/lib/utils';
@@ -121,6 +122,7 @@ function AuthenticatedAccount({
           <ProductSwimlane data={featuredProducts} />
         </>
       )}
+      <KlaviyoIdentify customer={customer} />
     </Layout>
   );
 }

@@ -18,7 +18,7 @@ export default function Nav() {
 
   return (
     <div
-      className="bg-transparent text-white z-10 flex justify-center px-5 w-full border-b-1 h-[72px] lg:h-auto items-center"
+      className="bg-transparent  text-white flex justify-center px-5 w-full border-b-1 h-[72px] lg:h-auto items-center"
       id="pageHeader"
     >
       {/* Mobile menu 

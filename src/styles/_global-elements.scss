@@ -59,3 +59,18 @@ Wide buttons for checkout
   }
       
 }
+
+/*
+* MENU - CART DRAWERS
+*/
+.module__drawer {
+    z-index: 50 !important;
+}
+  .module__drawer-panel {
+    @apply bg-white text-black w-screen max-w-lg text-left align-middle transition-all transform shadow-xl h-screen-dynamic z-900;
+  }
+
+
+.module__overlay {
+  @apply fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50;
+}

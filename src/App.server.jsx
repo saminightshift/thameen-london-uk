@@ -15,6 +15,7 @@ import {
 } from '@shopify/hydrogen';
 import {HeaderFallback, EventsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
+import KlaviyoOnsite from './components/klaviyo/KlaviyoOnsite.client';
 
 function App({routes, request}) {
   const pathname = new URL(request.normalizedUrl).pathname;
@@ -32,7 +33,7 @@ function App({routes, request}) {
   });
 
   return (
-    <Suspense fallback={<HeaderFallback isHome={isHome} />}>
+    <Suspense>
       <EventsListener />
       <ShopifyProvider countryCode={countryCode}>
         <Seo
@@ -57,6 +58,7 @@ function App({routes, request}) {
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
         <ShopifyAnalytics cookieDomain="shopify.com" />
+        <KlaviyoOnsite />
       </ShopifyProvider>
     </Suspense>
   );

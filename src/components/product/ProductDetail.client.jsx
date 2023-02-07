@@ -1,7 +1,7 @@
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Disclosure, Transition} from '@headlessui/react';
 import {Link} from '@shopify/hydrogen';
-
+import Parser from '../../lib/utils';
 import {Text, IconClose} from '~/components';
 
 export function ProductDetail({title, content, learnMore}) {
@@ -33,10 +33,7 @@ export function ProductDetail({title, content, learnMore}) {
             leaveTo="translate-y-0 opacity-0"
           >
             <Disclosure.Panel className="relative pb-4 pt-4 grid gap-2 inner-block">
-              <div
-                className="font-medium inline-block "
-                dangerouslySetInnerHTML={{__html: content}}
-              />
+              <div className="font-medium inline-block ">{Parser(content)}</div>
               {learnMore && (
                 <div className="inline-block">
                   <Link

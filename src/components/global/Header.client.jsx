@@ -114,95 +114,98 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
 
   return (
     <>
-      <div
-        className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center ${
-          !isVisible ? 'fade-out' : 'fade-in'
-        }`}
-        id="pageHeader"
-      >
-        <div className="relative max-w-screen-2xl w-full">
-          <div className="flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
-            {/* Desktop Logo */}
-            <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1">
-              <a
-                href="/"
-                className="mr-4 hidden lg:block"
-                aria-label="Thameen London"
-              >
-                <Logo className="logo-nav" onMouseEnter={isOpen} />
-                <span className="sr-only">Thameen London</span>
-              </a>
-            </div>
-            {/* Mobile Logo */}
-            <div className="lg:hidden flex items-center">
-              <a href="/" className="mr-4 block" aria-label="Thameen London">
-                <Logo />
-              </a>
-            </div>
+      <header className="h-nav items-center z-40 w-full">
+        <div
+          className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center ${
+            !isVisible ? 'fade-out' : 'fade-in'
+          }
+        `}
+          id="pageHeader"
+        >
+          <div className=" max-w-screen-2xl w-full sticky">
+            <div className="nav-block flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
+              {/* Desktop Logo */}
+              <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1">
+                <a
+                  href="/"
+                  className="mr-4 hidden lg:block"
+                  aria-label="Thameen London"
+                >
+                  <Logo className="logo-nav" onMouseEnter={isOpen} />
+                  <span className="sr-only">Thameen London</span>
+                </a>
+              </div>
+              {/* Mobile Logo */}
+              <div className="lg:hidden flex items-center">
+                <a href="/" className="mr-4 block" aria-label="Thameen London">
+                  <Logo />
+                </a>
+              </div>
 
-            <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
-              <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm">
-                {/* Top level menu items */}
-                {(menu?.items || []).map((item) => (
-                  <Link
-                    className="nav-link"
-                    key={item.id}
-                    to={item.to}
-                    target={item.target}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </nav>
+              <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
+                <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm">
+                  {/* Top level menu items */}
+                  {(menu?.items || []).map((item) => (
+                    <Link
+                      className="nav-link"
+                      key={item.id}
+                      to={item.to}
+                      target={item.target}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+              {/* Mobile Icons */}
+              <div className="flex lg:hidden">
+                <button className="relative flex items-center p-2">
+                  <IconSearch />
+                </button>
+                <button
+                  className="relative flex items-center p-2"
+                  onClick={openCart}
+                >
+                  <IconBag />
+                </button>
+                <button
+                  className="relative flex items-center p-2"
+                  aria-label="Toggle Cart"
+                >
+                  <Bars3Icon className="w-6 h-6" onClick={openMenu} />
+                </button>
+              </div>
+              {/* Desktop Icons */}
+              <div className="hidden lg:flex justify-end">
+                <button className="hidden lg:flex items-center mr-2 p-2">
+                  <IconSearch />
+                </button>
+                <Link
+                  to="/account"
+                  className="items-center mr-2 relative hover:border-white p-2"
+                  aria-expanded="false"
+                  aria-label="Account"
+                >
+                  <IconAccount />
+                </Link>
+                <button
+                  onClick={openCart}
+                  className="hidden lg:flex items-center p-2"
+                >
+                  <IconBag />
+                  <CartBadge dark={isHome} />
+                </button>
+              </div>
             </div>
-            {/* Mobile Icons */}
-            <div className="flex lg:hidden">
-              <button className="relative flex items-center p-2">
-                <IconSearch />
-              </button>
-              <button
-                className="relative flex items-center p-2"
-                onClick={openCart}
-              >
-                <IconBag />
-              </button>
-              <button
-                className="relative flex items-center p-2"
-                aria-label="Toggle Cart"
-              >
-                <Bars3Icon className="w-6 h-6" onClick={openMenu} />
-              </button>
+            <div className="hidden h-full lg:flex">
+              {/* Mega menu */}
+              <Popover.Group className="ml-8">
+                <div className="flex h-full justify-center space-x-8"></div>
+              </Popover.Group>
             </div>
-            {/* Desktop Icons */}
-            <div className="hidden lg:flex justify-end">
-              <button className="hidden lg:flex items-center mr-2 p-2">
-                <IconSearch />
-              </button>
-              <Link
-                to="/account"
-                className="items-center mr-2 relative hover:border-white p-2"
-                aria-expanded="false"
-                aria-label="Account"
-              >
-                <IconAccount />
-              </Link>
-              <button
-                onClick={openCart}
-                className="hidden lg:flex items-center p-2"
-              >
-                <IconBag />
-                <CartBadge dark={isHome} />
-              </button>
-            </div>
-          </div>
-          <div className="hidden h-full lg:flex">
-            {/* Mega menu */}
-            <Popover.Group className="ml-8">
-              <div className="flex h-full justify-center space-x-8"></div>
-            </Popover.Group>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 }

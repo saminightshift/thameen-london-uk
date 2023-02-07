@@ -1,6 +1,4 @@
 .module__nav {
-
-  z-index: 10000;
   box-sizing: border-box;
   padding: 1.25rem;
 /*
@@ -15,12 +13,10 @@
 */
     color: white;
 
-
     .nav-items {
       gap: 5rem;
 
       .nav-link {
-          display: inline-block;
           position: relative;
           color: #fff;
         }

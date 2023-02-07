@@ -63,6 +63,17 @@ module.exports = {
         copy: ['var(--font-size-copy)', '1.5'],
         fine: ['var(--font-size-fine)', '1.333'],
       },
+      zIndex: {
+        '100': 100,
+        '200': 200,
+        '300': 300,
+        '400': 400,
+        '500': 500,
+        '600': 600,
+        '700': 700,
+        '800': 800,
+        '900': 900,
+      },
       maxWidth: {
         'prose-narrow': '45ch',
         'prose-wide': '80ch',

@@ -46,6 +46,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
               height={400}
               sizes="320px"
               loaderOptions={{
+                blur: 10,
                 crop: 'center',
                 scale: 2,
                 width: 400,
