@@ -50,7 +50,8 @@
     "react-slick": "^0.29.0",
     "react-use": "^17.4.0",
     "swiper": "^8.4.5",
-    "typographic-base": "^1.0.4"
+    "typographic-base": "^1.0.4",
+    "uuid": "^9.0.0"
   },
   "author": "sami"
 }
