@@ -29,7 +29,7 @@ export default function CountrySelection() {
           <span className="uppercase font-semibold text-sm tracking-wider">
             Shipping to <ChevronDownIcon className="inline-block w-4 h-4" />
           </span>
-
+          {/* @ts-ignore */}
           {({open}) => (
             <span className={`${open ? 'hidden' : 'block'} mt-2`}>
               {selectedCountry.name}

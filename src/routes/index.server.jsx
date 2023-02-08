@@ -42,6 +42,7 @@ function HomepageContent() {
 
   const {data} = useShopQuery({
     query: HOMEPAGE_CONTENT_QUERY,
+    cache: CacheLong(),
     variables: {
       language: languageCode,
       country: countryCode,
@@ -49,12 +50,14 @@ function HomepageContent() {
     preload: true,
   });
 
-  const {heroBanners, featuredCollections, featuredProducts} = data;
+  const {featured, featuredCollections, featuredProducts} = data;
 
   return (
     <div className="top-[-8rem] relative z-10">
       <Hero loading="lazy" />
-      <ProductSwimlane data={featuredProducts.nodes} divider="bottom" />
+      <div className="py-12 container m-auto left-0 right-0">
+        <ProductSwimlane data={featured.products.nodes} />
+      </div>
 
       <HomepageCollections
         data={featuredCollections.nodes}
@@ -100,6 +103,8 @@ function SeoForHomepage() {
  * @see https://help.shopify.com/manual/metafields/metafield-definitions/creating-custom-metafield-definitions
  * @see https://github.com/Shopify/hydrogen/discussions/1790
  */
+
+// TODO: ADD QUERY FROM WPGRAPHQL & PASS TO HERO SLIDER WITH LONGCACHE();
 
 const HOMEPAGE_CONTENT_QUERY = gql`
   ${MEDIA_FRAGMENT}
@@ -154,9 +159,38 @@ const HOMEPAGE_CONTENT_QUERY = gql`
         }
       }
     }
-    featuredProducts: products(first: 12) {
+    featuredProducts: products(first: 20, sortKey: BEST_SELLING) {
       nodes {
         ...ProductCard
+      }
+    }
+    featured: collection(handle: "featured") {
+      products(first: 20, sortKey: MANUAL) {
+        nodes {
+          id
+          title
+          publishedAt
+          handle
+          variants(first: 1) {
+            nodes {
+              id
+              image {
+                url
+                altText
+                width
+                height
+              }
+              priceV2 {
+                amount
+                currencyCode
+              }
+              compareAtPriceV2 {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
       }
     }
   }

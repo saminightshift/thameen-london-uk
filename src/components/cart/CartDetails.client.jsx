@@ -1,12 +1,6 @@
 import {useRef} from 'react';
 import {useScroll} from 'react-use';
-import {
-  Link,
-  useCart,
-  CartLineProvider,
-  CartShopPayButton,
-  Money,
-} from '@shopify/hydrogen';
+import {Link, useCart, CartLineProvider, Money} from '@shopify/hydrogen';
 
 import {Button, Text, CartLineItem, CartEmpty} from '~/components';
 
@@ -72,12 +66,18 @@ function CartCheckoutActions() {
       <div className="grid gap-4">
         {checkoutUrl ? (
           <Link to={checkoutUrl} prefetch={false} target="_self">
-            <Button as="span" width="full">
-              Continue to Checkout
+            <Button
+              width="full"
+              variant="primary"
+              as="span"
+              className="btn btn-checkout btn-block"
+            >
+              <Text as="span" className="mx-auto">
+                Continue to Checkout
+              </Text>
             </Button>
           </Link>
         ) : null}
-        <CartShopPayButton />
       </div>
     </>
   );

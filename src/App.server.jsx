@@ -13,7 +13,7 @@ import {
   useServerAnalytics,
   Seo,
 } from '@shopify/hydrogen';
-import {HeaderFallback, EventsListener} from '~/components';
+import {EventsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
 import KlaviyoOnsite from './components/klaviyo/KlaviyoOnsite.client';
 

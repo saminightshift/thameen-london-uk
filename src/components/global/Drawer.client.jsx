@@ -23,10 +23,10 @@ function Drawer({heading, open, onClose, openFrom = 'right', children}) {
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
+          enter="ease-out duration-500"
           enterFrom="opacity-0 left-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="ease-in duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -51,7 +51,7 @@ function Drawer({heading, open, onClose, openFrom = 'right', children}) {
               >
                 <Dialog.Panel className="module__drawer-panel">
                   <header
-                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 ${
+                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 pt-6 ${
                       heading ? 'justify-between' : 'justify-end'
                     }`}
                   >

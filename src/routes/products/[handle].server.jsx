@@ -16,11 +16,9 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
 import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
-  Heading,
   ProductDetail,
   ProductInfo,
   ProductForm,
-  ProductGallery,
   MobileProductGallery,
   DesktopProductGallery,
   Section,
