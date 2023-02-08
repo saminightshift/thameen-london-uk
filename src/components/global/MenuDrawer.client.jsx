@@ -52,25 +52,20 @@ function MenuMobileNav({menu, onClose}) {
                   <Listbox.Options className="text-center mb-4 flex flex-col gap-2 justify-center relative top-0 mx-auto ">
                     <>
                       {(item?.items || []).map((subItem) => (
-                        <div
-                          className="relative h-32 overflow-auto"
-                          key={uuid()}
-                        >
-                          <>
-                            {subItem.title === 'All Fragrances' ? (
-                              <li className="hidden h-0" />
-                            ) : (
-                              <Link
-                                to={subItem.to}
-                                target={subItem.target}
-                                onClick={onClose}
-                              >
-                                <span className="uppercase tracking-wider text-xs">
-                                  {subItem.title}
-                                </span>
-                              </Link>
-                            )}
-                          </>
+                        <div id={uuid()}>
+                          {subItem.title === 'All Fragrances' ? (
+                            <li className="hidden h-0" />
+                          ) : (
+                            <Link
+                              to={subItem.to}
+                              target={subItem.target}
+                              onClick={onClose}
+                            >
+                              <span className="uppercase tracking-wider text-xs">
+                                {subItem.title}
+                              </span>
+                            </Link>
+                          )}
                         </div>
                       ))}
                     </>
