@@ -28,3 +28,4 @@ metafields-reference.md
 - Fix Sliders - Hero and product carousel
 - Add bottom hero image before footer homepage
 - Add carousel on product pages dependent on collection/product
+- Format Journal page
