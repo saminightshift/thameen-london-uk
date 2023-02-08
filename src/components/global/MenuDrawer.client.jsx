@@ -16,11 +16,11 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 
 function MenuMobileNav({menu, onClose}) {
   return (
-    <nav className="flex flex-col gap-2 p-2 sm:gap-6 sm:px-12 sm:py-8 justify-center relative top-0 mx-auto w-full">
+    <nav className="flex flex-col gap-2 sm:gap-6 sm:px-12 justify-center relative top-0 mx-auto w-full">
       <div className="w-48 mx-auto">
         <BrandLogo />
       </div>
-      <div className="flex flex-col h-screen overflow-y-auto overflow-hidden mt-10 space-y-6">
+      <div className="flex flex-col h-screen overflow-y-auto overflow-hidden mt-6 space-y-6">
         {/* Top level menu items */}
         {(menu?.items).map((item) => (
           <Listbox key={uuid()}>
