@@ -23,9 +23,9 @@ metafields-reference.md
 
 # Development TODO's:
 
-- Fix Desktop Nav and implement styles from designs 
+- Fix Desktop Nav and implement styles from designs ✅
 - Add colour states for if home or if other pages on navbar desktop
 - Fix Sliders - Hero and product carousel
 - Add bottom hero image before footer homepage
 - Add carousel on product pages dependent on collection/product
-- Format Journal page
+- Format Journal page ✅
