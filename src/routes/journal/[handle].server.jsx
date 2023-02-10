@@ -57,8 +57,6 @@ export default function Post({params, response}) {
 
   return (
     <Layout>
-      {/* Loads Fraunces custom font only on articles */}
-      <CustomFont />
       <Suspense>
         {/* @ts-expect-error Blog article types are not supported in TS */}
         <Seo type="page" data={data.blog.articleByHandle} />
