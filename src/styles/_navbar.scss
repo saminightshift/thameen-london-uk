@@ -1,17 +1,26 @@
 .module__nav {
   box-sizing: border-box;
-  padding: 1.25rem;
-/*
-  &:hover {
-    background-color: #fff;
-    transform: scaleX(1);
-    transition: top 0.5s ease;
-    transition: transform 0.5s ease;
-    transition-duration: 320ms;
-    color: #000000;
-  }
-*/
+  padding-top: 1.25rem;
+  position: relative;
+  z-index: 100;
+  background-color: transparent;
+
     color: white;
+
+    &:hover {
+      background-color: white;
+      transition: background-color 1s ease-in-out;
+    }
+
+    .nav-block {
+      position: relative;
+      z-index: 100;
+    }
+
+    .logo-nav {
+      position: relative;
+      z-index: 100;
+    }
 
     .nav-items {
       gap: 5rem;
@@ -38,54 +47,130 @@
           transform-origin: bottom left;
         }
       }
-/*
-    .main-menu {
-      opacity: 1;
-      height: 100%;
-      padding: 0 3.2rem;
-      overflow: hidden;
-      margin-right: auto;
+}
+
+ /* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .mega-menu {
+    display: none;
+    left: -20px;
+    right: 0;
+    position: absolute;
+    width: 100vw;
+    margin-top: 0;
+    
+    z-index: 10;
+
+    .mega-menu__inner {
       display: block;
-
-      .main-menu__item {
-        color: inherit;
-        cursor: pointer;
-        font-size: 12px;
-        line-height: 1.43;
-        text-decoration: none;
-        text-transform: uppercase;
-        padding: 4rem 1.6rem 2.8rem;
-        font-weight: 500;
-
-        
-    }
-
-    .mega-menu {
       position: relative;
-      display: inline-block;
-      
-      .mega-menu__content {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        width: 100%;
-        z-index: 100;
-        opacity: 0;
-        transform: translateY(2rem) translateZ(0px);
-        padding-left: 3rem;
-        padding-bottom: 6.8rem;
-        top: 8.8rem;
-        overflow: hidden;
-        height: 57.6rem;
-        padding: 3.6rem 4rem 4rem 1.4rem;
-        pointer-events: none;
-        visibility: hidden;
-        color: black;
-        transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0s 0.3s;
+      margin: 0 auto;
+      top: 10px;
+      padding: 25px 0px;
+      background-color: #fff;
+      z-index: 10 !important;
+      animation: growDown 700ms ease-in-out forwards;
+      transform-origin: top center;
+     
+      @keyframes growDown {
+        0% {
+          opacity: 0.8;
+          transform: scaleY(0);
+        
+        }
+
+        100% {
+          opacity: 1;
+          transform: scaleY(1);        
+        }
+    }
+    transition: all 900s ease-in-out;
+
+    /* using the index classname change the position of each child */
+
+
+
+    
+      .mega-menu__item {
+        font-weight: normal;
+        text-transform: none !important;
+        font-size: 0.75rem;
+        /* fade text in */
+        animation: fadeIn 700ms ease-in-out forwards;
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
       }
     }
-  */
-}
+  }
+
+
+
+  /* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+  }
+
+  .hoverNav {
+
+    &:hover {
+      color: #000000 !important;
+     
+      .nav-block {
+        color: #000000 !important;
+        img {
+          filter: invert(100%) !important;
+        }
+        .nav-link {
+          color: #000000 !important;
+          &::after {
+            background-color: #000000 !important;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-0,
+  .menu-1  {
+      text-align: left;
+      background-color: #fff;
+      width: 100vw;
+
+       .mega-menu__list {
+          padding-left: 20rem;
+          background-color: #fff;
+          width: 100vw;
+          height: max-content;
+          margin: 0 auto;
+          
+       }
+    }
+
+    .menu-2 {
+      text-align: left;
+      background-color: #fff;
+      width: 100vw;
+
+       .mega-menu__list {
+          padding-left: 20rem;
+          background-color: #fff;
+          width: 100vw;
+          height: max-content;
+          margin: 0 auto;
+          
+       }
+    }
 
   .fade-out {
     transition: opacity 0.5s ease-in-out;

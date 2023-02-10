@@ -2,15 +2,8 @@ import {Fragment, useState, useRef, useEffect} from 'react';
 import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
 import {useWindowScroll} from 'react-use';
 
-import {Popover, Transition, Dialog, Tab} from '@headlessui/react';
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingCartIcon,
-  UserIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
-import {ChevronDownIcon} from '@heroicons/react/24/solid';
+import {Popover} from '@headlessui/react';
+import {Bars3Icon} from '@heroicons/react/24/outline';
 
 import {Input} from '~/components';
 
@@ -112,20 +105,46 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
     };
   }, [isVisible]);
 
+  const splitEvery = (arr, length) => {
+    arr.reduce((result, item, index) => {
+      if (index % length === 0) result.push([]);
+      result[Math.floor(index / length)].push(item);
+      return result;
+    }, []);
+  };
+
+  const subMenu = [];
+
+  const subMenuArray = (menu?.items || []).map(
+    (item) => subMenu.push(item),
+    // item?.items.map((subItem) => {
+    //   subMenu.push(subItem);
+    // }),
+  );
+
+  // const rmGrid = () => {
+  //   useEffect(() => {
+  //     if (subMenu.length < 4) {
+  //       const menu2 = document.querySelector('.grid-2');
+  //       menu2.classList.remove('grid grid-cols-3 gap-0');
+  //     }
+  //   }, []);
+  // };
+
   return (
     <>
-      <header className="h-nav items-center z-40 w-full">
+      <header className="items-center w-full header-container">
         <div
-          className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center ${
+          className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center hover:text-black hoverNav  ${
             !isVisible ? 'fade-out' : 'fade-in'
           }
         `}
           id="pageHeader"
         >
-          <div className=" max-w-screen-2xl w-full sticky">
+          <div className="max-w-screen-2xl w-full sticky">
             <div className="nav-block flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
               {/* Desktop Logo */}
-              <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1">
+              <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1 z-40">
                 <a
                   href="/"
                   className="mr-4 hidden lg:block"
@@ -143,17 +162,51 @@ function DesktopHeader({countryCode, isHome, menu, openCart, openMenu}) {
               </div>
 
               <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
-                <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm">
+                <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm z-40">
                   {/* Top level menu items */}
-                  {(menu?.items || []).map((item) => (
-                    <Link
-                      className="nav-link"
-                      key={item.id}
-                      to={item.to}
-                      target={item.target}
-                    >
-                      {item.title}
-                    </Link>
+                  {(menu?.items || []).map((item, index) => (
+                    <div className="hoverable hover:text-black" key={item.id}>
+                      {/* Check if items have children */}
+                      {(item?.items || []).length > 0 ? (
+                        <span className="uppercase tracking-wider font-semibold cursor-pointer">
+                          <span className="nav-link">{item.title}</span>
+
+                          <div className="mega-menu">
+                            {/* SubMenu Items */}
+                            <div
+                              className={`${`menu-${index}`} mega-menu__inner`}
+                            >
+                              <ul
+                                className={`${`grid-${index}`} grid grid-cols-3 gap-0 mega-menu__list `}
+                              >
+                                {item.items.map((subItem) => (
+                                  <div key={subItem.id}>
+                                    <li className="mega-menu__item">
+                                      <Link
+                                        to={subItem.to}
+                                        className="mega-menu__link"
+                                      >
+                                        {subItem.title}
+                                      </Link>
+                                    </li>
+                                  </div>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </span>
+                      ) : (
+                        <Link
+                          to={item.to}
+                          target={item.target}
+                          className="nav-link"
+                        >
+                          <span className="uppercase tracking-wider font-semibold">
+                            {item.title}
+                          </span>
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </nav>
               </div>
