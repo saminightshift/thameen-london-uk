@@ -12,7 +12,7 @@ import {Suspense} from 'react';
 
 import {ArticleCard, Grid, PageHeader} from '~/components';
 import {Layout} from '~/components/index.server';
-import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
+import {PAGINATION_SIZE} from '~/lib/const';
 
 const BLOG_HANDLE = 'Journal';
 
@@ -20,14 +20,14 @@ export default function Blog({pageBy = PAGINATION_SIZE, response}) {
   response.cache(CacheLong());
 
   return (
-    <Layout>
-      <Seo type="page" data={{title: 'All Journals'}} />
-      <PageHeader heading={BLOG_HANDLE} className="gap-0">
+    <div className="journal-bg">
+      <Layout>
+        <Seo type="page" data={{title: 'All Journals'}} />
         <Suspense>
           <JournalsGrid pageBy={pageBy} />
         </Suspense>
-      </PageHeader>
-    </Layout>
+      </Layout>
+    </div>
   );
 }
 
@@ -73,18 +73,9 @@ function JournalsGrid({pageBy}) {
   }
 
   return (
-    <Grid as="ol" layout="blog" gap="blog">
-      {articles.map((article, i) => {
-        return (
-          <ArticleCard
-            blogHandle={BLOG_HANDLE.toLowerCase()}
-            article={article}
-            key={article.id}
-            loading={getImageLoadingPriority(i, 2)}
-          />
-        );
-      })}
-    </Grid>
+    <>
+      <ArticleCard blogHandle={BLOG_HANDLE.toLowerCase()} articles={articles} />
+    </>
   );
 }
 

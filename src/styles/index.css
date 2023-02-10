@@ -13,6 +13,9 @@
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
 
+/* Pages */
+@import './_journal.scss';
+
 /* Animation */
 @import './_animation.scss';
 
@@ -240,3 +243,4 @@ hr {
       opacity: 1;
     }
 }
+
