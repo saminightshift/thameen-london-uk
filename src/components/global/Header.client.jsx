@@ -342,19 +342,7 @@ function DesktopHeader({
                 <div className="hidden lg:flex justify-end">
                   <form
                     action={`/${countryCode ? countryCode + '/' : ''}search`}
-                    className="items-center gap-2 sm:flex"
                   >
-                    <Input
-                      className={`${
-                        isHome || isJournal
-                          ? 'focus:border-contrast/20'
-                          : 'focus:border-primary/20'
-                      } text-xs invisible focus:visible`}
-                      type="search"
-                      variant="minisearch"
-                      placeholder="Search"
-                      name="q"
-                    />
                     <button
                       type="submit"
                       className="hidden lg:flex items-center mr-2 p-2"
@@ -382,19 +370,7 @@ function DesktopHeader({
                 <div className="hidden lg:flex justify-end">
                   <form
                     action={`/${countryCode ? countryCode + '/' : ''}search`}
-                    className="items-center gap-2 sm:flex"
                   >
-                    <Input
-                      className={`${
-                        isHome || isJournal
-                          ? 'focus:border-contrast/20'
-                          : 'focus:border-primary/20'
-                      } text-xs invisible focus:visible`}
-                      type="search"
-                      variant="minisearch"
-                      placeholder="Search"
-                      name="q"
-                    />
                     <button
                       type="submit"
                       className="hidden lg:flex items-center mr-2 p-2"
