@@ -62,6 +62,15 @@ module.exports = {
         lead: ['var(--font-size-lead)', '1.333'],
         copy: ['var(--font-size-copy)', '1.5'],
         fine: ['var(--font-size-fine)', '1.333'],
+        xl: '1.rem',
+        lg: '1.25rem',
+        md: '1.125rem',
+        base: '1rem',
+        sm: '0.875rem',
+        xs: '0.75rem',
+      },
+      tracking: {
+        super: '0.16em',
       },
       zIndex: {
         '100': 100,

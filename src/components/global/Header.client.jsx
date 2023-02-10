@@ -48,7 +48,7 @@ export function Header({title, menu}) {
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
-      <NewsFlashBanner />
+      <NewsFlashBanner isHome={isHome} />
       <DesktopHeader
         isHome={isHome}
         isJournal={isJournal}
@@ -116,7 +116,7 @@ function DesktopHeader({
 
   return (
     <>
-      <header className="items-center w-full header-container">
+      <header className="items-center w-full">
         <div
           className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav ${
             !isVisible ? 'fade-out' : 'fade-in'
@@ -126,7 +126,7 @@ function DesktopHeader({
         `}
           id="pageHeader"
         >
-          <div className="max-w-screen-2xl w-full sticky">
+          <div className="max-w-screen-3xl w-full sticky">
             <div className="nav-block flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
               {/* Desktop Logo */}
               <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1 z-40">
@@ -178,14 +178,14 @@ function DesktopHeader({
 
               <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
                 {isHome || isJournal ? (
-                  <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm z-40">
+                  <nav className="flex nav-items uppercase font-semibold text-xs z-40">
                     {/* Top level menu items */}
                     {(menu?.items || []).map((item, index) => (
                       <div className="hoverable hover:text-black" key={item.id}>
                         {/* Check if items have children */}
                         {(item?.items || []).length > 0 ? (
-                          <span className="uppercase tracking-wider font-semibold cursor-pointer">
-                            <span className="nav-link">{item.title}</span>
+                          <span className="uppercase  font-semibold cursor-pointer">
+                            <span className="nav-link ">{item.title}</span>
 
                             <div className="mega-menu">
                               {/* SubMenu Items */}
