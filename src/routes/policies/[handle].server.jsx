@@ -10,7 +10,6 @@ import {Suspense} from 'react';
 
 import {Button, PageHeader, Section} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
-import Parser from '../../lib/utils';
 
 export default function Policy({params}) {
   const {
@@ -86,7 +85,10 @@ export default function Policy({params}) {
           </Button>
         </PageHeader>
         <div className="flex-grow w-full md:w-7/12">
-          <div className="prose">{Parser(page.body)}</div>
+          <div
+            className="prose"
+            dangerouslySetInnerHTML={{__html: page.body}}
+          />
         </div>
       </Section>
     </Layout>
