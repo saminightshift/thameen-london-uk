@@ -12,6 +12,7 @@
       transition: background-color 1s ease-in-out;
     }
 
+
     .nav-block {
       position: relative;
       z-index: 100;
@@ -128,7 +129,7 @@
      
       .nav-block {
         color: #000000 !important;
-        img {
+        .logo-nav {
           filter: invert(100%) !important;
         }
         .nav-link {
@@ -195,4 +196,8 @@
       color: #fff !important;
     }
   }
+}
+
+.inverted {
+  filter: invert(100%) !important;
 }
