@@ -44,7 +44,7 @@ export function ArticleCard({articles}) {
                     onClick={() => handleClosingOthers(article.id)}
                   >
                     {article.image && (
-                      <div className="card-image aspect-[3/2]">
+                      <div className="card-image aspect-[3/2] on-page-load">
                         <Image
                           alt={article.image.altText || article.title}
                           className="object-cover w-full"
