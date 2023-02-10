@@ -96,3 +96,11 @@
   left: auto;
   right: 100%;
 }
+
+/* Hide menu item button that isnt currently selected */
+
+.hide-rest {
+  & > :nth-child(n + 2) {
+    display: none;
+  }
+}

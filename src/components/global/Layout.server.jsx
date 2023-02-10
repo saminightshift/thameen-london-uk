@@ -15,7 +15,7 @@ const SHOP_NAME_FALLBACK = 'Thameen London';
  */
 export function Layout({children}) {
   return (
-    <>
+    <div className="on-page-load">
       <div className="flex flex-col min-h-screen">
         <div className="">
           <a href="#mainContent" className="sr-only">
@@ -36,7 +36,7 @@ export function Layout({children}) {
       <Suspense fallback={<Footer />}>
         <FooterWithMenu />
       </Suspense>
-    </>
+    </div>
   );
 }
 

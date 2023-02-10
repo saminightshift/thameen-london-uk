@@ -9,7 +9,6 @@
 
 @import './_navbar.scss';
 @import './_dropdown-menu.scss';
-@import './_mega-menu.scss';
 @import './_swiper-custom.scss';
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
@@ -226,4 +225,18 @@ hr {
   width: 100%;
   margin: 0;
   word-wrap: normal;
+}
+
+
+
+.on-page-load {
+  animation: fadeIn 700ms ease-in-out forwards;
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
 }

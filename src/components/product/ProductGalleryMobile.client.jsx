@@ -63,7 +63,7 @@ export function MobileProductGallery({media}) {
 
         return (
           <div
-            className="carousel-item w-full mix-blend-multiply"
+            className="carousel-item w-full mix-blend-multiply image-loading"
             key={med.id || med.image.id}
           >
             <MediaFile
@@ -78,7 +78,7 @@ export function MobileProductGallery({media}) {
                 crop: 'center',
                 scale: 2,
               }}
-              className="w-full object-contain mobile-carousel-image"
+              className="w-full object-contain mobile-carousel-image mix-blend-multiply"
               {...mediaProps}
             />
           </div>
