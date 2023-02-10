@@ -12,7 +12,6 @@
       transition: background-color 1s ease-in-out;
     }
 
-
     .nav-block {
       position: relative;
       z-index: 100;
@@ -24,11 +23,13 @@
     }
 
     .nav-items {
-      gap: 5rem;
+      gap: 7rem;
+      font-size: 12px;
 
       .nav-link {
           position: relative;
           color: #fff;
+          letter-spacing: 0.16em;
         }
         .nav-link::after {
           content: '';

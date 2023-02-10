@@ -1,21 +1,10 @@
 import React, {useRef} from 'react';
-
 import {Image, Link, Video} from '@shopify/hydrogen';
 import {Heading, Text} from '~/components';
 import {Pagination, EffectFade, Autoplay, A11y} from 'swiper';
 import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 
-export function Hero({
-  byline,
-  cta,
-  handle,
-  heading,
-  height,
-  loading,
-  spread,
-  spreadSecondary,
-  top,
-}) {
+export function Hero(data) {
   const slides = [
     {
       url: 'https://images.ctfassets.net/t5tvnt0pg52s/1gCoBHteh1bGXCZcLbUQMY/6a1d8081f8945f1f3ad120257a548e89/Hero-1.png',
@@ -51,13 +40,17 @@ export function Hero({
         slidesPerView={1}
         centeredSlides={true}
         effect="fade"
+        fadeEffect={{
+          crossFade: true,
+        }}
         autoplay={{
-          delay: 4000,
+          delay: 10000,
           disableOnInteraction: false,
         }}
         loop={true}
+        speed={1000}
         pagination={pagination}
-        className="relative h-[100vh]"
+        className="relative h-[100vh] w-full"
       >
         {slides.map((slide) => (
           <Link key={slide.id} href={`/products/${slide.id}`}>
