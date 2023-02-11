@@ -79,6 +79,7 @@ export function Hero(data) {
               alt={slide.title}
               width={1920}
               height={1080}
+              loading="eager"
             />
             <div className="swiper-button-navigation">
               <button
