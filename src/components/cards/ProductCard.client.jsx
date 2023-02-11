@@ -7,7 +7,6 @@ import {
   useMoney,
 } from '@shopify/hydrogen';
 
-// import {Text} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 
@@ -60,11 +59,11 @@ export function ProductCard({product, label, className, loading, onClick}) {
           )}
         </div>
         <div className="mt-2">
-          <h3 className="text-center font-semibold text-primary uppercase">
+          <h3 className="text-center font-semibold text-primary text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>
           <div className="mt-1">
-            <span className="text-center font-medium">
+            <span className="text-center font-semibold text-primary text-sm super-tracking leading-5 uppercase">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
                 <CompareAtPrice

@@ -10,7 +10,7 @@ export function HomepageCollections({data, title}) {
 
   return (
     <div className="md:container md:mx-auto">
-      <h2 className="text-center text-2xl text-primary tracking-widest uppercase py-4 mt-4">
+      <h2 className="text-center text-2xl text-primary super-tracking leading-7 uppercase mb-10 mt-10">
         {title}
       </h2>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mx-auto">
@@ -37,7 +37,7 @@ export function HomepageCollections({data, title}) {
                           />
                         )}
                       </div>
-                      <h4 className="text-center font-medium text-lg text-primary tracking-widest uppercase py-4">
+                      <h4 className="text-center font-semibold text-md text-primary super-tracking leading-5 uppercase py-8">
                         {collection.title}
                       </h4>
                     </div>
