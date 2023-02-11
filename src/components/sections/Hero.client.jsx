@@ -96,7 +96,7 @@ export function Hero(data) {
               </button>
             </div>
             <Link to={slide.shopUrl}>
-              <div className="absolute bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-72 md:w-72 lg:w-80 h-28 bg-white">
+              <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
                   <h4 className="swiper-cta">{slide.cta}</h4>
