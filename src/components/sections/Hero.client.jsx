@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {Image, Link, Video} from '@shopify/hydrogen';
+import {ResponsiveImage} from '../index';
 import {
   A11y,
   Autoplay,
@@ -74,7 +75,7 @@ export function Hero(data) {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <Image
-              className="w-full object-cover object-center h-full overflow-hidden"
+              className="hero-slide-image"
               src={slide.url}
               alt={slide.title}
               width={1920}
@@ -88,7 +89,6 @@ export function Hero(data) {
               >
                 <LeftCaret />
               </button>
-              <div className="swiper-pagination-fraction"></div>
               <button
                 className="swiper-button-next right-caret"
                 onClick={() => heroRef.current?.slideNext()}
