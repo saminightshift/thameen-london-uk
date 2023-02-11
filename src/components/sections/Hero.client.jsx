@@ -74,7 +74,7 @@ export function Hero(data) {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <Image
-              className="w-full object-cover object-center h-full overflow-hidden"
+              className="hero-slide-image"
               src={slide.url}
               alt={slide.title}
               width={1920}
@@ -88,7 +88,6 @@ export function Hero(data) {
               >
                 <LeftCaret />
               </button>
-              <div className="swiper-pagination-fraction"></div>
               <button
                 className="swiper-button-next right-caret"
                 onClick={() => heroRef.current?.slideNext()}
@@ -98,7 +97,7 @@ export function Hero(data) {
             </div>
             <Link to={slide.shopUrl}>
               <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
-                <div className="flex flex-col justify-center items-center space-y-2">
+                <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
                   <h4 className="swiper-cta">{slide.cta}</h4>
                 </div>
