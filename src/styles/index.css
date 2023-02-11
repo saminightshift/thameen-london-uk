@@ -9,9 +9,11 @@
 
 @import './_navbar.scss';
 @import './_dropdown-menu.scss';
-@import './_swiper-custom.scss';
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
+
+/* Main Swiper Styles */
+@import './_swiper.scss';
 
 /* Pages */
 @import './_journal.scss';
@@ -244,3 +246,6 @@ hr {
     }
 }
 
+.super-tracking {
+  letter-spacing: 0.16em;
+}

@@ -1,0 +1,71 @@
+/** Swiper styles **/
+
+:root {
+  --swiper-navigation-color: rgba(0, 0, 0, 1);
+
+  --swiper-pagination-color: rgba(0, 0, 0, 1);
+  --swiper-pagination-bullet-inactive-color: rgba(0, 0, 0, 1);
+
+  --swiper-pagination-fraction-color: rgba(0, 0, 0, 1);
+}
+
+:root {
+  --swiper-navigation-top-offset: 90%;
+}
+
+
+.swiper-pagination, 
+.swiper-pagination-fraction, 
+.swiper-pagination-horizontal {
+  position: relative;
+  top: -198px;
+  font-weight: 600;
+  font-size: 12px;
+  margin: auto;
+  width: 32rem;
+  text-align: center;
+  padding-right: 8px;
+
+  .swiper-pagination-separator {
+    content: '|' !important;
+  }
+}
+
+
+.swiper-button-navigation {
+  position: relative;
+  bottom: 250px;
+  width: 32rem;
+  margin: auto;
+  
+  .left-caret {
+    margin-left: 20px;
+    left: 200px !important;
+
+  }
+
+  .right-caret {
+    padding-right: 20px;
+    right: 200px !important;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    bottom: -120px;
+    margin: auto;
+    &::after {
+      content: '';
+    }
+  }
+}
+
+
+
+.swiper-cta {
+  @apply uppercase text-center super-tracking font-semibold text-base;
+}
+
+.swiper-title {
+  @apply uppercase text-center super-tracking font-semibold text-xs;
+}
