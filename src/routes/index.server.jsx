@@ -54,7 +54,7 @@ function HomepageContent() {
 
   return (
     <div className="top-[-8rem] relative z-10">
-      <Hero loading="lazy" />
+      <Hero />
       <div className="py-12 container m-auto left-0 right-0">
         <ProductSwimlane data={featured.products.nodes} />
       </div>
