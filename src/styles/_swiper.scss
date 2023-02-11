@@ -70,11 +70,11 @@
 }
 
 .swiper-cta {
-  @apply uppercase text-center super-tracking font-semibold text-base;
+  @apply uppercase text-center super-tracking font-semibold text-md md:text-base;
 }
 
 .swiper-title {
-  @apply uppercase text-center super-tracking font-semibold text-xs;
+  @apply uppercase text-center super-tracking font-semibold text-sm md:text-xs;
 }
 
 @media screen and (max-width: 768px) {
@@ -90,6 +90,10 @@
     text-align: center;
     padding-right: 8px;
     vertical-align: middle;
+  }
+
+  .swiper-text {
+    margin-top: -20px;
   }
 
   .swiper-button-navigation {
