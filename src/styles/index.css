@@ -193,7 +193,7 @@ shop-pay-button {
   }
 
   .product-pane-container {
-   @apply px-6 lg:px-[80px]
+   @apply px-6 md:px-6 lg:px-[25px]
   }
 
 

@@ -8,7 +8,7 @@ export function ProductInfo({content}) {
       </div>
 
       <div className="w-full flex flex-col gap-4 border-b-2 border-black">
-        <div className="inner-block text-black text-left prose product-information w-full">
+        <div className="inner-block text-black text-left product-information w-full">
           {Parser(content)}
         </div>
       </div>
