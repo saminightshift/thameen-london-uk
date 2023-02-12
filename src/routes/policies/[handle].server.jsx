@@ -65,7 +65,7 @@ export default function Policy({params}) {
   return (
     <Layout>
       <Suspense>
-        <Seo type="page" data={page} />
+        <Seo type="page" data={page.title} />
       </Suspense>
       <Section
         padding="all"

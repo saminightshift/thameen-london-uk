@@ -3,19 +3,29 @@ import {useShopQuery, gql, useLocalization, Seo} from '@shopify/hydrogen';
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {PAGINATION_SIZE} from '~/lib/const';
-import {ProductGrid, PageHeader, Section} from '~/components';
+import {ProductGrid, PageHeader, Section, Text, Container} from '~/components';
 import {Layout} from '~/components/index.server';
 
 export default function AllProducts() {
   return (
     <Layout>
-      <Seo type="page" data={{title: 'All Products'}} />
-      <PageHeader heading="All Products" variant="allCollections" />
-      <Section>
-        <Suspense>
-          <AllProductsGrid />
-        </Suspense>
-      </Section>
+      <Seo type="page" data={{title: 'All Fragrances'}} />
+      <Container>
+        <PageHeader heading="All Fragrances" variant="allFragrances" />
+        <div className="flex items-baseline justify-between w-full">
+          <div className="m-auto mb-8">
+            <p className="product-collection-subheading">
+              Discover your Thameen
+            </p>
+          </div>
+        </div>
+
+        <Section>
+          <Suspense>
+            <AllProductsGrid />
+          </Suspense>
+        </Section>
+      </Container>
     </Layout>
   );
 }
@@ -32,6 +42,7 @@ function AllProductsGrid() {
       country: countryCode,
       language: languageCode,
       pageBy: PAGINATION_SIZE,
+      sortKey: 'TITLE',
     },
     preload: true,
   });
@@ -69,6 +80,7 @@ export async function api(request, {params, queryShop}) {
       cursor,
       pageBy: PAGINATION_SIZE,
       country,
+      sortKey: 'TITLE',
     },
   });
 }
@@ -80,8 +92,9 @@ const ALL_PRODUCTS_QUERY = gql`
     $language: LanguageCode
     $pageBy: Int!
     $cursor: String
+    $sortKey: ProductSortKeys
   ) @inContext(country: $country, language: $language) {
-    products(first: $pageBy, after: $cursor) {
+    products(first: $pageBy, after: $cursor, sortKey: $sortKey) {
       nodes {
         ...ProductCard
       }
@@ -101,8 +114,9 @@ const PAGINATE_ALL_PRODUCTS_QUERY = gql`
     $cursor: String
     $country: CountryCode
     $language: LanguageCode
+    $sortKey: ProductSortKeys
   ) @inContext(country: $country, language: $language) {
-    products(first: $pageBy, after: $cursor) {
+    products(first: $pageBy, after: $cursor, sortKey: $sortKey) {
       nodes {
         ...ProductCard
       }

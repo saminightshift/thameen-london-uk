@@ -40,7 +40,7 @@ export default function Page({params}) {
   return (
     <Layout>
       <Suspense>
-        <Seo type="page" data={page} />
+        <Seo type="page" data={page.title} />
       </Suspense>
       <PageHeader heading={page.title} className="text-4xl">
         <div className="prose">

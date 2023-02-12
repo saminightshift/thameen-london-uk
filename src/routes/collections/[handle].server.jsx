@@ -50,7 +50,7 @@ export default function Collection({params}) {
   return (
     <Layout>
       <Suspense>
-        <Seo type="collection" data={collection} />
+        <Seo type="collection" data={collection.title} />
       </Suspense>
       <PageHeader heading={collection.title}>
         {collection?.description && (
