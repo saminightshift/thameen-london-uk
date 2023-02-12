@@ -20,7 +20,7 @@ export function ProductVariantSelector({data, handle}) {
           <>
             <Disclosure.Button className="text-left inner-block">
               <div className="flex justify-between">
-                <Text size="lead" as="h4">
+                <Text size="lead" as="h4" className="product-variant-selection">
                   100ml
                 </Text>
                 <ChevronDownIcon
@@ -57,7 +57,7 @@ export function ProductVariantSelector({data, handle}) {
           <>
             <Disclosure.Button className="text-left inner-block">
               <div className="flex justify-between">
-                <Text size="lead" as="h4">
+                <Text size="lead" as="h4" className="product-variant-selection">
                   50ml
                 </Text>
                 <ChevronDownIcon
