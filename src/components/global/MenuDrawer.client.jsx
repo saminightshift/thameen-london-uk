@@ -53,19 +53,15 @@ function MenuMobileNav({menu, onClose}) {
                     <>
                       {(item?.items || []).map((subItem) => (
                         <div id={uuid()}>
-                          {subItem.title === 'All Fragrances' ? (
-                            <li className="hidden h-0" />
-                          ) : (
-                            <Link
-                              to={subItem.to}
-                              target={subItem.target}
-                              onClick={onClose}
-                            >
-                              <span className="uppercase tracking-wider text-xs">
-                                {subItem.title}
-                              </span>
-                            </Link>
-                          )}
+                          <Link
+                            to={subItem.to}
+                            target={subItem.target}
+                            onClick={onClose}
+                          >
+                            <span className="uppercase tracking-wider text-xs">
+                              {subItem.title}
+                            </span>
+                          </Link>
                         </div>
                       ))}
                     </>

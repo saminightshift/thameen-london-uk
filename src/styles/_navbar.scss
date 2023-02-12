@@ -23,12 +23,11 @@
     }
 
     .nav-items {
-      gap: 7rem;
-      font-size: 12px;
+      @apply lg:text-[11.5px] xl:text-xs;
 
       .nav-link {
           position: relative;
-          color: #fff;
+          
           letter-spacing: 0.16em;
         }
         .nav-link::after {

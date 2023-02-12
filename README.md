@@ -25,9 +25,8 @@ metafields-reference.md
 
 - Fix Desktop Nav and implement styles from designs ✅
 - Add Gift Wrapping
-- Make The Rose & Sparkling Opal direct to their respective external sales pages
-- 
-- Add colour states for if home or if other pages on navbar desktop
+- Make The Rose & Sparkling Opal direct to their respective external sales pages ✅
+- Add colour states for if home or if other pages on navbar desktop ✅
 - Fix Sliders - Hero and product carousel
 - Add bottom hero image before footer homepage
 - Add carousel on product pages dependent on collection/product

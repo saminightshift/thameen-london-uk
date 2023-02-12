@@ -118,7 +118,7 @@ function DesktopHeader({
     <>
       <header className="items-center w-full">
         <div
-          className={`module__nav bg-transparent text-white flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav ${
+          className={`module__nav bg-transparent  flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav text-black  ${
             !isVisible ? 'fade-out' : 'fade-in'
           } ${
             isHome || isJournal ? 'text-white hover:text-black' : 'text-black'
@@ -135,23 +135,33 @@ function DesktopHeader({
                   className="mr-4 hidden lg:block"
                   aria-label="Thameen London"
                 >
-                  {isHome || isJournal ? (
-                    <img
-                      src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg"
-                      alt="Thameen London"
-                      width={150}
-                      height={50}
-                      className="logo-nav"
-                    />
-                  ) : (
-                    <img
-                      src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
-                      alt="Thameen London"
-                      width={150}
-                      height={50}
-                    />
-                  )}
-
+                  <div className="flex items-center w-40 h-12">
+                    {isHome || isJournal ? (
+                      <div
+                        style={{
+                          background:
+                            'url(https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg)',
+                          backgroundSize: 'contain',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center',
+                          width: '100%',
+                          height: '100%',
+                        }}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          background:
+                            'url(https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg)',
+                          backgroundSize: 'contain',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center',
+                          width: '100%',
+                          height: '100%',
+                        }}
+                      />
+                    )}
+                  </div>
                   <span className="sr-only">Thameen London</span>
                 </a>
               </div>
@@ -178,14 +188,14 @@ function DesktopHeader({
 
               <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
                 {isHome || isJournal ? (
-                  <nav className="flex nav-items uppercase font-semibold text-xs z-40">
+                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-xs z-40">
                     {/* Top level menu items */}
                     {(menu?.items || []).map((item, index) => (
                       <div className="hoverable hover:text-black" key={item.id}>
                         {/* Check if items have children */}
                         {(item?.items || []).length > 0 ? (
-                          <span className="uppercase  font-semibold cursor-pointer">
-                            <span className="nav-link ">{item.title}</span>
+                          <span className="uppercase font-semibold cursor-pointer">
+                            <span className="nav-link">{item.title}</span>
 
                             <div className="mega-menu">
                               {/* SubMenu Items */}
@@ -226,7 +236,7 @@ function DesktopHeader({
                     ))}
                   </nav>
                 ) : (
-                  <nav className="flex nav-items uppercase font-semibold tracking-widest text-sm z-40">
+                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-xs z-40">
                     {/* Top level menu items */}
                     {(menu?.items || []).map((item, index) => (
                       <div className="hoverable text-black" key={item.id}>
