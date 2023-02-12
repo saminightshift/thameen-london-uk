@@ -24,7 +24,7 @@ import {
   Section,
   Text,
 } from '~/components';
-import {ProductVariantSelector} from '../../components/index';
+import {Button, ProductVariantSelector} from '../../components/index';
 import KlaviyoPublishProductView from '../../components/klaviyo/KlaviyoPublishProductView.client';
 
 export default function Product() {
@@ -155,8 +155,16 @@ export default function Product() {
                     />
                   )}
                 </div>
+                {exclusive ? (
+                  <a href={exclusive.value} target="_blank" rel="noreferrer">
+                    <Button className="btn btn-checkout w-full">
+                      <span className="px-[25px]">Purchase from Retailer</span>
+                    </Button>
+                  </a>
+                ) : (
+                  <ProductForm data={product} />
+                )}
 
-                <ProductForm data={product} />
                 <div>
                   {complimentary && <div className="flex flex-col gap-2"></div>}
                 </div>
