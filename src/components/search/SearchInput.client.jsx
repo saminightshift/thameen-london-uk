@@ -1,36 +1,42 @@
-import React, {useState} from 'react';
-import {Input} from '../index';
+import {useState} from 'react';
+import {Input} from '~/components';
+import {MagnifyingGlassIcon} from '@heroicons/react/24/outline';
 
-export default function SearchInput() {
-  const [showInput, setShowInput] = useState(false);
-
+export function SearchInput({searchTerm}) {
   return (
-    <div className="relative">
-      <button
-        className="focus:outline-none"
-        onClick={() => setShowInput(!showInput)}
-      >
-        <svg
-          className="w-6 h-6"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-        </svg>
-      </button>
-      {showInput && (
-        <div
-          className="absolute top-0 right-0 mt-3 p-2 w-full shadow-lg"
-          style={{transition: 'all 500ms east-out'}}
-        >
-          <Input
-            className="w-full p-2 bg-transparent border-bottom border-gray-300"
-            type="search"
-            placeholder="Search"
-            name="q"
-          />
-        </div>
+    <>
+      <form className="relative flex w-full text-heading">
+        <Input
+          defaultValue={searchTerm}
+          placeholder="Search…"
+          type="search"
+          variant="search"
+          name="q"
+        />
+        <button className="absolute right-0 py-2" type="submit">
+          <MagnifyingGlassIcon className="w-10 h-10" />
+        </button>
+      </form>
+    </>
+  );
+}
+
+export function NoResultsPopup() {
+  const [showPopup, setShowPopup] = useState(true);
+  return (
+    <>
+      {!showPopup && (
+        <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
+          <Dialog.Overlay className="fixed inset-0 bg-black opacity-10" />
+          <Dialog.Panel>
+            <Dialog.Title>Oops!</Dialog.Title>
+            <Dialog.Description>
+              <p className="text-heading">No results found</p>
+            </Dialog.Description>
+            <button type="button">Close</button>
+          </Dialog.Panel>
+        </Dialog>
       )}
-    </div>
+    </>
   );
 }

@@ -32,3 +32,5 @@ metafields-reference.md
 - Add carousel on product pages dependent on collection/product
 - Format Journal page ✅
 - Go through all font and make sure it matches the design - note it needs to be 2px less than the design
+- Framer SVG loader
+- Finesse Search page ✅

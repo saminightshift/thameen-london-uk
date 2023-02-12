@@ -4,6 +4,7 @@ import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {FeaturedCollections} from '~/components';
 import {ProductSwimlane} from '~/components/index.server';
 import {PAGINATION_SIZE} from '~/lib/const';
+import {PageHeader} from '../index';
 
 export function NoResultRecommendations({country, language}) {
   const {data} = useShopQuery({
@@ -17,16 +18,22 @@ export function NoResultRecommendations({country, language}) {
   });
 
   return (
-    <>
-      <FeaturedCollections
-        title="Trending Collections"
-        data={data.featuredCollections.nodes}
-      />
-      <ProductSwimlane
-        title="Trending Products"
-        data={data.featuredProducts.nodes}
-      />
-    </>
+    <div className="page-container">
+      <div className="py-8">
+        <PageHeader
+          heading="Browse popular collections"
+          variant="allCollections"
+        />
+        <FeaturedCollections title="" data={data.featuredCollections.nodes} />
+      </div>
+      <div className="py-8">
+        <PageHeader heading="Trending fragrances" variant="allCollections" />
+        <ProductSwimlane
+          title="Trending Products"
+          data={data.featuredProducts.nodes}
+        />
+      </div>
+    </div>
   );
 }
 

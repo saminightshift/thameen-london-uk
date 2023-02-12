@@ -51,7 +51,7 @@ export default function Search({pageBy = PAGINATION_SIZE, params}) {
     return (
       <SearchPage searchTerm={searchTerm ? decodeURI(searchTerm) : null}>
         {noResults && (
-          <Section padding="x">
+          <Section className="page-container">
             <Text className="opacity-50">No results, try something else.</Text>
           </Section>
         )}
