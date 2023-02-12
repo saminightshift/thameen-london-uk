@@ -12,7 +12,7 @@ import {
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {FeaturedCollections, Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
-import {HomepageCollections} from '../components/index';
+import {Container, HomepageCollections} from '../components/index';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -55,9 +55,9 @@ function HomepageContent() {
   return (
     <div className="top-[-8rem] relative z-10">
       <Hero />
-      <div className="pt-0 pb-6 lg:py-12 container m-auto left-0 right-0">
+      <Container>
         <ProductSwimlane data={featured.products.nodes} />
-      </div>
+      </Container>
 
       <HomepageCollections
         data={featuredCollections.nodes}

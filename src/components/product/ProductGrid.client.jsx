@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect, useCallback} from 'react';
-import {Link, flattenConnection} from '@shopify/hydrogen';
+import {Link, flattenConnection, useUrl} from '@shopify/hydrogen';
 
 import {Button, Grid, ProductCard} from '~/components';
 import {getImageLoadingPriority} from '~/lib/const';
@@ -63,13 +63,60 @@ export function ProductGrid({url, collection}) {
     };
   }, [nextButtonRef, cursor, handleIntersect]);
 
+  const {pathname} = useUrl();
+
+  const allProducts = pathname === `/products`;
+
+  function allFragrances(products) {
+    const filteredProducts = products.filter(
+      (product) =>
+        product?.productType === 'EDP 50ML' ||
+        product?.productType === 'COL 100ML' ||
+        product?.productType === 'EHP 10ML',
+    );
+
+    return filteredProducts;
+  }
+
+  const filteredProducts = allProducts ? allFragrances(products) : products;
+
   if (!haveProducts) {
     return (
-      <>
+      <div className="page-container">
         <p>No products found on this collection</p>
         <Link to="/products">
           <p className="underline">Browse catalog</p>
         </Link>
+      </div>
+    );
+  } else if (allProducts) {
+    return (
+      <>
+        <Grid layout="products">
+          {filteredProducts.map((product, i) => (
+            <ProductCard
+              key={i}
+              product={product}
+              loading={getImageLoadingPriority(i)}
+            />
+          ))}
+        </Grid>
+
+        {nextPage && (
+          <div
+            className="flex items-center justify-center mt-6"
+            ref={nextButtonRef}
+          >
+            <Button
+              variant="secondary"
+              disabled={pending}
+              onClick={fetchProducts}
+              width="full"
+            >
+              {pending ? 'Loading...' : 'Load more products'}
+            </Button>
+          </div>
+        )}
       </>
     );
   }

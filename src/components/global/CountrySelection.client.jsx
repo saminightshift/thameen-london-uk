@@ -2,7 +2,6 @@ import React, {useState, Fragment} from 'react';
 import {Listbox} from '@headlessui/react';
 import {ChevronDownIcon} from '@heroicons/react/24/solid';
 import {CheckIcon} from '@heroicons/react/24/outline';
-import {Link} from '@shopify/hydrogen';
 
 export default function CountrySelection() {
   const countries = [

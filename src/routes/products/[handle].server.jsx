@@ -62,6 +62,7 @@ export default function Product() {
     id,
     has_variant,
     exclusive,
+    complimentary,
   } = product;
 
   const {tags} = products;
@@ -102,7 +103,7 @@ export default function Product() {
   return (
     <Layout>
       <Suspense>
-        <Seo type="product" data={product} />
+        <Seo type="product" data={product.title} />
       </Suspense>
       <ProductOptionsProvider data={product}>
         <Section padding="x" className="top flex flex-col min-h-screen">
@@ -155,7 +156,10 @@ export default function Product() {
                   )}
                 </div>
 
-                <ProductForm />
+                <ProductForm data={product} />
+                <div>
+                  {complimentary && <div className="flex flex-col gap-2"></div>}
+                </div>
                 <div className="grid">
                   {descriptionHtml && <ProductInfo content={descriptionHtml} />}
                   {/* Fragrance Notes */}
@@ -235,6 +239,13 @@ const PRODUCT_QUERY = gql`
         id
       }
       exclusive: metafield(namespace: "exclusive_product", key: "link") {
+        value
+        id
+      }
+      complimentary: metafield(
+        namespace: "shopify--discovery--product_recommendation"
+        key: "complementary_products"
+      ) {
         value
         id
       }

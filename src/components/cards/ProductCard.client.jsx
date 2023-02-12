@@ -59,11 +59,11 @@ export function ProductCard({product, label, className, loading, onClick}) {
           )}
         </div>
         <div className="mt-2">
-          <h3 className="text-center font-semibold text-primary text-sm super-tracking leading-5 uppercase">
+          <h3 className="text-center font-semibold text-primary text-xs lg:text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>
           <div className="mt-1">
-            <span className="text-center font-semibold text-primary text-sm super-tracking leading-5 uppercase">
+            <span className="text-center font-semibold text-primary text-xs lg:text-sm super-tracking leading-5 uppercase">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
                 <CompareAtPrice
