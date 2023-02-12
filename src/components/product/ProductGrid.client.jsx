@@ -123,15 +123,46 @@ export function ProductGrid({url, collection}) {
 
   return (
     <>
-      <Grid layout="products">
-        {products.map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            loading={getImageLoadingPriority(i)}
-          />
-        ))}
-      </Grid>
+      {/* Responsive grid with 5 products per row */}
+      <div className="md:page-container">
+        {collection?.image ? (
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+            <div className="hidden md:grid col-span-2 gap-2 md:w-full md:h-full ">
+              <div
+                className="collection-image "
+                style={{
+                  backgroundImage: `url(${collection?.image?.url})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  height: '100%',
+                  width: '100%',
+                }}
+              />
+            </div>
+
+            {products.map((product, i) => (
+              <div className="col-span-1  bg-[#F3ECEE]" key={product.id}>
+                <ProductCard
+                  product={product}
+                  loading={getImageLoadingPriority(i)}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+            {products.map((product, i) => (
+              <div className="col-span-1  bg-[#F3ECEE]" key={product.id}>
+                <ProductCard
+                  product={product}
+                  loading={getImageLoadingPriority(i)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {nextPage && (
         <div
