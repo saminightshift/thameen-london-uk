@@ -12,7 +12,7 @@ export function ProductDetail({title, content, learnMore}) {
         <>
           <Disclosure.Button className="text-left inner-block border-b-2 border-black">
             <div className="flex justify-between">
-              <Text size="lead" as="h4">
+              <Text size="lead" as="h4" className="text-sm">
                 {title}
               </Text>
               <IconClose
@@ -33,7 +33,9 @@ export function ProductDetail({title, content, learnMore}) {
             leaveTo="translate-y-0 opacity-0"
           >
             <Disclosure.Panel className="relative pb-4 pt-4 grid gap-2 inner-block">
-              <div className="font-medium inline-block ">{Parser(content)}</div>
+              <div className="font-medium inline-block product-information">
+                {Parser(content)}
+              </div>
               {learnMore && (
                 <div className="inline-block">
                   <Link

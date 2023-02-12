@@ -24,7 +24,7 @@ import {
   Section,
   Text,
 } from '~/components';
-import {ProductVariantSelector} from '../../components/index';
+import {Button, ProductVariantSelector} from '../../components/index';
 import KlaviyoPublishProductView from '../../components/klaviyo/KlaviyoPublishProductView.client';
 
 export default function Product() {
@@ -115,12 +115,12 @@ export default function Product() {
               />
               <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
-            <div className="top-0 sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
+            <div className="top-0 lg:top-[120px] sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
               <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 sticky-top">
                 <div className="md:border-t-2 md:border-black md:pb-6" />
-                <div className="flex justify-between text-[1.5rem] font-semibold tracking-widest px-4 md:px-0">
-                  <span className="uppercase md:inline-block">{title}</span>
-                  <span className="">
+                <div className="flex justify-between product-pane-container">
+                  <span className="product-title-price">{title}</span>
+                  <span className="product-title-price hidden md:inline-block">
                     <Money withoutTrailingZeros data={priceV2} as="span" />
                     {isOnSale && (
                       <div>
@@ -135,12 +135,10 @@ export default function Product() {
                   </span>
                 </div>
                 {/* Quick fix: If has variant then show the border line, this needs tidying up */}
-                <div className="">
+                <div>
                   {productType && (
-                    <div className="pb-6 px-4 md:px-0">
-                      <Text className={'text-black font-medium'}>
-                        {productType}
-                      </Text>
+                    <div className="mb-6 product-pane-container">
+                      <Text className="product-type">{productType}</Text>
                     </div>
                   )}
 
@@ -155,8 +153,16 @@ export default function Product() {
                     />
                   )}
                 </div>
+                {exclusive ? (
+                  <a href={exclusive.value} target="_blank" rel="noreferrer">
+                    <Button className="btn btn-checkout w-full">
+                      <span className="px-[25px]">Purchase from Retailer</span>
+                    </Button>
+                  </a>
+                ) : (
+                  <ProductForm data={product} />
+                )}
 
-                <ProductForm data={product} />
                 <div>
                   {complimentary && <div className="flex flex-col gap-2"></div>}
                 </div>

@@ -112,9 +112,9 @@ export function ProductForm() {
             className="btn btn-checkout btn-block"
           >
             {isOutOfStock ? (
-              <Text>Sold out</Text>
+              <Text className="px-[25px]">Sold out</Text>
             ) : (
-              <Text as="span" className="text-left">
+              <Text as="span" className="text-left px-[25px]">
                 Add to bag
               </Text>
             )}
