@@ -102,15 +102,16 @@ export function ProductGrid({url, collection}) {
   } else if (allProducts) {
     return (
       <>
-        <Grid layout="products">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {filteredProducts.map((product, i) => (
-            <ProductCard
-              key={i}
-              product={product}
-              loading={getImageLoadingPriority(i)}
-            />
+            <div className="col-span-1  bg-[#F3ECEE]" key={product.id}>
+              <ProductCard
+                product={product}
+                loading={getImageLoadingPriority(i)}
+              />
+            </div>
           ))}
-        </Grid>
+        </div>
 
         {nextPage && (
           <div

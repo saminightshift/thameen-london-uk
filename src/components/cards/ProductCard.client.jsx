@@ -34,13 +34,13 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[1/1] hover:scale-110 transition-all duration-700 cursor-pointer">
+        <div className="card-image aspect-[1/1]  cursor-pointer">
           <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
             {cardLabel}
           </h4>
           {image && (
             <Image
-              className="w-full object-contain mix-blend-multiply "
+              className="w-full object-contain mix-blend-multiply"
               width={[400]}
               height={400}
               sizes="320px"
