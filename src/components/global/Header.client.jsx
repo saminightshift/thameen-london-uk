@@ -151,7 +151,6 @@ function DesktopHeader({
                       alt="Thameen London"
                       width={150}
                       height={50}
-                      className="brand-logo"
                     />
                   )}
                 </a>
