@@ -9,12 +9,15 @@ import {
   useServerAnalytics,
   useShopQuery,
   Money,
+  Link,
+  Image,
   Metafield,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
 import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import {ProductCard} from '../../components/index';
 import {
   ProductDetail,
   ProductInfo,
@@ -209,10 +212,39 @@ export default function Product() {
           <div className="md:hidden my-32 relative" />
         </Section>
         <Suspense>
-          {/* Hidden lower carousel whilst fixing page */}
-          <Section padding="y" className="py-18 relative hidden">
-            {/* 3-4 recommended products - static not slider */}
-          </Section>
+          {/* Hidden on Mobile */}
+          <section className="py-18 mb-12 page-container relative hidden">
+            <div className="flex flex-col md:flex-row gap-4">
+              <h4 className="text-base leading-6 font-semibold tracking-[0.08em]">
+                Enjoy with
+              </h4>
+              <div className="grid grid-cols-3 gap-4">
+                {product && product?.productType.includes('Hair Fragrance') ? (
+                  <div key={product.id}>
+                    {/* Create a product card */}
+                    <div className="relative">
+                      <Link
+                        to={`/products/${product.handle}`}
+                        className="group block"
+                      >
+                        <div className="w-full h-64 relative">
+                          <div className="absolute inset-0 w-full h-full">
+                            <img
+                              src={product.media.nodes[0].src}
+                              alt={product.title}
+                              className="group-hover:opacity-75"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </section>
+          <div className="block h-64" />
         </Suspense>
         <KlaviyoPublishProductView product={product} />
       </ProductOptionsProvider>
