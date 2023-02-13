@@ -12,8 +12,9 @@
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
 
-/* Main Swiper Styles */
+/* Swiper Styles */
 @import './_swiper.scss';
+@import './_product-swiper.scss';
 
 /* Pages */
 @import './_journal.scss';
@@ -196,11 +197,16 @@ shop-pay-button {
    @apply px-6 md:px-6 lg:px-[25px]
   }
 
+  /* Spacing */
+
+  .spacer {
+    @apply h-10;
+  }
 
   /* Text Theming */
 
   .product-collection-heading {
-    @apply py-2 text-2xl leading-7 super-tracking uppercase md:text-xl;
+    @apply py-2 text-lg leading-7 super-tracking uppercase md:text-xl;
   }
 
   .product-collection-subheading {

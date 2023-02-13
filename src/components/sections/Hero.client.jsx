@@ -83,13 +83,13 @@ export function Hero(data) {
             />
             <div className="swiper-button-navigation">
               <button
-                className="swiper-button-prev left-caret"
+                className="hero-button-prev swiper-button-prev left-caret"
                 onClick={() => heroRef.current?.slidePrev()}
               >
                 <LeftCaret />
               </button>
               <button
-                className="swiper-button-next right-caret"
+                className="hero-button-next swiper-button-next right-caret"
                 onClick={() => heroRef.current?.slideNext()}
               >
                 <RightCaret />

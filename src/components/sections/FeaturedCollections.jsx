@@ -35,7 +35,9 @@ export function FeaturedCollections({data, title = 'Collections', ...props}) {
                     />
                   )}
                 </div>
-                <Heading size="copy">{collection.title}</Heading>
+                <Heading className="text-center mx-auto uppercase tracking-[0.16em] font-semibold text-sm">
+                  {collection.title}
+                </Heading>
               </div>
             </Link>
           );

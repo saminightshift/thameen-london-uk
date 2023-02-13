@@ -52,18 +52,36 @@ export default function Collection({params}) {
       <Suspense>
         <Seo type="collection" data={collection.title} />
       </Suspense>
-      <PageHeader heading={collection.title}>
-        {collection?.description && (
-          <div className="flex items-baseline justify-between w-full">
-            <div>
-              <Text format width="narrow" as="p" className="inline-block">
-                {collection.description}
-              </Text>
-            </div>
+      <PageHeader heading={collection.title} variant="allFragrances" />
+      {collection?.description ? (
+        <div className="flex items-baseline justify-between w-full">
+          <div className="m-auto mb-8">
+            <p className="product-collection-subheading">
+              {collection.description}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="spacer" />
+      )}
+
+      <Section>
+        {collection?.image && (
+          // Mobile Collection image
+          <div className="flex md:hidden w-full h-72 md:h-96 m-auto justify-center mb-10">
+            <div
+              className="collection-image"
+              style={{
+                backgroundImage: `url(${collection.image.url})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                width: '100%',
+                height: '100%',
+              }}
+            />
           </div>
         )}
-      </PageHeader>
-      <Section>
         <ProductGrid
           key={collection.id}
           collection={collection}

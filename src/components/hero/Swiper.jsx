@@ -31,8 +31,8 @@ export default function SwiperHero() {
     loop: true,
     keyboard: {enabled: true},
     navigation: {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next',
+      prevEl: '.hero-button-prev',
+      nextEl: '.hero-button-next',
     },
     slidesPerGroupAuto: false,
   };

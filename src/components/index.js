@@ -10,3 +10,4 @@ export {CountrySelector} from './CountrySelector.client';
 export {CustomFont} from './CustomFont.client';
 export {HeaderFallback} from './HeaderFallback';
 export {EventsListener} from './EventsListener.client';
+export {NoResultsPopup} from './search/SearchInput.client';
