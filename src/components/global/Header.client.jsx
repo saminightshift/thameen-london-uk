@@ -139,7 +139,7 @@ function DesktopHeader({
                 <a href="/" className="mr-4 block" aria-label="Thameen London">
                   {isHome || isJournal ? (
                     <img
-                      src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg"
+                      src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                       alt="Thameen London"
                       width={150}
                       height={50}
