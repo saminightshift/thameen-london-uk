@@ -4,12 +4,15 @@
   position: relative;
   z-index: 100;
   background-color: transparent;
-
+  transition: background-color 1s ease-in-out;
     color: white;
 
     &:hover {
       background-color: white;
       transition: background-color 1s ease-in-out;
+
+      
+      
     }
 
     .nav-block {
@@ -17,7 +20,7 @@
       z-index: 100;
     }
 
-    .logo-nav {
+    .brand-logo {
       position: relative;
       z-index: 100;
     }
@@ -132,9 +135,11 @@
      
       .nav-block {
         color: #000000 !important;
-        .logo-nav {
-          filter: invert(100%) !important;
+        
+        .brand-logo {
+          filter: invert(0%) !important;
         }
+
         .nav-link {
           color: #000000 !important;
           &::after {
@@ -143,6 +148,10 @@
         }
       }
     }
+  }
+
+  .brand-logo {
+    filter: invert(100%) !important;
   }
 
   .menu-0,

@@ -211,7 +211,7 @@ export default function Product() {
         <Suspense>
           {/* Hidden lower carousel whilst fixing page */}
           <Section padding="y" className="py-18 relative hidden">
-            <ProductSwimlane title="Related Products" data={id} />
+            {/* 3-4 recommended products - static not slider */}
           </Section>
         </Suspense>
         <KlaviyoPublishProductView product={product} />

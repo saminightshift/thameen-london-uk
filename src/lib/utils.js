@@ -44,8 +44,8 @@ export function formatText(input) {
 }
 
 // This function may need editing after go live to remove the 60 day limit
-export function isNewArrival(date, daysOld = 30) {
-  if (Date(date) === Date() + 60) {
+export function isNewArrival(date, daysOld = 21) {
+  if (Date(date) === Date()) {
     return (
       new Date(date).valueOf() >
       new Date().setDate(new Date().getDate() - daysOld).valueOf()

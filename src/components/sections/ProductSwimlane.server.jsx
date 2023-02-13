@@ -1,7 +1,7 @@
 import {Suspense, useMemo} from 'react';
 import {gql, useShopQuery, useLocalization} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {ProductCard, Section} from '~/components';
+import {ProductCard, Section, ProductCarouselCard} from '~/components';
 import HomepageProductsSwiper from '../swipers/HomepageProductSwiper.client';
 
 const mockProducts = new Array(12).fill('');
@@ -15,7 +15,7 @@ export function ProductSwimlane({
   const productCardsMarkup = useMemo(() => {
     // If the data is already provided, there's no need to query it, so we'll just return the data
     if (typeof data === 'object') {
-      return <ProductCards products={data} />;
+      return <ProductCarouselCards products={data} />;
     }
 
     // If the data provided is a productId, we will query the productRecommendations API.
@@ -33,7 +33,7 @@ export function ProductSwimlane({
   }, [count, data]);
 
   return (
-    <div>
+    <div className="mt-12">
       <HomepageProductsSwiper>{productCardsMarkup}</HomepageProductsSwiper>
     </div>
   );
@@ -44,6 +44,20 @@ function ProductCards({products}) {
     <>
       {products.map((product) => (
         <ProductCard
+          product={product}
+          key={product.id}
+          className={'snap-start w-80'}
+        />
+      ))}
+    </>
+  );
+}
+
+function ProductCarouselCards({products}) {
+  return (
+    <>
+      {products.map((product) => (
+        <ProductCarouselCard
           product={product}
           key={product.id}
           className={'snap-start w-80'}
