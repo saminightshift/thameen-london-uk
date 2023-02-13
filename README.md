@@ -8,10 +8,7 @@ loc.host = 'staging.thameenlondon.com' // to be changed to thameenlondon.com at 
 
 # Project To Do's after go live:
 
-- Refactor the 60 day limit on new products in './src/lib/utils.js'
-- Better utilisation of styling and applying with Tailwind
-- Finalise CMS - we aren't using graphql for the data from our CMS as we should, this is a high priority item
-- Refactor nested footer - this should also come from our CMS as it has pages that we will need to refer to such as Careers, Store Locator and more
+- Finalise CMS - we aren't using graphql for the data from our CMS at present, this is a high priority item
 
 ## Custom metafields
 
@@ -26,11 +23,6 @@ metafields-reference.md
 - Fix Desktop Nav and implement styles from designs ✅
 - Add Gift Wrapping
 - Make The Rose & Sparkling Opal direct to their respective external sales pages ✅
-- Add colour states for if home or if other pages on navbar desktop ✅
-- Fix Sliders - Hero and product carousel
-- Add bottom hero image before footer homepage
 - Add carousel on product pages dependent on collection/product
-- Format Journal page ✅
-- Go through all font and make sure it matches the design - note it needs to be 2px less than the design
-- Framer SVG loader
-- Finesse Search page ✅
+- Better format Journal page
+- Framer SVG loader - reimplement - svg load effecting lighthouse scoring
