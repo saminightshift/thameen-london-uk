@@ -74,6 +74,10 @@ module.exports = {
         sm: '0.875rem',
         // 12px
         xs: '0.75rem',
+        // 11.5px
+        'x/s': '0.719rem',
+        // 10px
+        xxs: '0.625rem',
       },
       tracking: {
         super: '0.16em',

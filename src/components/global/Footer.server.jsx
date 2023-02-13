@@ -28,8 +28,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-flow-col lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8 lg:gap-y-16">
           {/* Newsletter section */}
           <div className="mt-12  lg:col-span-4 lg:col-start-1">
-            <h3 className="text-sm font-semibold uppercase">Sign up</h3>
-            <p className="mt-2 text-sm tracking-wider">
+            <h3 className="text-xs font-semibold uppercase">Sign up</h3>
+            <p className="mt-2 text-xs tracking-wider">
               Sign up below for email updates about Thameen, including launch
               announcements, product information and early access to
               limited-edition products.
@@ -44,10 +44,10 @@ export function Footer() {
                 autoComplete="email"
                 required
                 placeholder="Email"
-                className="w-full text-sm tracking-wider min-w-0 appearance-none border-0 border-b-[1px] bg-transparent py-2 px-4 placeholder-gray-500"
+                className="w-full text-xs tracking-wider min-w-0 appearance-none border-0 border-b-[1px] bg-transparent py-2 px-4 placeholder-gray-500"
               />
             </form>
-            <p className="mt-4 text-xs">
+            <p className="mt-4 text-xxs">
               You can unsubscribe any time by using the link in our emails.
             </p>
           </div>
@@ -56,13 +56,13 @@ export function Footer() {
             <div className="gap-y-12">
               <div className="space-y-10">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     <Link to="/account">Account</Link>
                   </h3>
                 </div>
                 <CountrySelection />
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     Contact
                   </h3>
                   <ul
@@ -84,12 +84,12 @@ export function Footer() {
             <div className="gap-y-12 ">
               <div className="space-y-10">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     CUSTOMER CARE
                   </h3>
                   <ul
                     role="list"
-                    className="mt-2 space-y-2 text-xs tracking-wider"
+                    className="mt-2 space-y-2 text-x/s tracking-wider"
                   >
                     <li>
                       <Link to="/policies/shipping-policy">Shipping</Link>
@@ -100,12 +100,12 @@ export function Footer() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     Legal &amp; Cookies
                   </h3>
                   <ul
                     role="list"
-                    className="mt-2 space-y-2 text-xs tracking-wider"
+                    className="mt-2 space-y-2 text-x/s tracking-wider"
                   >
                     <li>
                       <Link to="/policies/terms-of-service">
@@ -122,17 +122,17 @@ export function Footer() {
             <div className="gap-y-12">
               <div className="space-y-10">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     <Link to="/pages/our-story">Our Story</Link>
                   </h3>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     Follow Us
                   </h3>
                   <ul
                     role="list"
-                    className="mt-2 space-y-2 text-xs tracking-wider"
+                    className="mt-2 space-y-2 text-x/s tracking-wider"
                   >
                     <li>
                       <a href="https://instagram.com/thameenfragrance">
@@ -154,17 +154,17 @@ export function Footer() {
             <div className="gap-y-12">
               <div className="space-y-10">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     Store Locator
                   </h3>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider">
                     Thameen Services
                   </h3>
                   <ul
                     role="list"
-                    className="mt-2 space-y-2 text-xs tracking-wider"
+                    className="mt-2 space-y-2 text-x/s tracking-wider"
                   >
                     <li>Free shipping</li>
                     <li>30 days free returns</li>
@@ -177,11 +177,11 @@ export function Footer() {
           </div>
         </div>
         {/* Bottom Footer section */}
-        <div className="text-white lg:text-black text-xs text-center mt-10 py-6">
+        <div className="text-white lg:text-black text-xxs text-center mt-10 py-6">
           &copy; {new Date().getFullYear()} Thameen London. All rights reserved.
           <br />
-          <span className="text-[10px] text-[#0e0e0e] lg:text-[#fefefe]">
-            Powered by Daze DGTL
+          <span className="text-[8px] text-[#0e0e0e] lg:text-[#fefefe]">
+            <a href="mailto:support@jamstackr.io">Powered by Jamstackr.io</a>
           </span>
         </div>
       </div>
