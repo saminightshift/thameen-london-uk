@@ -67,12 +67,22 @@ export function ProductGrid({url, collection}) {
 
   const allProducts = pathname === `/products`;
 
+  const collectionPage = pathname === `/collections/${collection?.handle}`;
+
   function allFragrances(products) {
     const filteredProducts = products.filter(
       (product) =>
         product?.productType === 'EDP 50ML' ||
         product?.productType === 'COL 100ML' ||
         product?.productType === 'EHP 10ML',
+    );
+
+    return filteredProducts;
+  }
+
+  function onlyFifty(products) {
+    const filteredProducts = products.filter(
+      (product) => product?.productType === 'EDP 50ML',
     );
 
     return filteredProducts;
