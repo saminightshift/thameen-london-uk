@@ -63,7 +63,7 @@ export function MobileProductGallery({media}) {
 
         return (
           <div
-            className="carousel-item w-full mix-blend-multiply image-loading"
+            className="carousel-item w-full image-loading bg-[#F3ECEE]"
             key={med.id || med.image.id}
           >
             <MediaFile
