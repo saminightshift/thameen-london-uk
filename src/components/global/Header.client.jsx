@@ -71,28 +71,6 @@ function DesktopHeader({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  function Logo() {
-    if (!isOpen) {
-      return (
-        <img
-          src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg"
-          alt="Thameen London"
-          width={150}
-          height={50}
-        />
-      );
-    } else {
-      return (
-        <img
-          src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
-          alt="Thameen London"
-          width={150}
-          height={50}
-        />
-      );
-    }
-  }
-
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -137,28 +115,19 @@ function DesktopHeader({
                 >
                   <div className="flex items-center w-40 h-12">
                     {isHome || isJournal ? (
-                      <div
-                        style={{
-                          background:
-                            'url(https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo_white.svg)',
-                          backgroundSize: 'contain',
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'center',
-                          width: '100%',
-                          height: '100%',
-                        }}
+                      <img
+                        src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+                        alt="Thameen London"
+                        width={150}
+                        height={50}
+                        className="brand-logo"
                       />
                     ) : (
-                      <div
-                        style={{
-                          background:
-                            'url(https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg)',
-                          backgroundSize: 'contain',
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'center',
-                          width: '100%',
-                          height: '100%',
-                        }}
+                      <img
+                        src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+                        alt="Thameen London"
+                        width={150}
+                        height={50}
                       />
                     )}
                   </div>
@@ -174,6 +143,7 @@ function DesktopHeader({
                       alt="Thameen London"
                       width={150}
                       height={50}
+                      className="brand-logo"
                     />
                   ) : (
                     <img
@@ -181,6 +151,7 @@ function DesktopHeader({
                       alt="Thameen London"
                       width={150}
                       height={50}
+                      className="brand-logo"
                     />
                   )}
                 </a>
