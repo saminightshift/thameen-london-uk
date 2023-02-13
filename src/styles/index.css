@@ -12,8 +12,9 @@
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
 
-/* Main Swiper Styles */
+/* Swiper Styles */
 @import './_swiper.scss';
+@import './_product-swiper.scss';
 
 /* Pages */
 @import './_journal.scss';
