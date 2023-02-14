@@ -10,8 +10,7 @@
     &:hover {
       background-color: white;
       transition: background-color 1s ease-in-out;
-
-      
+      color: black;
       
     }
 
@@ -26,11 +25,10 @@
     }
 
     .nav-items {
-      @apply lg:text-[11.5px] xl:text-xs;
+      @apply xl:text-base;
 
       .nav-link {
           position: relative;
-          
           letter-spacing: 0.16em;
         }
         .nav-link::after {
@@ -39,7 +37,7 @@
           width: 100%;
           transform: scaleX(0);
           height: 2px;
-          bottom: 0;
+          bottom: -6px;
           left: 0;
           background-color: #fff;
           transform-origin: bottom right;
@@ -95,13 +93,9 @@
 
     /* using the index classname change the position of each child */
 
-
-
-    
       .mega-menu__item {
-        font-weight: normal;
-        text-transform: none !important;
-        font-size: 0.75rem;
+        @apply text-base font-normal normal-case;
+
         /* fade text in */
         animation: fadeIn 700ms ease-in-out forwards;
         @keyframes fadeIn {
@@ -117,9 +111,9 @@
   }
 
 
+@media screen and (min-width: 768px) {
+  
 
-  /* #hoverable Class Styles
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
   .hoverable {
     position: static;
   }
@@ -140,6 +134,19 @@
           filter: invert(0%) !important;
         }
 
+        svg {
+          stroke: #000000 !important;
+          path {
+            stroke: #000000 !important;
+          }
+          rect {
+            stroke: #000000 !important;
+          }
+          circle {
+            stroke: #000000 !important;
+          }
+        }
+
         .nav-link {
           color: #000000 !important;
           &::after {
@@ -149,6 +156,7 @@
       }
     }
   }
+}
 
   .brand-logo {
     filter: invert(100%) !important;

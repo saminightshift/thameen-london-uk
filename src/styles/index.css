@@ -238,6 +238,14 @@ shop-pay-button {
   }
 }
 
+#newsflash-banner {
+  @apply bg-black w-full z-50 relative text-white h-[48px];
+
+  h6 {
+   @apply uppercase text-center font-semibold text-[0.72rem] super-tracking md:text-sm whitespace-pre-wrap
+  }
+}
+
 /* HeroSlider.css */
 .relative {
   position: relative;
