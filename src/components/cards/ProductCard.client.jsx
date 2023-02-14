@@ -34,7 +34,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[1/1]  cursor-pointer">
+        <div className="card-image aspect-[1/1] cursor-pointer">
           <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
             {cardLabel}
           </h4>
@@ -59,11 +59,11 @@ export function ProductCard({product, label, className, loading, onClick}) {
           )}
         </div>
         <div className="relative -top-8">
-          <h3 className="text-center font-semibold text-black text-xs lg:text-sm super-tracking leading-5 uppercase">
+          <h3 className="text-center font-semibold text-black text-xs md:text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>
           <div className="">
-            <span className="text-center font-semibold text-black text-xs lg:text-sm super-tracking leading-5 uppercase">
+            <span className="text-center font-semibold text-black text-xs md:text-sm super-tracking leading-5 uppercase">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
                 <CompareAtPrice
