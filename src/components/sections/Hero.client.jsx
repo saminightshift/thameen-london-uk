@@ -79,7 +79,7 @@ export function Hero(data) {
               alt={slide.title}
               width={1920}
               height={1080}
-              loading="eager"
+              loading="lazy"
             />
 
             <Link to={slide.shopUrl}>

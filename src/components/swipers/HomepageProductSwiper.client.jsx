@@ -57,7 +57,7 @@ export default function HomepageProductsSwiper({props, children}) {
         observer: true,
         observeParents: true,
         slidesPerView: 4,
-        spaceBetween: 48,
+        spaceBetween: 38,
       },
       1920: {
         observer: true,
@@ -67,7 +67,7 @@ export default function HomepageProductsSwiper({props, children}) {
         slidesPerView: 5,
         slidesPerGroup: 1,
         centeredSlides: false,
-        spaceBetween: 64,
+        spaceBetween: 40,
         initialSlide: 0,
         rewind: false,
         speed: 300,
@@ -93,16 +93,16 @@ export default function HomepageProductsSwiper({props, children}) {
   };
 
   return (
-    <div className="swiper-container  page-container">
-      <Swiper {...swiperParameters} className="product-swiper">
+    <div className="swiper-container page-container">
+      <Swiper
+        {...swiperParameters}
+        onBeforeInit={(swiper) => {
+          productSwiperRef.current = swiper;
+        }}
+        className="product-swiper"
+      >
         {children.map((child, index) => (
-          <SwiperSlide
-            key={index}
-            className="product-swiper__slide"
-            onBeforeInit={(swiper) => {
-              productSwiperRef.current = swiper;
-            }}
-          >
+          <SwiperSlide key={index} className="product-swiper__slide">
             <div className="product-swiper__slide-content">{child}</div>
           </SwiperSlide>
         ))}

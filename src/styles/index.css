@@ -226,6 +226,14 @@ shop-pay-button {
     @apply text-sm md:text-xs;
   }
 
+  .footer-heading {
+    @apply text-sm font-semibold uppercase md:text-base;
+  }
+
+  .footer-content {
+    @apply text-xs md:text-sm tracking-wider;
+  }
+
   .card-image {
     @apply relative overflow-clip flex justify-center items-center;
     &::before {
