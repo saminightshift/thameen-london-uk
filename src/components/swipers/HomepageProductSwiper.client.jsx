@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {A11y, Navigation} from 'swiper';
 
 export default function HomepageProductsSwiper({props, children}) {
+  const productSwiperRef = useRef(null);
+
   const swiperParameters = {
     modules: [A11y, Navigation],
     slidesPerView: 2,
     spaceBetween: 45,
+    observer: true,
+    observeParents: true,
     navigation: {
       enabled: true,
       prevEl: '.product-swiper-prev',
@@ -14,8 +18,14 @@ export default function HomepageProductsSwiper({props, children}) {
     },
     lazy: {enabled: true},
     breakpoints: {
-      768: {spaceBetween: 16},
+      768: {
+        spaceBetween: 16,
+        observer: true,
+        observeParents: true,
+      },
       1024: {
+        observer: true,
+        observeParents: true,
         direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 3,
@@ -44,10 +54,14 @@ export default function HomepageProductsSwiper({props, children}) {
         touchRatio: 1,
       },
       1280: {
+        observer: true,
+        observeParents: true,
         slidesPerView: 4,
         spaceBetween: 48,
       },
       1920: {
+        observer: true,
+        observeParents: true,
         direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 5,
@@ -79,26 +93,35 @@ export default function HomepageProductsSwiper({props, children}) {
   };
 
   return (
-    <>
-      <Swiper
-        {...swiperParameters}
-        className="product-carousel_home page-container"
-      >
+    <div className="swiper-container  page-container">
+      <Swiper {...swiperParameters} className="product-swiper">
         {children.map((child, index) => (
-          <SwiperSlide key={index} className="product-carousel_home-slide">
-            <div className=".product-carousel_home-slide-content">{child}</div>
+          <SwiperSlide
+            key={index}
+            className="product-swiper__slide"
+            onBeforeInit={(swiper) => {
+              productSwiperRef.current = swiper;
+            }}
+          >
+            <div className="product-swiper__slide-content">{child}</div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="navigation-wrapper sm:px-0 sm:left-0 sm:right-0">
-        <div className="product-swiper-prev swiper-button-prev">
+      <div className="navigation-wrapper">
+        <button
+          className="product-button-prev"
+          onClick={() => productSwiperRef.current?.slidePrev()}
+        >
           <LeftCaret />
-        </div>
-        <div className="product-swiper-next swiper-button-next">
+        </button>
+        <button
+          className="product-button-next"
+          onClick={() => productSwiperRef.current?.slideNext()}
+        >
           <RightCaret />
-        </div>
+        </button>
       </div>
-    </>
+    </div>
   );
 }
 

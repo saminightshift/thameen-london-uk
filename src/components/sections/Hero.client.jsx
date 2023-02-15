@@ -63,7 +63,7 @@ export function Hero(data) {
   };
 
   return (
-    <>
+    <div className="hero-swiper">
       <Swiper
         {...swiperParams}
         className="relative h-[100vh] w-full"
@@ -81,20 +81,7 @@ export function Hero(data) {
               height={1080}
               loading="eager"
             />
-            <div className="swiper-button-navigation">
-              <button
-                className="hero-button-prev swiper-button-prev left-caret"
-                onClick={() => heroRef.current?.slidePrev()}
-              >
-                <LeftCaret />
-              </button>
-              <button
-                className="hero-button-next swiper-button-next right-caret"
-                onClick={() => heroRef.current?.slideNext()}
-              >
-                <RightCaret />
-              </button>
-            </div>
+
             <Link to={slide.shopUrl}>
               <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
@@ -106,7 +93,21 @@ export function Hero(data) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+      <div className="swiper-button-navigation">
+        <button
+          className="hero-button-prev swiper-button-prev left-caret"
+          onClick={() => heroRef.current?.slidePrev()}
+        >
+          <LeftCaret />
+        </button>
+        <button
+          className="hero-button-next swiper-button-next right-caret"
+          onClick={() => heroRef.current?.slideNext()}
+        >
+          <RightCaret />
+        </button>
+      </div>
+    </div>
   );
 }
 
