@@ -73,12 +73,12 @@ export function ProductCarouselCard({product, label, loading, onClick}) {
           )}
         </div>
         <div className="relative -top-6 flex justify-center align-baseline">
-          <h3 className="text-center font-semibold text-xs  super-tracking leading-5 uppercase">
+          <h3 className="text-center font-semibold text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>
         </div>
         <div className="relative -top-7 flex justify-center align-baseline">
-          <span className="text-center font-semibold text-primary text-xs super-tracking leading-5 uppercase">
+          <span className="text-center font-semibold text-primary text-sm super-tracking leading-5 uppercase">
             <Money withoutTrailingZeros data={price} />
             {isDiscounted(price, compareAtPrice) && (
               <CompareAtPrice data={compareAtPrice} className="opacity-50" />

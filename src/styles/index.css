@@ -226,6 +226,14 @@ shop-pay-button {
     @apply text-sm md:text-xs;
   }
 
+  .footer-heading {
+    @apply text-sm font-semibold uppercase md:text-base;
+  }
+
+  .footer-content {
+    @apply text-xs md:text-sm tracking-wider;
+  }
+
   .card-image {
     @apply relative overflow-clip flex justify-center items-center;
     &::before {
@@ -235,6 +243,14 @@ shop-pay-button {
     img {
       @apply object-cover w-full aspect-[inherit];
     }
+  }
+}
+
+#newsflash-banner {
+  @apply bg-black w-full z-50 relative text-white h-[48px];
+
+  h6 {
+   @apply uppercase text-center font-semibold text-[0.72rem] super-tracking md:text-sm whitespace-pre-wrap
   }
 }
 

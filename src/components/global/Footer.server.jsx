@@ -22,22 +22,24 @@ export function Footer() {
       {isHome && <GiftWrapCta />}
       <footer
         aria-labelledby="footer-heading"
-        className="relative left-0 right-0 bottom-0 bg-black lg:bg-white mt-8"
+        className={`${
+          isHome ? '' : ' mt-8'
+        } relative left-0 right-0 bottom-0 bg-black lg:bg-white`}
       >
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-20 text-white lg:text-black">
-          <div className="grid grid-cols-1 lg:grid-flow-col lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8 lg:gap-y-16">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-12 text-white lg:text-black">
+          <div className="grid grid-cols-1 lg:grid-flow-col lg:auto-rows-min lg:grid-cols-12 lg:gap-x-7 lg:gap-y-16">
             {/* Newsletter section */}
             <div className="mt-12  lg:col-span-4 lg:col-start-1">
-              <h3 className="text-xs font-semibold uppercase">Sign up</h3>
-              <p className="mt-2 text-xs tracking-wider">
+              <h3 className="footer-heading">Sign up</h3>
+              <p className="mt-2 footer-content">
                 Sign up below for email updates about Thameen, including launch
                 announcements, product information and early access to
                 limited-edition products.
               </p>
-              <form className="mt-8 flex sm:max-w-md">
+              <form className="mt-12 flex sm:max-w-md">
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
@@ -47,10 +49,10 @@ export function Footer() {
                   autoComplete="email"
                   required
                   placeholder="Email"
-                  className="w-full text-xs tracking-wider min-w-0 appearance-none border-0 border-b-[1px] bg-transparent py-2 px-4 placeholder-gray-500"
+                  className="w-full text-xs tracking-wider min-w-0 appearance-none border-0 border-b-[1px] bg-transparent py-2 px-0 placeholder-gray-500 focus:border-black focus:ring-0"
                 />
               </form>
-              <p className="mt-4 text-xxs">
+              <p className="mt-4 text-sm">
                 You can unsubscribe any time by using the link in our emails.
               </p>
             </div>
@@ -59,19 +61,14 @@ export function Footer() {
               <div className="gap-y-12">
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
+                    <h3 className="footer-heading">
                       <Link to="/account">Account</Link>
                     </h3>
                   </div>
                   <CountrySelection />
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      Contact
-                    </h3>
-                    <ul
-                      role="list"
-                      className="mt-2 space-y-2 text-xs tracking-wider"
-                    >
+                    <h3 className="footer-heading">Contact</h3>
+                    <ul role="list" className="mt-2 space-y-2 footer-content">
                       <li>
                         <a href="mailto:support@thameenlondon.com">
                           Email Customer Care
@@ -87,13 +84,8 @@ export function Footer() {
               <div className="gap-y-12 ">
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      CUSTOMER CARE
-                    </h3>
-                    <ul
-                      role="list"
-                      className="mt-2 space-y-2 text-x/s tracking-wider"
-                    >
+                    <h3 className="footer-heading">CUSTOMER CARE</h3>
+                    <ul role="list" className="mt-2 space-y-2 footer-content">
                       <li>
                         <Link to="/policies/shipping-policy">Shipping</Link>
                       </li>
@@ -103,13 +95,8 @@ export function Footer() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      Legal &amp; Cookies
-                    </h3>
-                    <ul
-                      role="list"
-                      className="mt-2 space-y-2 text-x/s tracking-wider"
-                    >
+                    <h3 className="footer-heading">Legal &amp; Cookies</h3>
+                    <ul role="list" className="mt-2 space-y-2 footer-content">
                       <li>
                         <Link to="/policies/terms-of-service">
                           Terms &amp; Conditions
@@ -127,18 +114,13 @@ export function Footer() {
               <div className="gap-y-12">
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
+                    <h3 className="footer-heading">
                       <Link to="/pages/our-story">Our Story</Link>
                     </h3>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      Follow Us
-                    </h3>
-                    <ul
-                      role="list"
-                      className="mt-2 space-y-2 text-x/s tracking-wider"
-                    >
+                    <h3 className="footer-heading">Follow Us</h3>
+                    <ul role="list" className="mt-2 space-y-2 footer-content">
                       <li>
                         <a href="https://instagram.com/thameenfragrance">
                           Instagram
@@ -161,18 +143,11 @@ export function Footer() {
               <div className="gap-y-12">
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      Store Locator
-                    </h3>
+                    <h3 className="footer-heading">Store Locator</h3>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider">
-                      Thameen Services
-                    </h3>
-                    <ul
-                      role="list"
-                      className="mt-2 space-y-2 text-x/s tracking-wider"
-                    >
+                    <h3 className="footer-heading">Thameen Services</h3>
+                    <ul role="list" className="mt-2 space-y-2 footer-content">
                       <li>Free shipping</li>
                       <li>30 days free returns</li>
                       <li>Complimentary gift wrapping, messaging & sending</li>

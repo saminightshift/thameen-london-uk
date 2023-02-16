@@ -96,7 +96,7 @@ function DesktopHeader({
     <>
       <header className="items-center w-full">
         <div
-          className={`module__nav bg-transparent  flex justify-center px-5 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav text-black  ${
+          className={`module__nav bg-transparent  flex justify-center px-[1.125rem]  md:px-12 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav text-black align-middle ${
             !isVisible ? 'fade-out' : 'fade-in'
           } ${
             isHome || isJournal ? 'text-white hover:text-black' : 'text-black'
@@ -118,16 +118,16 @@ function DesktopHeader({
                       <img
                         src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                         alt="Thameen London"
-                        width={150}
-                        height={50}
+                        width={284}
+                        height={45}
                         className="brand-logo"
                       />
                     ) : (
                       <img
                         src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                         alt="Thameen London"
-                        width={150}
-                        height={50}
+                        width={284}
+                        height={45}
                       />
                     )}
                   </div>
@@ -158,7 +158,7 @@ function DesktopHeader({
 
               <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
                 {isHome || isJournal ? (
-                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-xs z-40">
+                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-base z-40">
                     {/* Top level menu items */}
                     {(menu?.items || []).map((item, index) => (
                       <div className="hoverable hover:text-black" key={item.id}>
@@ -402,18 +402,19 @@ function CartBadge(isHome, isJournal) {
 function IconAccount() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
+      className="nav-icon"
     >
       <title>Account</title>
+      <circle cx="12" cy="6.5" r="3" stroke="white" strokeWidth="2" />
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+        d="M20.9451 21.5H3.05493C3.55237 17 7.36745 13.5 12 13.5C16.6326 13.5 20.4476 17 20.9451 21.5Z"
+        stroke="white"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -422,18 +423,18 @@ function IconAccount() {
 function IconAccountDark() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="black"
-      className="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <title>Account</title>
+      <circle cx="12" cy="6.5" r="3" stroke="black" strokeWidth="2" />
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+        d="M20.9451 21.5H3.05493C3.55237 17 7.36745 13.5 12 13.5C16.6326 13.5 20.4476 17 20.9451 21.5Z"
+        stroke="black"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -442,18 +443,26 @@ function IconAccountDark() {
 function IconBag() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
+      className="nav-icon"
     >
       <title>Shopping Bag</title>
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+        d="M8 7.5C8 5.29086 9.79086 3.5 12 3.5C14.2091 3.5 16 5.29086 16 7.5V9.5H8V7.5Z"
+        stroke="white"
+        strokeWidth="2"
+      />
+      <rect
+        x="3"
+        y="9.5"
+        width="18"
+        height="12"
+        stroke="white"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -462,18 +471,25 @@ function IconBag() {
 function IconBagDark() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="black"
-      className="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <title>Shopping Bag</title>
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+        d="M8 7.5C8 5.29086 9.79086 3.5 12 3.5C14.2091 3.5 16 5.29086 16 7.5V9.5H8V7.5Z"
+        stroke="black"
+        strokeWidth="2"
+      />
+      <rect
+        x="3"
+        y="9.5"
+        width="18"
+        height="12"
+        stroke="black"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -482,19 +498,17 @@ function IconBagDark() {
 function IconSearch() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="nav-icon"
     >
       <title>Search</title>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-      />
+      <circle cx="12" cy="12.5" r="9" stroke="white" strokeWidth="2" />
+      <path d="M18 18.5L21.5 22" stroke="white" strokeWidth="2" />
     </svg>
   );
 }
@@ -502,19 +516,15 @@ function IconSearch() {
 function IconSearchDark() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="black"
-      className="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <title>Search</title>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-      />
+      <circle cx="12" cy="12.5" r="9" stroke="black" strokeWidth="2" />
+      <path d="M18 18.5L21.5 22" stroke="black" strokeWidth="2" />
     </svg>
   );
 }
