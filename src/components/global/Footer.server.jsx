@@ -159,13 +159,17 @@ export function Footer() {
             </div>
           </div>
           {/* Bottom Footer section */}
-          <div className="text-white lg:text-black text-xxs text-center mt-10 py-6">
+          <div className="text-white lg:text-black text-xxs text-left mt-10 py-6">
             &copy; {new Date().getFullYear()} Thameen London. All rights
             reserved.
             <br />
-            <span className="text-[8px] text-[#0e0e0e] lg:text-[#fefefe]">
-              <a href="mailto:support@jamstackr.io">Powered by Jamstackr.io</a>
+            {/* 
+            <span className="text-[8px] text-[#000000] lg:text-[#ffffff]">
+              <a href="mailto:s.capaldi@jamstackr.io?subject=I am interested in a bespoke e-commerce solution for my brand!">
+                Powered by Jamstackr.io
+              </a>
             </span>
+            */}
           </div>
         </div>
       </footer>
