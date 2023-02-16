@@ -129,25 +129,25 @@ export function Hero(data) {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             {/* using picture make responsive slides */}
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet={slide.images[1].url}
-                sizes="(max-width: 767px) 100vw, 767px"
-              />
-              <source
-                media="(min-width: 768px)"
-                srcSet={slide.images[0].url}
-                sizes="(min-width: 768px) 100vw, 768px"
-              />
-              <img
-                src={slide.images[0].url}
-                alt={slide.title}
-                className="object-cover w-full h-full"
-              />
-            </picture>
+            <Link to={`${slide.handle}`}>
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcSet={slide.images[1].url}
+                  sizes="(max-width: 767px) 100vw, 767px"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet={slide.images[0].url}
+                  sizes="(min-width: 768px) 100vw, 768px"
+                />
+                <img
+                  src={slide.images[0].url}
+                  alt={slide.title}
+                  className="object-cover w-full h-full"
+                />
+              </picture>
 
-            <Link to={`/${slide.handle}`}>
               <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
