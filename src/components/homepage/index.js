@@ -1,0 +1,1 @@
+export { HomepageFeaturedCollections } from './HomepageFeaturedCollections.client';

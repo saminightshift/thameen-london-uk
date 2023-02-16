@@ -12,7 +12,11 @@ import {
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {FeaturedCollections, Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
-import {Container, HomepageCollections} from '../components/index';
+import {
+  Container,
+  HomepageCollections,
+  HomepageFeaturedCollections,
+} from '../components/index';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -59,10 +63,11 @@ function HomepageContent() {
         <ProductSwimlane data={featured.products.nodes} />
       </Container>
 
-      <HomepageCollections
+      {/* <HomepageCollections
         data={featuredCollections.nodes}
         title="Discover your thameen fragrance"
-      />
+      /> */}
+      <HomepageFeaturedCollections />
     </div>
   );
 }
