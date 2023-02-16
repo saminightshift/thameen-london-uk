@@ -13,25 +13,80 @@ import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 export function Hero(data) {
   const slides = [
     {
-      url: 'https://images.ctfassets.net/t5tvnt0pg52s/1gCoBHteh1bGXCZcLbUQMY/6a1d8081f8945f1f3ad120257a548e89/Hero-1.png',
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-1.webp?v=1676525105',
+          width: 3200,
+          height: 1800,
+          id: '1_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-1.webp?v=1676525104',
+          width: 720,
+          height: 1080,
+          id: '1_720x1080',
+        },
+      ],
+      title: 'our new fragrance',
+      cta: 'discover fanfare',
+      handle: '/products/fanfare-100ml-cologne-elixir',
+    },
+    {
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-2.webp?v=1676525106',
+          width: 3200,
+          height: 1800,
+          id: '2_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-2.webp?v=1676525104',
+          width: 720,
+          height: 1080,
+          id: '2_720x1080',
+        },
+      ],
+      title: 'with love',
+      cta: 'red cullinan diamond',
+      handle: '/products/red-cullinan-diamond-50ml-extrait-de-parfum',
+    },
+    {
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-3.webp?v=1676525105',
+          width: 3200,
+          height: 1800,
+          id: '3_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-3.webp?v=1676525104',
+          width: 720,
+          height: 1080,
+          id: '3_720x1080',
+        },
+      ],
       title: 'our latest fragrance',
       cta: 'shop insignia',
-      id: 1,
-      shopUrl: '/products/insignia-50ml-extrait-de-parfum',
+      handle: '/products/insignia-50ml-extrait-de-parfum',
     },
     {
-      url: 'https://images.ctfassets.net/t5tvnt0pg52s/1et4S3o8hcPTQ6JoEhcejZ/0515456a899adce1392cd7b86751bffa/Hero-2.png',
-      title: 'Amber & Sandalwood',
-      cta: 'Discover Riviere',
-      id: 2,
-      shopUrl: '/products/riviere-50ml-extrait-de-parfum',
-    },
-    {
-      url: 'https://studio.thameenlondon.com/wp-content/uploads/2023/01/Fanfare.jpg',
-      title: 'Try something new',
-      cta: 'Discover Fanfare',
-      id: 3,
-      shopUrl: '#',
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-4.webp?v=1676525105',
+          width: 3200,
+          height: 1800,
+          id: '4_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-4.webp?v=1676525104',
+          width: 720,
+          height: 1080,
+          id: '4_720x1080',
+        },
+      ],
+      title: 'pure elegance',
+      cta: 'shop the regal collection',
+      handle: '/collections/regal-collection',
     },
   ];
 
@@ -73,16 +128,26 @@ export function Hero(data) {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <Image
-              className="hero-slide-image"
-              src={slide.url}
-              alt={slide.title}
-              width={1920}
-              height={1080}
-              loading="lazy"
-            />
+            {/* using picture make responsive slides */}
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={slide.images[1].url}
+                sizes="(max-width: 767px) 100vw, 767px"
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={slide.images[0].url}
+                sizes="(min-width: 768px) 100vw, 768px"
+              />
+              <img
+                src={slide.images[0].url}
+                alt={slide.title}
+                className="object-cover w-full h-full"
+              />
+            </picture>
 
-            <Link to={slide.shopUrl}>
+            <Link to={`/${slide.handle}`}>
               <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
