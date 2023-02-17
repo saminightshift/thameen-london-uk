@@ -56,10 +56,7 @@ export function NewsletterSignUpPopup(isLoggedIn) {
                           </button>
                         </div>
 
-                        <div
-                          className="klaviyo-form-YkFEJV forms"
-                          ref={formRef}
-                        ></div>
+                        <div className="klaviyo-form-YkFEJV forms"></div>
                       </div>
                     </Dialog.Panel>
                   </Transition.Child>
