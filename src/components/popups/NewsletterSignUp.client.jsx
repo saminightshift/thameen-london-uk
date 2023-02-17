@@ -4,15 +4,6 @@ import {Dialog, Transition} from '@headlessui/react';
 export function NewsletterSignUpPopup(isLoggedIn) {
   const [showPopup, setShowPopup] = useState(false);
 
-  // show popup after 5 seconds
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setShowPopup(true);
-  //   }, 5000);
-
-  //   return () => clearTimeout(timeout);
-  // }, []);
-
   useEffect(() => {
     const popupShown = sessionStorage.getItem('popupShown');
     if (!popupShown) {
@@ -64,14 +55,11 @@ export function NewsletterSignUpPopup(isLoggedIn) {
                             <IconX className="flex align-middle" />
                           </button>
                         </div>
-                        <div className="mt-5">
-                          <span className="form__p">
-                            Sign up to the Thameen newsletter and receive a
-                            personal discount code saving you 10% off your next
-                            purchase.
-                          </span>
-                        </div>
-                        <div className="klaviyo-form-YkFEJV forms"></div>
+
+                        <div
+                          className="klaviyo-form-YkFEJV forms"
+                          ref={formRef}
+                        ></div>
                       </div>
                     </Dialog.Panel>
                   </Transition.Child>
