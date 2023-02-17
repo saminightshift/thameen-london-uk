@@ -1,0 +1,1 @@
+export {NewsletterSignUpPopup} from './NewsletterSignUp.client';

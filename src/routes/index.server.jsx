@@ -7,20 +7,24 @@ import {
   useServerAnalytics,
   useLocalization,
   useShopQuery,
+  useSession,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {FeaturedCollections, Hero} from '~/components';
+import {Hero} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Container,
-  HomepageCollections,
   HomepageFeaturedCollections,
+  NewsletterSignUpPopup,
 } from '../components/index';
 
 export default function Homepage() {
+  const {customerAccessToken} = useSession();
+
   useServerAnalytics({
     shopify: {
+      isLoggedIn: !!customerAccessToken,
       canonicalPath: '/',
       pageType: ShopifyAnalyticsConstants.pageType.home,
     },
@@ -54,6 +58,10 @@ function HomepageContent() {
     preload: true,
   });
 
+  // check if the user is logged in and pass the data to the newsletter popup
+  const {customerAccessToken} = useSession();
+  const isLoggedIn = !!customerAccessToken;
+
   const {featured, featuredCollections, featuredProducts} = data;
 
   return (
@@ -61,6 +69,7 @@ function HomepageContent() {
       <Hero />
       <Container>
         <ProductSwimlane data={featured.products.nodes} />
+        <NewsletterSignUpPopup data={isLoggedIn} />
       </Container>
 
       {/* <HomepageCollections

@@ -12,6 +12,8 @@
 @import './_global-elements.scss';
 @import './_product-carousel.scss';
 @import './_grids.scss';
+@import './_forms.scss';
+@import './_modals.scss';
 
 /* Swiper Styles */
 @import './_swiper.scss';
@@ -305,4 +307,11 @@ hr {
 
 .super-tracking {
   letter-spacing: 0.16em;
+}
+
+
+/* Pop up Overlay screen */
+
+.bg-overlay {
+  @apply fixed inset-0 bg-[rgba(0,0,0,0.7)] transition-opacity
 }

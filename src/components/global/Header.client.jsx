@@ -113,7 +113,7 @@ function DesktopHeader({
                   className="mr-4 hidden lg:block"
                   aria-label="Thameen London"
                 >
-                  <div className="flex items-center w-40 h-12">
+                  <div className="flex items-center">
                     {isHome || isJournal ? (
                       <img
                         src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
@@ -141,16 +141,16 @@ function DesktopHeader({
                     <img
                       src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                       alt="Thameen London"
-                      width={150}
-                      height={50}
+                      width={200}
+                      height={100}
                       className="brand-logo"
                     />
                   ) : (
                     <img
                       src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                       alt="Thameen London"
-                      width={150}
-                      height={50}
+                      width={200}
+                      height={100}
                     />
                   )}
                 </a>
@@ -393,7 +393,7 @@ function CartBadge(isHome, isJournal) {
     return null;
   }
   return (
-    <div className="text-white bg-black right-[5px] top-[32px] p-[10px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full mx-auto">
+    <div className="text-white bg-black right-[5px] top-[45.5px] p-[5px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full mx-auto">
       <span>{totalQuantity}</span>
     </div>
   );

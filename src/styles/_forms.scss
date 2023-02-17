@@ -1,0 +1,44 @@
+.forms {
+
+ .form-close {
+  @apply h-[12px] w-[12px] ring-0 outline-none focus:outline-none focus:ring-0 text-black stroke-black;
+
+}
+
+.form__p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #000000;
+  margin: 0 0 20px 0;
+  
+}
+
+.minimal-input,
+.go2779736743 {
+    border: none !important;
+    border-bottom: 1px solid black !important;
+    height: 24px !important;
+    width: 100% !important;
+    color: black !important;
+    font-size: 14px;
+    padding: 0 !important;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    margin: 20px 0 20px 0  !important;
+
+    @apply placeholder:opacity-100 focus:outline-none focus:ring-0 focus:placeholder:opacity-0 duration-75 active:outline-none active:ring-0 active:placeholder:opacity-0;
+  }
+
+
+}
+
+.primary-submit,
+.go3061778534 {
+  @apply bg-black text-white w-full text-sm font-semibold super-tracking leading-5 py-2 cursor-pointer mt-[20px];
+}
+
+
+.klaviyo-form-YkFEJV {
+  @apply mb-4 pb-4 !important;;
+}
