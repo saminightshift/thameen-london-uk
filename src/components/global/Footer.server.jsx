@@ -19,7 +19,6 @@ export function Footer() {
 
   return (
     <>
-      {isHome && <GiftWrapCta />}
       <footer
         aria-labelledby="footer-heading"
         className={`${

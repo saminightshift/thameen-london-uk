@@ -1,9 +1,16 @@
 import {Suspense} from 'react';
-import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
+import {
+  useLocalization,
+  useShopQuery,
+  CacheLong,
+  gql,
+  useUrl,
+} from '@shopify/hydrogen';
 
 import {Header} from '~/components';
 import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
+import {VideoCta} from './VideoCta.client';
 
 const HEADER_MENU_HANDLE = 'main-menu';
 const FOOTER_MENU_HANDLE = 'footer-1';
@@ -14,6 +21,10 @@ const SHOP_NAME_FALLBACK = 'Thameen London';
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
 export function Layout({children}) {
+  const {pathname} = useUrl();
+
+  const isHome = pathname === `/`;
+
   return (
     <div className="on-page-load">
       <div className="flex flex-col min-h-screen">
@@ -28,11 +39,14 @@ export function Layout({children}) {
         <main
           role="main"
           id="mainContent"
-          className="flex flex-col min-h-screen flex-grow mb-6"
+          className={`${
+            isHome ? 'mb-0 pb-0' : 'mb-8'
+          }  flex flex-col flex-grow`}
         >
           {children}
         </main>
       </div>
+      {isHome && <VideoCta />}
       <Suspense fallback={<Footer />}>
         <FooterWithMenu />
       </Suspense>

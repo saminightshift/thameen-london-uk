@@ -74,3 +74,23 @@ Wide buttons for checkout
 .module__overlay {
   @apply fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50;
 }
+
+
+/*
+* PRODUCT CARDS
+*/
+
+.card-label {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  max-width: 100%;
+  white-space: pre-wrap;
+  transform: rotate(90deg);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.16em;
+  color: #000000;
+}
