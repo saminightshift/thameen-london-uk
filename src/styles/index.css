@@ -226,7 +226,11 @@ shop-pay-button {
   }
 
   .product-information {
-    @apply text-sm md:text-xs;
+    @apply text-base capitalize;
+  }
+
+  .product-description {
+    @apply text-sm md:text-base;
   }
 
   .footer-heading {
