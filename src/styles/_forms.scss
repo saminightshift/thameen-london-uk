@@ -35,7 +35,6 @@
     @apply placeholder:opacity-100 focus:outline-none focus:ring-0 focus:placeholder:opacity-0 duration-75 active:outline-none active:ring-0 active:placeholder:opacity-0;
   }
 
-
 }
 
 .primary-submit,
@@ -43,7 +42,22 @@
   @apply bg-black text-white w-full text-sm font-semibold super-tracking leading-5 py-2 cursor-pointer mt-[20px];
 }
 
+.go3176171171 {
+  margin-top: 20px !important;
+}
+
+.go3176171171 > div > div > span {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
 
 .klaviyo-form-YkFEJV {
   @apply mb-4 pb-4 !important;;
+}
+
+[data-testid="form-component"]:nth-of-type(1) {
+  padding: 0 !important;
 }
