@@ -65,15 +65,17 @@ function HomepageContent() {
   const {featured, featuredCollections, featuredProducts} = data;
 
   return (
-    <div className="top-[-8rem] relative z-10">
-      <Hero />
-      <Container>
-        <ProductSwimlane data={featured.products.nodes} />
-        <NewsletterSignUpPopup data={isLoggedIn} />
-      </Container>
+    <>
+      <div className="top-[-8rem] relative z-10">
+        <Hero />
+        <Container>
+          <ProductSwimlane data={featured.products.nodes} />
+          <NewsletterSignUpPopup data={isLoggedIn} />
+        </Container>
 
-      <HomepageFeaturedCollections />
-    </div>
+        <HomepageFeaturedCollections />
+      </div>
+    </>
   );
 }
 
