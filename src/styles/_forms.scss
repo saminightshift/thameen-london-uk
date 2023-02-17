@@ -1,8 +1,13 @@
 .forms {
 
  .form-close {
-  @apply h-[12px] w-[12px] ring-0 outline-none focus:outline-none focus:ring-0 text-black stroke-black;
+  @apply h-[12px] w-[12px] ring-0 outline-none focus:outline-none focus:ring-0 text-black stroke-black active:ring-0 active:outline-none;
 
+  button {
+    &:focus {
+      outline: none !important;
+    }
+  }
 }
 
 .form__p {
