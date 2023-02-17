@@ -253,3 +253,9 @@ export function passwordValidation(password) {
 
   return 'Password must be at least 6 characters';
 }
+
+
+export function Encryptor(key) {
+  // eslint-disable-next-line no-undef
+  return btoa(key);
+}

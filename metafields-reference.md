@@ -24,6 +24,24 @@ product.metafields.variant.item
 product.metafields.exclusive_product.link
 ```
 
+- Complementary Products (Gift Wrapping)
+
+```
+shopify--discovery--product_recommendation.complementary_products
+```
+
+- Product Type (Gifting Product long names)
+
+```
+product.metafields.gifting.product_type
+```
+
+- Product Size (50ML, 100ML, etc)
+
+```
+product.metafields.product.product_size
+```
+
 # Blog Post Metafields
 
 - Default Author - workaround whilst using Shopify as CMS
