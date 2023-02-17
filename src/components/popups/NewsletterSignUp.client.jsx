@@ -7,34 +7,30 @@ import {XMarkIcon} from '@heroicons/react/24/outline';
 export function NewsletterSignUpPopup(isLoggedIn) {
   const [showPopup, setShowPopup] = useState(false);
 
-  // only show popup if user is not logged in or if its the first time they visit the site (no cookie) after 5 seconds
+  // use LocalStorage so that the popup doesnt showup on every page refresh
+  const localStorageKey = 'newsletter_popup';
+  const localStorageValue = 'true';
+
+  // use Ref to store the value of the popup state
+  const showPopupRef = useRef(showPopup);
+
+  // update the ref value when the state changes
   useEffect(() => {
-    if (isLoggedIn?.data === false) {
-      setTimeout(() => {
-        setShowPopup(true);
-      }, 5000);
+    showPopupRef.current = showPopup;
+  }, [showPopup]);
+
+  // set the popup state to false and store the value in LocalStorage
+  const closePopup = () => {
+    setShowPopup(false);
+    localStorage.setItem(localStorageKey, localStorageValue);
+  };
+
+  // show pop up for users that arent logged in and if the popup has been shown before
+  useEffect(() => {
+    if (!isLoggedIn && !localStorage.getItem(localStorageKey)) {
+      setShowPopup(true);
     }
   }, []);
-
-  // const formBtn = document.querySelector('[]');
-
-  const emailRef = useRef(null);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const email = emailRef.current?.value;
-
-    const data = {
-      g: 'YkFEJV',
-      email: email ?? '',
-      $source: 'Website',
-    };
-    const urlData = new URLSearchParams(data);
-    fetch(`https://manage.kmail-lists.com/ajax/subscriptions/subscribe`, {
-      method: 'POST',
-      body: urlData,
-    });
-  };
 
   return (
     <Transition.Root show={showPopup} as={Fragment}>
