@@ -72,10 +72,6 @@ function HomepageContent() {
         <NewsletterSignUpPopup data={isLoggedIn} />
       </Container>
 
-      {/* <HomepageCollections
-        data={featuredCollections.nodes}
-        title="Discover your thameen fragrance"
-      /> */}
       <HomepageFeaturedCollections />
     </div>
   );

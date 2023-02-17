@@ -29,18 +29,19 @@ export function ProductCard({product, label, className, loading, onClick}) {
     cardLabel = 'New';
   }
 
-  const styles = clsx('grid gap-6', className);
+  const styles = clsx(
+    'grid gap-3 m-auto justify-center align-center',
+    className,
+  );
 
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
         <div className="card-image aspect-[1/1] cursor-pointer">
-          <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap rotate-90 uppercase font-bold text-black">
-            {cardLabel}
-          </h4>
+          <h4 className="card-label">{cardLabel}</h4>
           {image && (
             <Image
-              className="w-full object-contain mix-blend-multiply"
+              className="w-full object-contain mix-blend-multiply mt-[8rem] mb-[2rem]"
               width={[400]}
               height={400}
               sizes="320px"
@@ -58,7 +59,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
             />
           )}
         </div>
-        <div className="relative -top-8">
+        <div className="relative top-4 py-2">
           <h3 className="text-center font-semibold text-black text-xs md:text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>
