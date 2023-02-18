@@ -1,23 +1,20 @@
 import clsx from 'clsx';
 import {Link} from '@shopify/hydrogen';
 
-// import {missingClass} from '~/lib/utils';
-
 export function Button({
   as = 'button',
   className = '',
-  variant = 'primary',
-  width = 'auto',
+  variant = '',
+  width = '',
   ...props
 }) {
   const Component = props?.to ? Link : as;
 
-  const baseButtonClasses =
-    'inline-block rounded font-medium text-center py-3 px-6';
+  // const baseButtonClasses = 'inline-block py-3 px-6';
 
   const variants = {
-    primary: `${baseButtonClasses} bg-primary text-contrast`,
-    secondary: `${baseButtonClasses} border border-primary/10 bg-contrast text-primary`,
+    primary: `btn-prim`,
+    secondary: `btn-sec`,
     inline: 'border-b border-primary/10 leading-none pb-1',
   };
 
@@ -27,10 +24,19 @@ export function Button({
   };
 
   const styles = clsx(
-    // missingClass(className, 'bg-') && variants[variant],
-    // missingClass(className, 'w-') && widths[width],
+    missingClass(className, 'bg-') && variants[variant],
+    missingClass(className, 'w-') && widths[width],
     className,
   );
 
   return <Component className={styles} {...props} />;
+}
+
+export function missingClass(string, prefix) {
+  if (!string) {
+    return true;
+  }
+
+  const regex = new RegExp(` ?${prefix}`, 'g');
+  return string.match(regex) === null;
 }
