@@ -134,29 +134,31 @@ export function Hero(data) {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <Link to={`${slide.handle}`}>
-              <div className="relative h-full w-full">
+              <div className="h-full w-full">
                 <div
-                  className="absolute top-0 left-0 w-full h-full hidden md:flex"
+                  className="absolute top-0 left-0 hidden md:flex"
                   style={{
                     backgroundImage: `url(${slide.images[0].url})`,
-                    objectFit: 'cover',
-                    objectPosition: 'center',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'top center',
+                    backgroundRepeat: 'no-repeat',
+                    width: '100%',
+                    height: '100%',
                   }}
                 />
                 <div
-                  className="absolute top-0 left-0 w-full h-full flex md:hidden"
+                  className="absolute top-0 left-0 flex md:hidden"
                   style={{
                     backgroundImage: `url(${slide.images[1].url})`,
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundSize: '768px 100%',
+                    backgroundPosition: 'top',
+                    backgroundRepeat: 'no-repeat',
+                    width: '100%',
+                    height: '100%',
                   }}
                 />
               </div>
-              <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
+              <div className="swiper-box absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
                   <h4 className="swiper-cta">{slide.cta}</h4>
@@ -173,7 +175,7 @@ export function Hero(data) {
         >
           <LeftCaret />
         </button>
-        <div className="swiper-pagination" />
+        <div className="hero-swiper-pagination" />
         <button
           className="hero-button-next swiper-button-next right-caret"
           onClick={() => heroRef.current?.slideNext()}

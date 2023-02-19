@@ -9,7 +9,7 @@ export function CartDrawer({isOpen, onClose}) {
       heading="YOUR SHOPPING BAG"
       openFrom="right"
     >
-      <div className="grid">
+      <div className="grid border-t mt-4">
         <CartDetails layout="drawer" onClose={onClose} />
       </div>
     </Drawer>
