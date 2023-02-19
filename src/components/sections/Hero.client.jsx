@@ -150,7 +150,7 @@ export function Hero(data) {
                   className="absolute top-0 left-0 flex md:hidden"
                   style={{
                     backgroundImage: `url(${slide.images[1].url})`,
-                    backgroundSize: '720px 100%',
+                    backgroundSize: '768px 100%',
                     backgroundPosition: 'top',
                     backgroundRepeat: 'no-repeat',
                     width: '100%',
