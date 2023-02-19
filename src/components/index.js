@@ -8,7 +8,7 @@ export * from './sections/index';
 export * from './brand/BrandLogo';
 export * from './homepage/index';
 export * from './popups/index';
-
+export * from './navbar/index';
 export {CountrySelector} from './CountrySelector.client';
 export {CustomFont} from './CustomFont.client';
 export {HeaderFallback} from './HeaderFallback';

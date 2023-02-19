@@ -54,19 +54,7 @@ export function AccountAddressBook({addresses, defaultAddress}) {
               You haven&apos;t saved any addresses yet.
             </Text>
           ) : null}
-          <div className="w-48">
-            <Button
-              className="mt-2 text-sm w-full mb-6"
-              onClick={() => {
-                editAddress({
-                  /** empty address */
-                });
-              }}
-              variant="secondary"
-            >
-              Add an Address
-            </Button>
-          </div>
+
           {addresses?.length ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {fullDefaultAddress ? (
@@ -93,6 +81,18 @@ export function AccountAddressBook({addresses, defaultAddress}) {
               ))}
             </div>
           ) : null}
+          <div className="w-48 my-4">
+            <button
+              className="btn lg-btn-outline"
+              onClick={() => {
+                editAddress({
+                  /** empty address */
+                });
+              }}
+            >
+              Add an Address
+            </button>
+          </div>
         </div>
       </div>
     </>

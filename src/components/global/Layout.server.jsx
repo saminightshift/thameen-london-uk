@@ -25,6 +25,10 @@ export function Layout({children}) {
 
   const isHome = pathname === `/`;
 
+  // const {customerAccessToken} = useSession();
+
+  // const userLoggedIn = customerAccessToken ? true : false;
+
   return (
     <div className="on-page-load">
       <div className="flex flex-col min-h-screen">
