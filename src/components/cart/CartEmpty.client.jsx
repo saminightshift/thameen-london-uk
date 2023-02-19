@@ -22,13 +22,13 @@ export function CartEmpty({onClose, layout = 'drawer'}) {
 
   return (
     <div ref={scrollRef} className={container[layout]}>
-      <section className="grid gap-6 border-b-[1px] border-gray-600 pb-8">
-        <Text format>Your shopping bag is empty.</Text>
+      <section className="grid gap-6 py-8">
+        <p className="text-md tracking-wider text-center">
+          Your shopping bag is empty.
+        </p>
       </section>
       <section className="grid gap-8 pt-4">
-        <Heading format size="copy">
-          Shop bestsellers
-        </Heading>
+        <p className="text-sm font-semibold">Shop bestsellers</p>
         <div
           className={`grid grid-cols-2 gap-x-6 gap-y-8 ${topProductsContainer[layout]}`}
         >
@@ -36,18 +36,10 @@ export function CartEmpty({onClose, layout = 'drawer'}) {
             <TopProducts onClose={onClose} />
           </Suspense>
         </div>
-        <div>
-          <Button
-            width="full"
-            variant="primary"
-            as="span"
-            className="btn btn-checkout btn-block"
-            onClick={onClose}
-          >
-            <Text as="span" className="mx-auto">
-              CONTINUE SHOPPING
-            </Text>
-          </Button>
+        <div className="w-full m-auto">
+          <button className="btn lg-btn-solid-100" onClick={onClose}>
+            <span className="text-center">Continue Shopping</span>
+          </button>
         </div>
       </section>
     </div>

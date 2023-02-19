@@ -43,6 +43,21 @@
     }
   }
 
+  .lg-btn-solid-100 {
+    width: 100%;
+    justify-content: center !important;
+    background-color: black;
+    color: white;
+    text-align: center !important;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
   .lg-btn-outline {
     width: 360px;
     justify-content: center !important;

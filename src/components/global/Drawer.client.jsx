@@ -58,13 +58,15 @@ function Drawer({heading, open, onClose, openFrom = 'right', children}) {
                     {heading !== null && (
                       <Dialog.Title>
                         <Heading as="span" size="lead" id="cart-contents">
-                          {heading}
+                          <span className="text-md font-semibold">
+                            {heading}
+                          </span>
                         </Heading>
                       </Dialog.Title>
                     )}
                     <button
                       type="button"
-                      className="p-4 -m-4 transition text-primary hover:text-primary/50"
+                      className="p-4 -m-4 transition text-black focus:outline-none"
                       onClick={onClose}
                     >
                       <IconClose aria-label="Close panel" />
