@@ -1,5 +1,5 @@
 import {MediaFile} from '@shopify/hydrogen';
-import {ATTR_LOADING_EAGER} from '~/lib/const';
+import {ATTR_LOADING_LAZY} from '~/lib/const';
 
 export function DesktopProductGallery({media}) {
   if (!media.length) {
@@ -49,14 +49,14 @@ export function DesktopProductGallery({media}) {
               width: '100%',
               interactionPromptThreshold: '0',
               ar: true,
-              loading: ATTR_LOADING_EAGER,
+              loading: ATTR_LOADING_LAZY,
               disableZoom: true,
             };
             break;
         }
 
         if (i === 0 && med.mediaContentType === 'IMAGE') {
-          mediaProps.loading = ATTR_LOADING_EAGER;
+          mediaProps.loading = ATTR_LOADING_LAZY;
         }
 
         const styles = [

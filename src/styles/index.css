@@ -15,6 +15,7 @@
 @import './_forms.scss';
 @import './_modals.scss';
 @import './_buttons.scss';
+@import './_typography.scss';
 
 /* Swiper Styles */
 @import './_swiper.scss';

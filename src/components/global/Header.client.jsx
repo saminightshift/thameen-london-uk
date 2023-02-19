@@ -2,8 +2,6 @@ import {Fragment, useState, useRef, useEffect} from 'react';
 import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
 import {Bars3Icon} from '@heroicons/react/24/outline';
 
-import {Input} from '~/components';
-
 import {CartDrawer} from './CartDrawer.client';
 import {MenuDrawer} from './MenuDrawer.client';
 import {useDrawer} from './Drawer.client';
@@ -386,14 +384,16 @@ function DesktopHeader({
   );
 }
 
-function CartBadge(isHome, isJournal) {
+function CartBadge() {
   const {totalQuantity} = useCart();
 
   if (totalQuantity < 1) {
     return null;
   }
   return (
-    <div className="text-white bg-black right-[5px] top-[45.5px] p-[5px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center rounded-full mx-auto">
+    <div
+      className={` -right-[8px] top-[45.5px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center mx-auto`}
+    >
       <span>{totalQuantity}</span>
     </div>
   );

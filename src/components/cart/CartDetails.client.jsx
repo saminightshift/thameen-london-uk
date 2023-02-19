@@ -36,7 +36,7 @@ export function CartDetails({layout, onClose}) {
       <section
         ref={scrollRef}
         aria-labelledby="cart-contents"
-        className={`${content[layout]} ${y > 0 ? 'border-t' : ''}`}
+        className={`${content[layout]} ${y > 0 ? 'border-t' : 'pt-4'}`}
       >
         <ul className="grid gap-6 md:gap-10">
           {lines.map((line) => {
@@ -66,16 +66,9 @@ function CartCheckoutActions() {
       <div className="grid gap-4">
         {checkoutUrl ? (
           <Link to={checkoutUrl} prefetch={false} target="_self">
-            <Button
-              width="full"
-              variant="primary"
-              as="span"
-              className="btn btn-checkout btn-block"
-            >
-              <Text as="span" className="mx-auto">
-                Continue to Checkout
-              </Text>
-            </Button>
+            <button className="btn lg-btn-solid-100">
+              <span className="text-center">Continue to Checkout</span>
+            </button>
           </Link>
         ) : null}
       </div>
@@ -88,7 +81,7 @@ function OrderSummary() {
   return (
     <>
       <dl className="grid">
-        <div className="flex items-center justify-between font-medium">
+        <div className="flex items-center justify-between title title__md">
           <Text as="dt">Subtotal</Text>
           <Text as="dd">
             {cost?.subtotalAmount?.amount ? (
