@@ -1,6 +1,5 @@
 import React, {useEffect, useState, Fragment, useRef} from 'react';
 import {Dialog, Transition} from '@headlessui/react';
-import {useMediaQuery} from '../../lib/hooks';
 
 export function NewsletterSignUpPopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -16,12 +15,9 @@ export function NewsletterSignUpPopup() {
     }
   }, []);
 
-  // only show popup on desktop screens
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-
   return (
     <>
-      {showPopup && isDesktop && (
+      {showPopup && (
         <Transition.Root show={showPopup} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={setShowPopup}>
             <Transition.Child

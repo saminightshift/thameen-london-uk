@@ -70,7 +70,7 @@ function HomepageContent() {
         <Hero />
         <Container>
           <ProductSwimlane data={featured.products.nodes} />
-          {/* <NewsletterSignUpPopup data={isLoggedIn} /> */}
+          <NewsletterSignUpPopup data={isLoggedIn} />
         </Container>
 
         <HomepageFeaturedCollections />
