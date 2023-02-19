@@ -116,7 +116,8 @@ export default function Product() {
                 media={media.nodes}
                 className="block md:hidden"
               />
-              <DesktopProductGallery media={media.nodes} className="hidden" />
+
+              <DesktopProductGallery media={media.nodes} />
             </div>
             <div className="top-0  sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
               <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 sticky-top">
