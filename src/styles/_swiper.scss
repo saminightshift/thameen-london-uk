@@ -16,7 +16,7 @@
 .hero-swiper {
   width: 100vw;
   height: 100vh;
-  aspect-ratio: 16/9;
+
 }
 
 .hero-slide-image {
@@ -39,9 +39,6 @@
   text-align: center;
   padding-right: 8px;
 
-  .swiper-pagination-separator {
-    content: '|' !important;
-  }
 }
 
 .swiper-button-navigation {
@@ -92,7 +89,7 @@
     font-weight: 600;
     font-size: 14px;
     margin: auto;
-    width: 27rem;
+    width: 100%;
     text-align: center;
     padding-right: 8px;
     vertical-align: middle;
@@ -105,24 +102,25 @@
   .swiper-button-navigation {
     position: relative;
     bottom: 240px;
-    width: 32rem;
+    width: 100%;
     margin: 0 auto;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
 
     .left-caret {
-      margin-left: 10px;
-      left: 150px !important;
+      left: 130px !important;
+      margin-bottom: 55px;
+
       svg {
         width: 15px;
         height: 15px;
       }
     }
     .right-caret {
-      margin-right: -10px !important;
-      right: 250px !important;
+      right: 125px !important;
+      margin-bottom: 55px;
       svg {
         width: 15px;
         height: 15px;
