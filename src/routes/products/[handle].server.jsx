@@ -118,10 +118,13 @@ export default function Product() {
               />
               <DesktopProductGallery media={media.nodes} className="hidden" />
             </div>
-            <div className="top-0 lg:top-[120px] sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
+            <div className="top-0  sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
               <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 sticky-top">
-                <div className="md:border-t-2 md:border-black md:pb-6" />
-                <div className="flex justify-between product-pane-container">
+                <div className="md:border-t-[1px] md:border-black md:pb-6" />
+                <div
+                  className="flex justify-between"
+                  style={{padding: '0 112px'}}
+                >
                   <span className="product-title-price">{title}</span>
                   <span className="product-title-price hidden md:inline-block">
                     <Money withoutTrailingZeros data={priceV2} as="span" />
@@ -140,12 +143,14 @@ export default function Product() {
                 {/* Quick fix: If has variant then show the border line, this needs tidying up */}
                 <div>
                   {productType && (
-                    <div className="mb-6 product-pane-container">
+                    <div className="mb-6" style={{padding: '0 112px'}}>
                       <Text className="product-type">{productType}</Text>
                     </div>
                   )}
 
-                  {has_variant && <div className="border-b-2 border-black" />}
+                  {has_variant && (
+                    <div className="border-t-[1px] border-black" />
+                  )}
                 </div>
                 <div className="flex flex-col gap-2">
                   {has_variant && (
@@ -158,18 +163,18 @@ export default function Product() {
                 </div>
                 {exclusive ? (
                   <a href={exclusive.value} target="_blank" rel="noreferrer">
-                    <Button className="btn btn-checkout w-full">
-                      <span className="px-[25px]">Purchase from Retailer</span>
+                    <Button className="btn btn-prim">
+                      <span className="btn-padding">
+                        Purchase from Retailer
+                      </span>
                     </Button>
                   </a>
                 ) : (
                   <ProductForm data={product} />
                 )}
 
-                <div>
-                  {complimentary && <div className="flex flex-col gap-2"></div>}
-                </div>
-                <div className="grid">
+                <div className="grid gap-0 mt-0">
+                  {complimentary && <div className="hidden h-0"></div>}
                   {descriptionHtml && <ProductInfo content={descriptionHtml} />}
                   {/* Fragrance Notes */}
                   {notes ? (

@@ -105,20 +105,17 @@ export function ProductForm() {
           disabled={isOutOfStock}
           type="button"
         >
-          <Button
-            width="full"
-            variant={isOutOfStock ? 'secondary' : 'primary'}
-            as="span"
-            className="btn btn-checkout btn-block"
+          <span
+            className={`${
+              isOutOfStock ? 'btn btn-sec' : 'btn btn-prim'
+            } w-full`}
           >
             {isOutOfStock ? (
-              <Text className="px-[25px]">Sold out</Text>
+              <span className="btn-padding">Sold out</span>
             ) : (
-              <Text as="span" className="text-left px-[25px]">
-                Add to bag
-              </Text>
+              <span className="btn-padding">Add to bag</span>
             )}
-          </Button>
+          </span>
         </AddToCartButton>
       </div>
     </form>

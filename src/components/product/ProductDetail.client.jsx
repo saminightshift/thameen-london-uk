@@ -6,13 +6,18 @@ import {Text, IconClose} from '~/components';
 
 export function ProductDetail({title, content, learnMore}) {
   return (
-    <Disclosure key={title} as="div" className="w-full gap-2 block">
+    <Disclosure
+      key={title}
+      as="div"
+      style={{padding: '0 100px'}}
+      className="w-full gap-2 block  border-b-[1px] border-black"
+    >
       {/* @ts-expect-error @headlessui/react incompatibility with node16 resolution */}
       {({open}) => (
         <>
-          <Disclosure.Button className="text-left inner-block border-b-2 border-black">
+          <Disclosure.Button className="text-left inner-block">
             <div className="flex justify-between">
-              <Text size="lead" as="h4" className="text-sm">
+              <Text size="lead" as="h4" className="text-md">
                 {title}
               </Text>
               <IconClose
@@ -33,13 +38,13 @@ export function ProductDetail({title, content, learnMore}) {
             leaveTo="translate-y-0 opacity-0"
           >
             <Disclosure.Panel className="relative pb-4 pt-4 grid gap-2 inner-block">
-              <div className="font-medium inline-block product-information">
+              <div className="font-normal inline-block product-information pb-6">
                 {Parser(content)}
               </div>
               {learnMore && (
-                <div className="inline-block">
+                <div className="inline-block pb-4">
                   <Link
-                    className="pb-px border-b border-primary/30 text-primary/50"
+                    className="pb-px border-b-[1px] border-primary/30 text-primary/50"
                     to={learnMore}
                   >
                     Learn more
