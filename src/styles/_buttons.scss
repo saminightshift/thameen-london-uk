@@ -7,22 +7,56 @@
   line-height: 24px;
   letter-spacing: 0.16em;
   font-size: 1rem;
-  text-align: left !important;
   border-radius: 0 !important;
-  justify-content: start !important;
+  justify-content: start;
   text-transform: uppercase;
   height: 56px;
-  width: 100%;
+
 }
   .btn-prim {
     background-color: black !important;
-    color: white !important;  
+    color: white !important; 
+    width: 100%; 
+    text-align: left !important;
   }
 
   .btn-sec {
+    text-align: left !important;
     background-color: transparent;
     border: 1px solid black;
     color: black;
+    width: 100%;
+  }
+
+  .lg-btn-solid {
+    width: 360px;
+    justify-content: center !important;
+    background-color: black;
+    color: white;
+    text-align: center !important;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
+  .lg-btn-outline {
+    width: 360px;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+
+    &:hover {
+      /* Fade background color in from left */
+      background-color: rgba(0, 0, 0, 1);
+      transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+      color: white;
+    }
   }
 
   .btn-padding {

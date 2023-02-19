@@ -67,7 +67,7 @@ export function DesktopProductGallery({media}) {
 
         return (
           <div
-            className="carousel-item h-auto w-full carousel-wrapper"
+            className="carousel-item h-auto w-full carousel-wrapper mb-4"
             key={med.id || med.image.id}
           >
             <div className="carousel-wrapper__inner h-auto w-full">

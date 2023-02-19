@@ -10,6 +10,8 @@ import {
 } from 'swiper';
 import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 
+import {useMediaQuery} from '../../lib/hooks';
+
 export function Hero(data) {
   const slides = [
     {
@@ -90,6 +92,9 @@ export function Hero(data) {
     },
   ];
 
+  // const isMobile = useMediaQuery({query: '(max-width: 767px)'});
+  // const isDesktop = useMediaQuery({query: '(min-width: 768px)'});
+
   const heroRef = useRef();
 
   const swiperParams = {
@@ -121,33 +126,36 @@ export function Hero(data) {
     <div className="hero-swiper">
       <Swiper
         {...swiperParams}
-        className="relative h-[100vh] w-full"
+        className="relative h-full w-full"
         onBeforeInit={(swiper) => {
           heroRef.current = swiper;
         }}
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            {/* using picture make responsive slides */}
             <Link to={`${slide.handle}`}>
-              <picture>
-                <source
-                  media="(max-width: 767px)"
-                  srcSet={slide.images[1].url}
-                  sizes="(max-width: 767px) 100vw, 767px"
+              <div className="relative h-full w-full">
+                <div
+                  className="absolute top-0 left-0 w-full h-full hidden md:flex"
+                  style={{
+                    backgroundImage: `url(${slide.images[0].url})`,
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
                 />
-                <source
-                  media="(min-width: 768px)"
-                  srcSet={slide.images[0].url}
-                  sizes="(min-width: 768px) 100vw, 768px"
+                <div
+                  className="absolute top-0 left-0 w-full h-full flex md:hidden"
+                  style={{
+                    backgroundImage: `url(${slide.images[1].url})`,
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
                 />
-                <img
-                  src={slide.images[0].url}
-                  alt={slide.title}
-                  className="object-cover w-full h-full"
-                />
-              </picture>
-
+              </div>
               <div className="absolute bottom-0 md:bottom-[2.5rem] flex justify-center mx-auto left-0 right-0 items-center w-full md:w-[520px] h-[150px] md:h-[125px] bg-white">
                 <div className="flex flex-col justify-center items-center space-y-2 swiper-text">
                   <h4 className="max-w-md swiper-title">{slide.title}</h4>
@@ -165,6 +173,7 @@ export function Hero(data) {
         >
           <LeftCaret />
         </button>
+        <div className="swiper-pagination" />
         <button
           className="hero-button-next swiper-button-next right-caret"
           onClick={() => heroRef.current?.slideNext()}
