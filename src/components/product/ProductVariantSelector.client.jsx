@@ -18,7 +18,7 @@ export function ProductVariantSelector({data, handle}) {
       {({open}) => (
         <>
           <Disclosure.Button className="text-left w-full m-auto py-[1.25rem]">
-            <div className="flex justify-between" style={{padding: '0 120px'}}>
+            <div className="flex justify-between product-variant-padding">
               <span className="product-variant-selection">
                 {handle.includes('100ml') ? (
                   <span>100ml</span>
@@ -42,13 +42,12 @@ export function ProductVariantSelector({data, handle}) {
             leaveFrom="translate-y-4 opacity-100"
             leaveTo="translate-y-0 opacity-0"
           >
-            <Disclosure.Panel className="relative  pt-6 grid gap-2 border-t border-gray-400 md:hover:bg-gray-100">
+            <Disclosure.Panel className="relative  pt-6 grid gap-2 border-t border-gray-400 lg:hover:bg-gray-100">
               <a
                 href={`${
                   handle.includes('100ml') ? `${handle50ml}` : `${handle100ml}`
                 }`}
-                className="py-2 font-semibold text-md"
-                style={{padding: '0 120px'}}
+                className="py-2 font-semibold text-md product-variant-padding mb-8 md:mb-0"
               >
                 {handle.includes('100ml') ? (
                   <span>50ml</span>

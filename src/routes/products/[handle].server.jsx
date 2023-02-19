@@ -110,24 +110,34 @@ export default function Product() {
       </Suspense>
       <ProductOptionsProvider data={product}>
         <Section padding="x" className="top flex flex-col min-h-screen">
-          <div className="flex md:flex-row flex-col min-h-screen">
-            <div className="w-screen md:w-1/2 carousel-wrapper">
+          <div className="flex lg:flex-row flex-col min-h-screen">
+            <div className="w-screen lg:w-1/2 carousel-wrapper">
               <MobileProductGallery
                 media={media.nodes}
-                className="block md:hidden"
+                className="block lg:hidden"
               />
 
               <DesktopProductGallery media={media.nodes} />
             </div>
-            <div className="top-0  sticky w-full md:w-1/2 mx-auto lg:col-span-2 h-screen">
-              <section className="transactional_pane absolute flex flex-col w-full gap-2 md:gap-4 md:p-6 sticky-top">
-                <div className="md:border-t-[1px] md:border-black md:pb-6" />
-                <div
-                  className="flex justify-between"
-                  style={{padding: '0 112px'}}
-                >
+            <div className="top-0  sticky w-full lg:w-1/2 mx-auto lg:col-span-2 h-screen">
+              <section className="transactional_pane absolute flex flex-col w-full gap-2 lg:gap-4 lg:p-6 sticky-top">
+                <div className="lg:border-t-[1px] lg:border-black lg:pb-6" />
+                <div className="flex justify-between product-title-price-block">
                   <span className="product-title-price">{title}</span>
-                  <span className="product-title-price hidden md:inline-block">
+                  <span className="product-title-price hidden lg:inline-block">
+                    <Money withoutTrailingZeros data={priceV2} as="span" />
+                    {isOnSale && (
+                      <div>
+                        <Money
+                          withoutTrailingZeros
+                          data={priceV2}
+                          as="span"
+                          className="opacity-50 line-through"
+                        />
+                      </div>
+                    )}
+                  </span>
+                  <span className="product-title-price inline-block lg:hidden">
                     <Money withoutTrailingZeros data={priceV2} as="span" />
                     {isOnSale && (
                       <div>
@@ -144,7 +154,7 @@ export default function Product() {
                 {/* Quick fix: If has variant then show the border line, this needs tidying up */}
                 <div>
                   {productType && (
-                    <div className="mb-6" style={{padding: '0 112px'}}>
+                    <div className="product-type-block">
                       <Text className="product-type">{productType}</Text>
                     </div>
                   )}
@@ -215,12 +225,12 @@ export default function Product() {
               </section>
             </div>
           </div>
-          <div className="md:hidden my-32 relative" />
+          <div className="lg:hidden my-32 relative" />
         </Section>
         <Suspense>
           {/* Hidden on Mobile */}
           <section className="py-18 mb-12 page-container relative hidden">
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               <h4 className="text-base leading-6 font-semibold tracking-[0.08em]">
                 Enjoy with
               </h4>

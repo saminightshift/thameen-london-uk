@@ -3,8 +3,8 @@ import Parser from '../../lib/utils';
 export function ProductInfo({content}) {
   return (
     <>
-      <div className="w-full flex flex-col border-b-[1px] border-black text-black font-semibold text-left inner-block text-base">
-        <span style={{padding: '0 100px'}}>
+      <div className="w-full flex flex-col border-b-[1px] border-black text-black font-semibold text-left inner-block text-base ">
+        <span className="product-padding">
           Two complimentary samples with your purchase.
         </span>
       </div>
