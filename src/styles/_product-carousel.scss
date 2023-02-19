@@ -28,6 +28,9 @@
   }
 }
 
+.mobile-slide-navigation-wrapper {
+  display: none;
+}
 
 .transactional_pane {
   box-sizing: border-box;
@@ -48,20 +51,22 @@
   padding: 0 48px 0 48px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
 
+  .mobile-slide-navigation-wrapper {
+    position: relative;
+    bottom: 40px;
+    display: block;
+  }
 
   .mobile-slide-navigation {
     display: flex;
-    background-color: #F3ECEE;
     justify-content: center;
     position: relative;
     color: black;
     text-align: center;
     z-index: 1000 !important;
-    padding: 0px 0px 18px 0px;
     vertical-align: middle;
-
   }
 
   .mobile-slide-navigation-fraction {

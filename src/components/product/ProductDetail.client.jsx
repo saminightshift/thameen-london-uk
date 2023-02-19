@@ -9,8 +9,7 @@ export function ProductDetail({title, content, learnMore}) {
     <Disclosure
       key={title}
       as="div"
-      style={{padding: '0 100px'}}
-      className="w-full gap-2 block  border-b-[1px] border-black"
+      className="w-full gap-2 block  border-b-[1px] border-black product-padding"
     >
       {/* @ts-expect-error @headlessui/react incompatibility with node16 resolution */}
       {({open}) => (

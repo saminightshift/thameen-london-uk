@@ -22,6 +22,7 @@
 
 /* Pages */
 @import './_journal.scss';
+@import './_product-page.scss';
 
 /* Animation */
 @import './_animation.scss';
@@ -212,40 +213,6 @@ shop-pay-button {
 
   .product-collection-subheading {
     @apply py-2 text-base leading-7 tracking-wide text-center md:text-md;
-  }
-
-  .product-title-price {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    line-height: 28.8px;
-  }
-
-  .product-type {
-    font-size: 18px;
-    line-height: 21.6px;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-  }
-
-  .product-variant-selection {
-    font-size: 18px !important;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    line-height: 21.6px;
-  }
-
-  .product-information {
-    @apply text-base capitalize;
-  }
-
-  .product-description {
-    @apply text-sm md:text-base;
-
-    span > * {
-      padding: 0 100px;
-    }
   }
 
   .footer-heading {
