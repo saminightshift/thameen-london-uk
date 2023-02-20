@@ -99,30 +99,36 @@ function AuthenticatedAccount({
       <Suspense>
         <Seo type="noindex" data={{title: 'Account details'}} />
       </Suspense>
-      <PageHeader heading={heading}>
-        <LogoutButton>Sign out</LogoutButton>
-      </PageHeader>
-      {orders && <AccountOrderHistory orders={orders} />}
-      <AccountDetails
-        firstName={customer.firstName}
-        lastName={customer.lastName}
-        phone={customer.phone}
-        email={customer.email}
-      />
-      <AccountAddressBook
-        defaultAddress={defaultAddress}
-        addresses={addresses}
-      />
-      {!orders && (
-        <>
-          <FeaturedCollections
-            title="Popular Collections"
-            data={featuredCollections}
-          />
-          <ProductSwimlane data={featuredProducts} />
-        </>
-      )}
-      <KlaviyoIdentify customer={customer} />
+      <div className="mt-8 lg:px-12">
+        <PageHeader
+          heading={heading}
+          className="title title__lg-semibold"
+        ></PageHeader>
+        {orders && <AccountOrderHistory orders={orders} />}
+        <AccountDetails
+          firstName={customer.firstName}
+          lastName={customer.lastName}
+          phone={customer.phone}
+          email={customer.email}
+        />
+        <AccountAddressBook
+          defaultAddress={defaultAddress}
+          addresses={addresses}
+        />
+        {!orders && (
+          <>
+            <FeaturedCollections
+              title="Popular Collections"
+              data={featuredCollections}
+            />
+            <ProductSwimlane data={featuredProducts} />
+          </>
+        )}
+        <div className="flex justify-center m-auto">
+          <LogoutButton>Sign out</LogoutButton>
+        </div>
+        <KlaviyoIdentify customer={customer} />
+      </div>
     </Layout>
   );
 }

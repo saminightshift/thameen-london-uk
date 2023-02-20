@@ -55,6 +55,8 @@ export function AccountAddressEdit({address, defaultAddress, close}) {
     close();
   }
 
+  const [showTooltip, setShowTooltip] = useState(false);
+
   return (
     <>
       <Text className="mt-4 mb-6" as="h3" size="lead">
@@ -63,7 +65,7 @@ export function AccountAddressEdit({address, defaultAddress, close}) {
       <div className="max-w-lg">
         <form noValidate onSubmit={onSubmit}>
           {submitError && (
-            <div className="flex items-center justify-center mb-6 bg-red-100 rounded">
+            <div className="flex items-center justify-center mb-6 bg-red-100">
               <p className="m-4 text-sm text-red-900">{submitError}</p>
             </div>
           )}
@@ -219,10 +221,40 @@ export function AccountAddressEdit({address, defaultAddress, close}) {
               placeholder="Phone"
               aria-label="Phone"
               value={phone}
+              onClick={() => {
+                setShowTooltip(true);
+              }}
+              onBlur={() => {
+                setShowTooltip(false);
+              }}
+              onFocus={() => {
+                setShowTooltip(true);
+              }}
               onChange={(event) => {
                 setPhone(event.target.value);
               }}
             />
+            {showTooltip && (
+              <div className="absolute z-100 left-1/2 transform -translate-x-1/2 mt-2 p-2 bg-gray-100  shadow-lg">
+                <svg
+                  className="absolute z-10  bottom-[112px] rotate-180 "
+                  width={16}
+                  height={10}
+                  viewBox="0 0 16 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 10L0 0L16 1.41326e-06L8 10Z"
+                    fill="rgb(243, 244, 246)"
+                  />
+                </svg>
+                <span className="text text__sm">
+                  Enter a valid phone number with your area code. <br /> E.g.
+                  +44 1234 567890
+                </span>
+              </div>
+            )}
           </div>
           <div className="mt-4">
             <input
@@ -231,7 +263,7 @@ export function AccountAddressEdit({address, defaultAddress, close}) {
               name="defaultAddress"
               id="defaultAddress"
               checked={isDefaultAddress}
-              className="border-gray-500 rounded-sm cursor-pointer border-1"
+              className="bg-white text-black cursor-pointer border-1 focus:outline-none focus:ring-0 active:outline-none active:ring-0"
               onChange={() => setIsDefaultAddress(!isDefaultAddress)}
             />
             <label
@@ -241,24 +273,23 @@ export function AccountAddressEdit({address, defaultAddress, close}) {
               Set as default address
             </label>
           </div>
-          <div className="mt-8">
-            <Button
-              className="w-full rounded focus:shadow-outline"
+          <div className="mt-6">
+            <button
+              className="btn lg-btn-solid mb-2"
               type="submit"
-              variant="primary"
               disabled={saving}
             >
               Save
-            </Button>
+            </button>
           </div>
-          <div>
-            <Button
-              className="w-full mt-2 rounded focus:shadow-outline"
-              variant="secondary"
+          <div className="mb-4">
+            <button
+              type="button"
+              className="btn lg-btn-outline"
               onClick={close}
             >
               Cancel
-            </Button>
+            </button>
           </div>
         </form>
       </div>
