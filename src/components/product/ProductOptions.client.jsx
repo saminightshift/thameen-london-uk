@@ -94,7 +94,7 @@ function OptionsDropdown({values, name, handleChange}) {
                       {/* @ts-expect-error @headlessui/react incompatibility with node16 resolution */}
                       {({active}) => (
                         <div
-                          className={`text-primary w-full p-2 transition rounded flex justify-start items-center text-left cursor-pointer ${
+                          className={`text-black w-full p-2 transition rounded flex justify-start items-center text-left cursor-pointer ${
                             active ? 'bg-primary/10' : null
                           }`}
                         >

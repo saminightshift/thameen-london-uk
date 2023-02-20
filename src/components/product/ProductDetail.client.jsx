@@ -43,7 +43,7 @@ export function ProductDetail({title, content, learnMore}) {
               {learnMore && (
                 <div className="inline-block pb-4">
                   <Link
-                    className="pb-px border-b-[1px] border-primary/30 text-primary/50"
+                    className="pb-px border-b-[1px] border-primary/30 text-black/50"
                     to={learnMore}
                   >
                     Learn more

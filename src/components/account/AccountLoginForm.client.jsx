@@ -228,7 +228,7 @@ function PasswordField({password, setPassword, passwordError}) {
       <div className="flex items-center justify-between mt-4">
         <div className="flex-1"></div>
         <Link
-          className="inline-block align-baseline text-sm text-primary/50"
+          className="inline-block align-baseline text-sm text-black/50"
           to="/account/recover"
         >
           Forgot password

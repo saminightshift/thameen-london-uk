@@ -271,7 +271,7 @@ export default function OrderDetails({response}) {
                 className={`mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto ${
                   order.fulfillmentStatus === 'FULFILLED'
                     ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/20 text-primary/50'
+                    : 'bg-primary/20 text-black/50'
                 }`}
               >
                 <Text size="fine">
