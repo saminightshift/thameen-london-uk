@@ -1,8 +1,9 @@
 .title {
   font-weight: 600;
   text-transform: uppercase;
+}
 
-  .title__lg-semibold {
+.title__lg-semibold {
     font-size: 1.5rem;
     line-height: 30px;
     letter-spacing: 0.12em;
@@ -21,7 +22,21 @@
     letter-spacing: 0.16em;
   }
 
+  .title__md-semibold {
+    font-size: 1.125rem;
+    line-height: 24px;
+    letter-spacing: 0.16em;
+  }
+
   .title__sm {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.16em;
+  }
+
+  .title__sm-semibold {
+    font-weight: 600;
     font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.16em;
@@ -32,14 +47,14 @@
     line-height: 20px;
     letter-spacing: 0.16em;
   }
-}
 
 .text {
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.08em;
+}
 
-  .text__sm {
+.text__sm {
     font-size: 0.875rem;
     line-height: 20px;
   }
@@ -65,5 +80,3 @@
     font-size: 1.125rem;
     line-height: 24px;
   }
-
-}

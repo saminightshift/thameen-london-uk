@@ -61,3 +61,23 @@
 [data-testid="form-component"]:nth-of-type(1) {
   padding: 0 !important;
 }
+
+.default-input {
+  border: 1px solid black;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.08em;
+  color: #000000;
+  padding: 12px;
+  width: 100%;
+
+  &::placeholder {
+    color: #000000;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    @apply focus:outline-none focus:ring-0 focus:placeholder:opacity-0 duration-75 active:outline-none active:ring-0 active:placeholder:opacity-0;
+    border: 1px solid black;
+  }
+}

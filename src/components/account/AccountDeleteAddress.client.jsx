@@ -17,29 +17,24 @@ export function AccountDeleteAddress({addressId, close}) {
 
   return (
     <>
-      <Text className="mb-4" as="h3" size="lead">
+      <Text className="mb-4 title title__md-semibold" as="h3" size="lead">
         Confirm removal
       </Text>
-      <Text as="p">Are you sure you wish to remove this address?</Text>
+      <Text as="p" className="text text__md">
+        Are you sure you wish to remove this address?
+      </Text>
       <div className="mt-6">
-        <Button
-          className="text-sm"
+        <button
+          className="btn lg-btn-solid"
           onClick={() => {
             deleteAddress(addressId);
           }}
-          variant="primary"
-          width="full"
         >
           Confirm
-        </Button>
-        <Button
-          className="text-sm mt-2"
-          onClick={close}
-          variant="secondary"
-          width="full"
-        >
+        </button>
+        <button className="btn lg-btn-outline mt-2" onClick={close}>
           Cancel
-        </Button>
+        </button>
       </div>
     </>
   );

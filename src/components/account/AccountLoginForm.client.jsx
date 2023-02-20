@@ -68,7 +68,7 @@ export function AccountLoginForm({shopName}) {
   return (
     <div className="flex justify-center my-24 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl">Sign in.</h1>
+        <h1 className="title title__lg-semibold">Sign in</h1>
         <form noValidate className="pt-6 pb-8 mt-4 mb-4" onSubmit={onSubmit}>
           {hasSubmitError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
@@ -129,7 +129,7 @@ function EmailField({email, setEmail, emailError, shopName}) {
     <>
       <div className="mb-3">
         <input
-          className={`mb-1 ${getInputStyleClasses(emailError)}`}
+          className={`default-input ${getInputStyleClasses(emailError)}`}
           id="email"
           name="email"
           type="email"
@@ -151,15 +151,12 @@ function EmailField({email, setEmail, emailError, shopName}) {
         )}
       </div>
       <div className="flex items-center justify-between">
-        <button
-          className="bg-primary rounded text-contrast py-2 px-4 focus:shadow-outline block w-full"
-          type="submit"
-        >
+        <button className="btn lg-btn-solid-100" type="submit">
           Next
         </button>
       </div>
       <div className="flex items-center mt-8 border-t  border-gray-300">
-        <p className="align-baseline text-sm mt-6">
+        <p className="align-baseline text text__md mt-6">
           New to {shopName}? &nbsp;
           <Link className="inline underline" to="/account/register">
             Create an account
@@ -185,7 +182,7 @@ function ValidEmail({email, resetForm}) {
       </div>
       <div>
         <button
-          className="inline-block align-baseline text-sm underline"
+          className="underline text text__md"
           type="button"
           onClick={resetForm}
         >
@@ -224,10 +221,7 @@ function PasswordField({password, setPassword, passwordError}) {
         )}
       </div>
       <div className="flex items-center justify-between">
-        <button
-          className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
-          type="submit"
-        >
+        <button className="btn lg-btn-solid-100" type="submit">
           Sign in
         </button>
       </div>

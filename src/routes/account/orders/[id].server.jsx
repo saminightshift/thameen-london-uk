@@ -63,7 +63,9 @@ export default function OrderDetails({response}) {
       </Suspense>
       <PageHeader heading={`Order detail`}>
         <Link to="/account">
-          <Text color="subtle">Return to Account Overview</Text>
+          <Text className="underline text text__md">
+            Return to Account Overview
+          </Text>
         </Link>
       </PageHeader>
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
@@ -139,9 +141,6 @@ export default function OrderDetails({response}) {
                             <Heading size="copy" format as="h3">
                               {lineItem.title}
                             </Heading>
-                            <Text size="fine" className="mt-1">
-                              {lineItem.variant.title}
-                            </Text>
                           </dd>
                           <dt className="sr-only">Price</dt>
                           <dd className="truncate sm:hidden">
@@ -218,24 +217,7 @@ export default function OrderDetails({response}) {
                     <Money data={order.subtotalPriceV2} />
                   </td>
                 </tr>
-                <tr>
-                  <th
-                    scope="row"
-                    colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
-                  >
-                    Tax
-                  </th>
-                  <th
-                    scope="row"
-                    className="pt-4 pr-3 font-normal text-left sm:hidden"
-                  >
-                    <Text>Tax</Text>
-                  </th>
-                  <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
-                    <Money data={order.totalTaxV2} />
-                  </td>
-                </tr>
+
                 <tr>
                   <th
                     scope="row"

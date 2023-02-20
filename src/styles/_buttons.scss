@@ -29,7 +29,8 @@
   }
 
   .lg-btn-solid {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     justify-content: center !important;
     background-color: black;
     color: white;
@@ -59,7 +60,7 @@
   }
 
   .lg-btn-outline {
-    width: 360px;
+    width: 100%;
     justify-content: center !important;
     text-align: center !important;
     background-color: transparent;

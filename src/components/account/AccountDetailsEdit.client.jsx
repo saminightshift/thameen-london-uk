@@ -99,14 +99,16 @@ export function AccountDetailsEdit({
     close();
   }
 
+  const [showTooltip, setShowTooltip] = useState(false);
+
   return (
     <>
-      <Text className="mt-4 mb-6" as="h3" size="lead">
+      <Text className="mt-4 mb-6 title title__md-semibold " as="h3" size="lead">
         Update your profile
       </Text>
       <form noValidate onSubmit={onSubmit}>
         {submitError && (
-          <div className="flex items-center justify-center mb-6 bg-red-100 rounded">
+          <div className="flex items-center justify-center mb-6 bg-red-100">
             <p className="m-4 text-sm text-red-900">{submitError}</p>
           </div>
         )}
@@ -147,13 +149,39 @@ export function AccountDetailsEdit({
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="Mobile"
+            placeholder="Phone number"
             aria-label="Mobile"
             value={phone}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => {
+              setShowTooltip(false);
+            }}
+            onClick={() => setShowTooltip(true)}
             onChange={(event) => {
               setPhone(event.target.value);
             }}
           />
+          {showTooltip && (
+            <div className="absolute z-100 left-1/2 transform -translate-x-1/2 mt-2 p-2 bg-gray-100  shadow-lg">
+              <svg
+                className="absolute z-10  bottom-[112px] rotate-180 "
+                width={16}
+                height={10}
+                viewBox="0 0 16 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 10L0 0L16 1.41326e-06L8 10Z"
+                  fill="rgb(243, 244, 246)"
+                />
+              </svg>
+              <span className="text text__sm">
+                Enter a valid phone number with your area code. <br /> E.g. +44
+                1234 567890
+              </span>
+            </div>
+          )}
         </div>
         <div className="mt-3">
           <input
@@ -176,7 +204,11 @@ export function AccountDetailsEdit({
             {emailError} &nbsp;
           </p>
         </div>
-        <Text className="mb-6 mt-6" as="h3" size="lead">
+        <Text
+          className="mb-6 mt-6 title title__md-semibold"
+          as="h3"
+          size="lead"
+        >
           Change your password
         </Text>
         <Password
@@ -195,9 +227,7 @@ export function AccountDetailsEdit({
           passwordError={newPassword2Error}
         />
         <Text
-          size="fine"
-          color="subtle"
-          className={`mt-1 ${
+          className={`mt-2 text text__sm ${
             currentPasswordError || newPasswordError ? 'text-red-500' : ''
           }`}
         >
@@ -213,26 +243,18 @@ export function AccountDetailsEdit({
           {newPassword2Error} &nbsp;
         </Text>
         <div className="mt-6">
-          <Button
-            className="text-sm mb-2"
-            variant="primary"
-            width="full"
+          <button
+            className="btn lg-btn-solid mb-2"
             type="submit"
             disabled={saving}
           >
             Save
-          </Button>
+          </button>
         </div>
         <div className="mb-4">
-          <Button
-            type="button"
-            className="text-sm"
-            variant="secondary"
-            width="full"
-            onClick={close}
-          >
+          <button type="button" className="btn lg-btn-outline" onClick={close}>
             Cancel
-          </Button>
+          </button>
         </div>
       </form>
     </>

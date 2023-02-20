@@ -22,11 +22,13 @@ export function AccountDetails({firstName, lastName, phone, email}) {
           />
         </Modal>
       ) : null}
-      <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h3 className="font-bold text-lead">Account Details</h3>
+      <div className="grid w-full gap-4 p-4 py-6 ">
+        <h3 className="title title__md-semibold">Account Details</h3>
         <div className="lg:p-8 p-6 border border-gray-200 rounded">
           <div className="flex">
-            <h3 className="font-bold text-base flex-1">Profile & Security</h3>
+            <h3 className="title title__sm-semibold flex-1">
+              Profile & Security
+            </h3>
             <button
               className="underline text-sm font-normal"
               onClick={() => setIsEditing(true)}
@@ -34,21 +36,25 @@ export function AccountDetails({firstName, lastName, phone, email}) {
               Edit
             </button>
           </div>
-          <div className="mt-4 text-sm text-primary/50">Name</div>
-          <p className="mt-1">
-            {firstName || lastName
-              ? (firstName ? firstName + ' ' : '') + lastName
-              : 'Add name'}{' '}
-          </p>
 
-          <div className="mt-4 text-sm text-primary/50">Contact</div>
-          <p className="mt-1">{phone ?? 'Add mobile'}</p>
-
-          <div className="mt-4 text-sm text-primary/50">Email address</div>
-          <p className="mt-1">{email}</p>
-
-          <div className="mt-4 text-sm text-primary/50">Password</div>
-          <p className="mt-1">**************</p>
+          <div className="grid grid-cols-2 text text__md mt-4">
+            <div className="font-semibold space-y-4">
+              <div>Name</div>
+              <div>Contact</div>
+              <div>Email</div>
+              <div>Password</div>
+            </div>
+            <div className="font-normal space-y-4">
+              <div>
+                {firstName || lastName
+                  ? (firstName ? firstName + ' ' : '') + lastName
+                  : 'Add name'}{' '}
+              </div>
+              <div>{phone ?? 'Add mobile'}</div>
+              <div>{email}</div>
+              <div>**************</div>
+            </div>
+          </div>
         </div>
       </div>
     </>
