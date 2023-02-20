@@ -37,7 +37,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="card-image aspect-[1/1] cursor-pointer">
+        <div className="card-image cursor-pointer">
           <h4 className="card-label">{cardLabel}</h4>
           {image && (
             <Image

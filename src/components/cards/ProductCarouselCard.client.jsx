@@ -59,7 +59,7 @@ export function ProductCarouselCard({product, label, loading, onClick}) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className="grid gap-2">
-        <div className="card-image aspect-[1/1] cursor-pointer">
+        <div className="card-image cursor-pointer w-full min-w-[20px]">
           <h4 className="absolute top-0 left-0 m-4 max-w-prose whitespace-pre-wrap text-xs super-tracking leading-5 rotate-90 uppercase font-bold text-black">
             {cardLabel}
           </h4>
