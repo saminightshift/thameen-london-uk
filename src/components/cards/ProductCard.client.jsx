@@ -41,7 +41,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
           <h4 className="card-label">{cardLabel}</h4>
           {image && (
             <Image
-              className="w-full object-contain mix-blend-multiply mt-[8rem] mb-[2rem]"
+              className="w-full object-contain mix-blend-multiply mt-[4rem] "
               width={[400]}
               height={400}
               sizes="320px"
@@ -59,7 +59,7 @@ export function ProductCard({product, label, className, loading, onClick}) {
             />
           )}
         </div>
-        <div className="relative top-4 py-2">
+        <div className="relative">
           <h3 className="text-center font-semibold text-black text-xs md:text-sm super-tracking leading-5 uppercase">
             {product.title}
           </h3>

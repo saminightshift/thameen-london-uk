@@ -105,7 +105,7 @@ export function ProductGrid({url, collection}) {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {filteredProducts.map((product, i) => (
             <div
-              className="col-span-1 h-[473px] max-w-[355px] w-full bg-[#F3ECEE]"
+              className="col-span-1 min-h-[400px] sm:min-h-[450px] md:min-h-[350px] lg:min-h-[400px] xl:min-h-[450px] max-w-[355px] w-full bg-[#F3ECEE]"
               key={product.id}
             >
               <ProductCard
