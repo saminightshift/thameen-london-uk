@@ -71,7 +71,7 @@ function CartLineQuantityAdjust({lineId, quantity}) {
         <CartLineQuantityAdjustButton
           adjust="decrease"
           aria-label="Decrease quantity"
-          className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:cursor-wait"
+          className="w-10 h-10 transition text-black/50 hover:text-black disabled:cursor-wait"
         >
           &#8722;
         </CartLineQuantityAdjustButton>
@@ -79,7 +79,7 @@ function CartLineQuantityAdjust({lineId, quantity}) {
         <CartLineQuantityAdjustButton
           adjust="increase"
           aria-label="Increase quantity"
-          className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:cursor-wait"
+          className="w-10 h-10 transition text-black/50 hover:text-black disabled:cursor-wait"
         >
           &#43;
         </CartLineQuantityAdjustButton>
