@@ -112,6 +112,7 @@
     .left-caret {
       left: 200px !important;
       margin-bottom: 55px;
+      display: none;
 
       svg {
         width: 15px;
@@ -119,6 +120,7 @@
       }
     }
     .right-caret {
+      display: none;
       right: 200px !important;
       margin-bottom: 55px;
       svg {
