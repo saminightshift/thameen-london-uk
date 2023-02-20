@@ -19,9 +19,11 @@ export default function HomepageProductsSwiper({props, children}) {
     lazy: {enabled: true},
     breakpoints: {
       768: {
-        spaceBetween: 16,
         observer: true,
         observeParents: true,
+        direction: 'horizontal',
+        grid: {rows: 1},
+        slidesPerView: 2,
       },
       1024: {
         observer: true,
