@@ -131,7 +131,7 @@ function Address({address, defaultAddress, editAddress, setDeletingAddress}) {
         </button>
         <button
           onClick={setDeletingAddress}
-          className="text-left text-primary/50 ml-6 text text__sm"
+          className="text-left text-black/50 ml-6 text text__sm"
         >
           Remove
         </button>

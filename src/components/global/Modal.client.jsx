@@ -22,7 +22,7 @@ export function Modal({children, close}) {
             <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
               <button
                 type="button"
-                className="p-4 -m-4 transition text-primary hover:text-primary/50"
+                className="p-4 -m-4 transition text-black hover:text-black/50"
                 onClick={close}
               >
                 <IconClose aria-label="Close panel" />
