@@ -3,8 +3,8 @@ import {Button, Text, OrderCard} from '~/components';
 export function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
-      <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h2 className="font-bold text-lead">Order History</h2>
+      <div className="grid w-full gap-4 p-4 py-6">
+        <h2 className="title title__md-semibold">Order History</h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -14,13 +14,11 @@ export function AccountOrderHistory({orders}) {
 function EmptyOrders() {
   return (
     <div>
-      <Text className="mb-1" size="fine" width="narrow" as="p">
+      <Text className="mb-4 text text__md" as="p">
         You haven&apos;t placed any orders yet.
       </Text>
-      <div className="w-48">
-        <Button className="text-sm mt-2 w-full" variant="secondary" to={'/'}>
-          Start Shopping
-        </Button>
+      <div className="my-2">
+        <button className="btn lg-btn-solid">Start Shopping</button>
       </div>
     </div>
   );
