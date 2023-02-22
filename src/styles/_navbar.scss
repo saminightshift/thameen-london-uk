@@ -1,16 +1,46 @@
 .module__nav {
   box-sizing: border-box;
-  padding-top: 1.25rem;
   position: relative;
   z-index: 100;
+  width: 100%;
+  display: flex;
+  margin: 1rem auto;
   background-color: transparent;
-  transition: background-color 1s ease-in-out;
-    color: white;
+
 
     &:hover {
-      background-color: white;
-      transition: background-color 1s ease-in-out;
-      color: black;
+      .brand-logo {
+        filter: invert(0%) !important;
+      }
+
+      #nav_icons {
+        svg {
+          circle {
+            stroke: #000000;
+          }
+          path {
+            stroke: #000000;
+          }
+          rect {
+            stroke: #000000;
+          }
+        }
+        animation: fadeIn 500ms ease-in-out  forwards;
+
+        
+      }
+
+      color: #000000;
+      animation: fadeIn, 700ms ease-in-out forwards;
+      
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
       
     }
 
@@ -24,7 +54,21 @@
       z-index: 100;
     }
 
+}
+
+.navbar-block {
+  width: 100%;
+  max-width: 60rem;
+}
+
     .nav-items {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      vertical-align: middle;
+      margin: 0 auto !important;
+      padding: 1rem 0 !important;
+      text-align: center !important;
       @apply xl:text-base;
 
       .nav-link {
@@ -39,7 +83,7 @@
           height: 2px;
           bottom: -6px;
           left: 0;
-          background-color: #fff;
+          background-color: #000;
           transform-origin: bottom right;
           transition: transform 0.5s ease-out;
         }
@@ -47,9 +91,68 @@
         .nav-link:hover::after {
           transform: scaleX(1);
           transform-origin: bottom left;
+          color: #000000;
         }
       }
+
+
+ .menu-panel-content:first-of-type {
+  position: relative;
+  left: 30px;
+  gap: 9rem;
+
+  #frag-col-2 {
+    position: relative;
+    left: -7px;
+  }
+ }
+
+ #gift-panel {
+  position: relative;
+  left: 313px !important;
+  gap: 9rem;
+ }
+  
+.gifting {
+  position: relative;
+  left: 300px !important;
 }
+
+.gift-panel {
+  height: 210px !important;
+}
+
+    .menu-panel-content {
+
+      position: relative;
+      left: 76px;
+      gap: 5.5rem;
+      
+      /* fade text in */
+      opacity: 0;
+      animation: fadeIn 400ms ease-in-out forwards;
+      animation-delay: 400ms;
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+    }
+
+    .collections {
+      position: relative;
+    }
+
+    .last-frag-col {
+      position: relative;
+      right: 20px;
+    }
+
 
  /* #Mega Menu Styles
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -220,4 +323,14 @@
 
 .inverted {
   filter: invert(100%) !important;
+}
+
+
+.mobile__nav {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  background-color: transparent;
 }
