@@ -6,6 +6,7 @@ import {CartDrawer} from './CartDrawer.client';
 import {MenuDrawer} from './MenuDrawer.client';
 import {useDrawer} from './Drawer.client';
 
+import {DesktopNavigation} from './DesktopNavigation.client';
 import {NewsFlashBanner} from '../newsflash/NewsFlashBanner';
 
 export function Header({title, menu}) {
@@ -47,7 +48,14 @@ export function Header({title, menu}) {
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
       <NewsFlashBanner isHome={isHome} />
-      <DesktopHeader
+      <DesktopNavigation
+        menu={menu}
+        openCart={openCart}
+        isHome={isHome}
+        isJournal={isJournal}
+        countryCode={countryCode}
+      />
+      <MobileNavigation
         isHome={isHome}
         isJournal={isJournal}
         title={title}
@@ -59,7 +67,7 @@ export function Header({title, menu}) {
   );
 }
 
-function DesktopHeader({
+function MobileNavigation({
   isHome,
   isJournal,
   menu,
@@ -92,9 +100,9 @@ function DesktopHeader({
 
   return (
     <>
-      <header className="items-center w-full">
+      <header className="items-center w-full flex md:hidden">
         <div
-          className={`module__nav bg-transparent  flex justify-center px-[1.125rem]  md:px-12 w-full border-b-0 h-[72px] lg:h-auto items-center hoverNav text-black align-middle ${
+          className={`mobile__nav bg-transparent  flex justify-center px-[1.125rem] w-full border-0 h-[72px] items-center  text-black align-middle ${
             !isVisible ? 'fade-out' : 'fade-in'
           } ${
             isHome || isJournal ? 'text-white hover:text-black' : 'text-black'
@@ -103,164 +111,35 @@ function DesktopHeader({
           id="pageHeader"
         >
           <div className="max-w-screen-3xl w-full sticky">
-            <div className="nav-block flex lg:flex-basis justify-between w-full items-center py-3 mx-auto left-0 right-0">
-              {/* Desktop Logo */}
-              <div className="hidden lg:flex items-center body-mini-semibold uppercase hover:border-b-1 z-40">
-                <a
-                  href="/"
-                  className="mr-4 hidden lg:block"
-                  aria-label="Thameen London"
-                >
-                  <div className="flex items-center">
-                    {isHome || isJournal ? (
-                      <img
-                        src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
-                        alt="Thameen London"
-                        width={284}
-                        height={45}
-                        className="brand-logo"
-                      />
-                    ) : (
-                      <img
-                        src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
-                        alt="Thameen London"
-                        width={284}
-                        height={45}
-                      />
-                    )}
-                  </div>
-                  <span className="sr-only">Thameen London</span>
-                </a>
-              </div>
+            <div className="nav-block flex justify-between w-full items-center py-3 mx-auto left-0 right-0">
               {/* Mobile Logo */}
-              <div className="lg:hidden flex items-center">
+              <div className="flex items-center">
                 <a href="/" className="mr-4 block" aria-label="Thameen London">
                   {isHome || isJournal ? (
                     <img
                       src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                       alt="Thameen London"
-                      width={200}
-                      height={100}
+                      width={160}
+                      height={25}
                       className="brand-logo"
                     />
                   ) : (
                     <img
                       src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
                       alt="Thameen London"
-                      width={200}
-                      height={100}
+                      width={160}
+                      height={25}
                     />
                   )}
                 </a>
               </div>
 
-              <div className="justify-between m-auto left-0 right-0 text-center hidden lg:flex">
-                {isHome || isJournal ? (
-                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-base z-40">
-                    {/* Top level menu items */}
-                    {(menu?.items || []).map((item, index) => (
-                      <div className="hoverable hover:text-black" key={item.id}>
-                        {/* Check if items have children */}
-                        {(item?.items || []).length > 0 ? (
-                          <span className="uppercase font-semibold cursor-pointer">
-                            <span className="nav-link">{item.title}</span>
-
-                            <div className="mega-menu">
-                              {/* SubMenu Items */}
-                              <div
-                                className={`${`menu-${index}`} mega-menu__inner shadow-lg`}
-                              >
-                                <ul
-                                  className={`${`grid-${index}`} grid grid-cols-3 gap-0 mega-menu__list `}
-                                >
-                                  {item.items.map((subItem) => (
-                                    <div key={subItem.id}>
-                                      <li className="mega-menu__item">
-                                        <Link
-                                          to={subItem.to}
-                                          className="mega-menu__link"
-                                        >
-                                          {subItem.title}
-                                        </Link>
-                                      </li>
-                                    </div>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </span>
-                        ) : (
-                          <Link
-                            to={item.to}
-                            target={item.target}
-                            className="nav-link"
-                          >
-                            <span className="uppercase tracking-wider font-semibold">
-                              {item.title}
-                            </span>
-                          </Link>
-                        )}
-                      </div>
-                    ))}
-                  </nav>
-                ) : (
-                  <nav className="flex nav-items lg:gap-[4rem] xl:gap-[7rem] uppercase font-semibold text-xs z-40">
-                    {/* Top level menu items */}
-                    {(menu?.items || []).map((item, index) => (
-                      <div className="hoverable text-black" key={item.id}>
-                        {/* Check if items have children */}
-                        {(item?.items || []).length > 0 ? (
-                          <span className="uppercase tracking-wider font-semibold cursor-pointer">
-                            <span className="nav-link text-black">
-                              {item.title}
-                            </span>
-
-                            <div className="mega-menu">
-                              {/* SubMenu Items */}
-                              <div
-                                className={`${`menu-${index}`} mega-menu__inner shadow-lg`}
-                              >
-                                <ul
-                                  className={`${`grid-${index}`} grid grid-cols-3 gap-0 mega-menu__list `}
-                                >
-                                  {item.items.map((subItem) => (
-                                    <div key={subItem.id}>
-                                      <li className="mega-menu__item text-black">
-                                        <Link
-                                          to={subItem.to}
-                                          className="mega-menu__link text-black"
-                                        >
-                                          {subItem.title}
-                                        </Link>
-                                      </li>
-                                    </div>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </span>
-                        ) : (
-                          <Link
-                            to={item.to}
-                            target={item.target}
-                            className="nav-link"
-                          >
-                            <span className="uppercase tracking-wider font-semibold">
-                              {item.title}
-                            </span>
-                          </Link>
-                        )}
-                      </div>
-                    ))}
-                  </nav>
-                )}
-              </div>
               {/* Mobile Icons */}
               {isHome || isJournal ? (
-                <div className="flex lg:hidden">
+                <div className="flex align-middle justify-end my-2">
                   <form
                     action={`/${countryCode ? countryCode + '/' : ''}search`}
-                    className="items-center gap-2 sm:flex"
+                    className="items-center gap-2 flex"
                   >
                     <button
                       type="submit"
@@ -284,10 +163,10 @@ function DesktopHeader({
                   </button>
                 </div>
               ) : (
-                <div className="flex lg:hidden">
+                <div className="flex align-middle justify-end my-2">
                   <form
                     action={`/${countryCode ? countryCode + '/' : ''}search`}
-                    className="items-center gap-2 sm:flex"
+                    className="items-center gap-2 flex"
                   >
                     <button
                       type="submit"
@@ -311,68 +190,6 @@ function DesktopHeader({
                       className="w-6 h-6 text-black"
                       onClick={openMenu}
                     />
-                  </button>
-                </div>
-              )}
-
-              {/* Desktop Icons */}
-              {isHome || isJournal ? (
-                <div className="hidden lg:flex justify-end">
-                  <form
-                    action={`/${countryCode ? countryCode + '/' : ''}search`}
-                  >
-                    <button
-                      type="submit"
-                      className="hidden lg:flex items-center mr-2 p-2"
-                    >
-                      <IconSearch />
-                    </button>
-                  </form>
-                  <Link
-                    to="/account"
-                    className="items-center mr-2 relative hover:border-white p-2"
-                    aria-expanded="false"
-                    aria-label="Account"
-                  >
-                    <IconAccount />
-                  </Link>
-                  <button
-                    onClick={openCart}
-                    className="hidden lg:flex items-center p-2"
-                  >
-                    <IconBag />
-                    <CartBadge />
-                  </button>
-                </div>
-              ) : (
-                <div className="hidden lg:flex justify-end">
-                  <form
-                    action={`/${countryCode ? countryCode + '/' : ''}search`}
-                  >
-                    <button
-                      type="submit"
-                      className="hidden lg:flex items-center mr-2 p-2"
-                    >
-                      <IconSearchDark />
-                    </button>
-                  </form>
-
-                  <Link
-                    to="/account"
-                    className="items-center mr-2 relative hover:border-white p-2 "
-                    aria-expanded="false"
-                    aria-label="Account"
-                  >
-                    <IconAccountDark />
-                  </Link>
-                  <button
-                    onClick={openCart}
-                    className="hidden lg:flex items-center p-2"
-                  >
-                    <span className="">
-                      <IconBagDark />
-                    </span>
-                    <CartBadge />
                   </button>
                 </div>
               )}
@@ -402,8 +219,8 @@ function CartBadge() {
 function IconAccount() {
   return (
     <svg
-      width="24"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -443,8 +260,8 @@ function IconAccountDark() {
 function IconBag() {
   return (
     <svg
-      width="24"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -471,8 +288,8 @@ function IconBag() {
 function IconBagDark() {
   return (
     <svg
-      width="24"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -498,8 +315,8 @@ function IconBagDark() {
 function IconSearch() {
   return (
     <svg
-      width="24"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -516,8 +333,8 @@ function IconSearch() {
 function IconSearchDark() {
   return (
     <svg
-      width="24"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

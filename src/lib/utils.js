@@ -20,7 +20,6 @@ export function useRenderServerComponents() {
 }
 
 
-
 export function formatText(input) {
   if (!input) {
     return;

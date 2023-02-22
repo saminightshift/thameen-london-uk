@@ -67,8 +67,8 @@ export function Hero(data) {
           id: '3_720x1080',
         },
       ],
-      title: 'our latest fragrance',
-      cta: 'shop insignia',
+      title: 'Representing an aura of a British heirloom',
+      cta: 'Insignia',
       handle: '/products/insignia-50ml-extrait-de-parfum',
     },
     {
@@ -89,6 +89,44 @@ export function Hero(data) {
       title: 'pure elegance',
       cta: 'shop the regal collection',
       handle: '/collections/regal-collection',
+    },
+    {
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-5.webp?v=1677106663',
+          width: 3200,
+          height: 1800,
+          id: '5_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-5.webp?v=1677106662',
+          width: 720,
+          height: 1080,
+          id: '5_720x1080',
+        },
+      ],
+      title: 'Taif Rose immortalises the legendary throne',
+      cta: 'Peacock Throne',
+      handle: '/products/peacock-throne-50ml-extrait-de-parfum',
+    },
+    {
+      images: [
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_3200x1800px-6.webp?v=1677106663',
+          width: 3200,
+          height: 1800,
+          id: '6_3200X1800',
+        },
+        {
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-6.webp?v=1677106662',
+          width: 720,
+          height: 1080,
+          id: '6_720x1080',
+        },
+      ],
+      title: 'Sensual and seductive with a glorious white floral',
+      cta: 'Peregrina',
+      handle: '/products/peregrina-100ml-extrait-de-parfum',
     },
   ];
 
