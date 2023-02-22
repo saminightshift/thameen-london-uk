@@ -20,9 +20,6 @@ metafields-reference.md
 
 # Development TODO's:
 
-- Fix Desktop Nav and implement styles from designs ✅
 - Add Gift Wrapping
-- Make The Rose & Sparkling Opal direct to their respective external sales pages ✅
-- Add carousel on product pages dependent on collection/product
 - Better format Journal page
 - Framer SVG loader - reimplement - svg load effecting lighthouse scoring
