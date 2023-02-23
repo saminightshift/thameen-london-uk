@@ -195,7 +195,7 @@ export function navigationPanelEffects() {
 
       fragrancesButton.addEventListener('mouseleave', () => {
         const svg = document.querySelectorAll('[data-source="svg-img]');
-        const all = [fragranceList, collectionList, giftingList];
+        const all = [collectionList, giftingList];
         if (svg) {
           all.forEach(target => {
             target.style.animation = 'fade-out 2s ease-in-out';
