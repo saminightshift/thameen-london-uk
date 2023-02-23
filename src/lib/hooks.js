@@ -175,35 +175,35 @@ export function navigationPanelEffects() {
       targetDiv.classList.add('hidden');
     });
       
-      // journalButton.addEventListener('mouseenter', () => {
-      //   const targets = [fragranceList, collectionList, giftingList, document.querySelector('[data-target="mega-menu]')]
-      //   targets.forEach(target => {
-      //     target.style.animation = 'fade-out 2s ease-in-out';
-      //     target.classList.add('hidden');
-      //   });
-      // });
+      journalButton.addEventListener('mouseenter', () => {
+        const targets = [fragranceList, collectionList, giftingList]
+        targets.forEach(target => {
+          target.style.animation = 'fade-out 2s ease-in-out';
+          target.classList.add('hidden');
+        });
+      });
 
 
-      // journalButton.addEventListener('mouseleave', () => {
-      //   if ([fragranceList, collectionList, giftingList])  {
-      //     const targetDiv = document.getElementById('mega-menu');
-      //     targetDiv.style.animation = 'slide-down 2s ease-in-out';
-      //     targetDiv.style.top = '0rem';
-      //     targetDiv.classList.add('duration-700');
-      //   };
-      // });
+      journalButton.addEventListener('mouseleave', () => {
+        if ([fragranceList, collectionList, giftingList])  {
+          const targetDiv = document.getElementById('mega-menu');
+          targetDiv.style.animation = 'slide-down 2s ease-in-out';
+          targetDiv.style.top = '0rem';
+          targetDiv.classList.add('duration-700');
+        };
+      });
 
-      // fragrancesButton.addEventListener('mouseleave', () => {
-      //   const svg = document.querySelectorAll('[data-source="svg-img]');
-      //   const all = [fragranceList, collectionList, giftingList];
-      //   if (svg) {
-      //     all.forEach(target => {
-      //       target.style.animation = 'fade-out 2s ease-in-out';
-      //     target.classList.add('hidden');
-      //     })
-      //   }
+      fragrancesButton.addEventListener('mouseleave', () => {
+        const svg = document.querySelectorAll('[data-source="svg-img]');
+        const all = [fragranceList, collectionList, giftingList];
+        if (svg) {
+          all.forEach(target => {
+            target.style.animation = 'fade-out 2s ease-in-out';
+          target.classList.add('hidden');
+          })
+        }
 
-      // });
+      });
 
         
   }, []);
