@@ -21,7 +21,7 @@ export function DesktopNavigation({openCart, countryCode}) {
   };
 
   return (
-    <div className="hidden md:block">
+    <div className="dektop-nav">
       <div className="group">
         <div
           className={`${
