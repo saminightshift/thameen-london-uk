@@ -8,9 +8,8 @@ export default function HomepageProductsSwiper({props, children}) {
   const swiperParameters = {
     modules: [A11y, Navigation],
     slidesPerView: 2,
-    spaceBetween: 45,
-    observer: true,
-    observeParents: true,
+    spaceBetween: 12,
+    rewind: true,
     navigation: {
       enabled: true,
       prevEl: '.product-swiper-prev',
@@ -19,77 +18,37 @@ export default function HomepageProductsSwiper({props, children}) {
     lazy: {enabled: true},
     breakpoints: {
       768: {
-        observer: true,
-        observeParents: true,
-        direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 2,
       },
       1024: {
-        observer: true,
-        observeParents: true,
-        direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 3,
         slidesPerGroup: 1,
-        centeredSlides: false,
-        spaceBetween: 32,
         initialSlide: 0,
-        rewind: false,
         speed: 300,
         navigation: {
           prevEl: '.product-swiper-prev',
           nextEl: '.product-swiper-next',
           hideOnClick: false,
         },
-        zoom: {minRatio: 1, maxRatio: 3},
-        simulateTouch: true,
-        allowSlidePrev: true,
-        allowSlideNext: true,
-        allowTouchMove: true,
-        followFinger: true,
-        longSwipes: true,
-        shortSwipes: true,
-        resistance: true,
-        resistanceRatio: 0.85,
-        threshold: 0,
-        touchRatio: 1,
       },
       1280: {
         observer: true,
         observeParents: true,
         slidesPerView: 4,
-        spaceBetween: 38,
       },
       1920: {
-        observer: true,
-        observeParents: true,
-        direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 5,
         slidesPerGroup: 1,
-        centeredSlides: false,
-        spaceBetween: 40,
         initialSlide: 0,
-        rewind: false,
         speed: 300,
         navigation: {
           prevEl: '.product-swiper-prev',
           nextEl: '.product-swiper-next',
           hideOnClick: false,
         },
-        zoom: {minRatio: 1, maxRatio: 3},
-        simulateTouch: true,
-        allowSlidePrev: true,
-        allowSlideNext: true,
-        allowTouchMove: true,
-        followFinger: true,
-        longSwipes: true,
-        shortSwipes: true,
-        resistance: true,
-        resistanceRatio: 0.85,
-        threshold: 0,
-        touchRatio: 1,
       },
     },
   };
@@ -109,7 +68,7 @@ export default function HomepageProductsSwiper({props, children}) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="navigation-wrapper">
+      <div className="navigation-wrapper -mx-0">
         <button
           className="product-button-prev"
           onClick={() => productSwiperRef.current?.slidePrev()}
@@ -130,8 +89,8 @@ export default function HomepageProductsSwiper({props, children}) {
 export function LeftCaret() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="30"
+      height="30"
       viewBox="0 0 7 13"
       fill="evenodd"
       xmlns="http://www.w3.org/2000/svg"
@@ -144,8 +103,8 @@ export function LeftCaret() {
 export function RightCaret() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="30"
+      height="30"
       viewBox="0 0 7 13"
       fill="evenodd"
       xmlns="http://www.w3.org/2000/svg"

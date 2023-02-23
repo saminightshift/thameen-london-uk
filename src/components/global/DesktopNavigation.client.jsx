@@ -402,15 +402,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                 </div>
               </div>
             </div>
-            <button
-              className="group-hover:text-black nav-items"
-              id="journal_link"
-              data-target="journal"
-            >
-              <span className="text text__md-semibold uppercase nav-link">
-                Journal
-              </span>
-            </button>
+
             <div
               id="mega-menu"
               className="absolute -top-[25rem] left-0 w-full h-[382px] overflow-hidden -z-10 duration-700 origin-top bg-white"

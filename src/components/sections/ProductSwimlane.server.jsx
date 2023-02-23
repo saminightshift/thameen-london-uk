@@ -33,7 +33,7 @@ export function ProductSwimlane({
   }, [count, data]);
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 max-w-[1920px]">
       <HomepageProductsSwiper>{productCardsMarkup}</HomepageProductsSwiper>
     </div>
   );

@@ -10,8 +10,8 @@
   .navigation-wrapper {
     position: absolute;
     margin: auto;
-    left: 48px;
-    right: 48px;
+    left: -10px !important;
+    right: -10px !important;
     bottom: calc(50% - 0px);
     z-index: 50;
     vertical-align: middle;
