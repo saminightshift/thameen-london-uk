@@ -11,12 +11,8 @@ Wide buttons for checkout
 */
 
 .page-404 {
-  background: url('https://studio.thameenlondon.com/wp-content/uploads/2023/01/404.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #383d54;
-  @apply flex flex-col justify-center items-center h-screen;
+background-color: white;
+  @apply flex flex-col justify-center items-center h-screen text-black;
     h1 {
       @apply text-6xl font-bold;
     }
@@ -27,23 +23,6 @@ Wide buttons for checkout
       @apply hover:scale-110 duration-700;
     }
   
-  @media screen and (max-width: 768px) {
-
-    background: url('https://studio.thameenlondon.com/wp-content/uploads/2023/01/404-mobile.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #383d54;
-    
-    h1 {
-      @apply text-5xl text-center m-auto left-0 right-0 mt-32;
-    }
-    p {
-      @apply text-xl m-auto left-0 right-0;
-    }
-    .btn {
-      @apply m-auto left-0 right-0;
-    }
-  }
       
 }
 

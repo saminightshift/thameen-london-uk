@@ -16,20 +16,15 @@ export function NotFound({response, type = 'page'}) {
 
   return (
     <Layout>
-      <div className="w-full h-screen top-0 bg-gray-100 text-white page-404">
+      <div className="w-full h-screen top-0 page-404">
         <PageHeader heading={heading} className="mt-32 text-center">
           <Text width="narrow" as="p">
             {subheading}
           </Text>
-          <Button
-            as="button"
-            className="btn btn-checkout"
-            width="auto"
-            variant="secondary"
-            to={'/'}
-          >
-            Continue shopping
-          </Button>
+
+          <a href="/">
+            <button className="btn lg-btn-solid mt-8">Continue Shopping</button>
+          </a>
         </PageHeader>
       </div>
     </Layout>

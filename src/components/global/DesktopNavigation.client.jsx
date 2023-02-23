@@ -142,12 +142,6 @@ export function DesktopNavigation({openCart, countryCode}) {
                     >
                       Imperial Crown
                     </Link>
-                  </div>
-
-                  <div
-                    className="flex flex-col col-start-2 col-span-1"
-                    id="frag-col-2"
-                  >
                     <Link
                       to="/products/insignia-50ml-extrait-de-parfum"
                       className="text-black"
@@ -155,12 +149,25 @@ export function DesktopNavigation({openCart, countryCode}) {
                     >
                       Insignia
                     </Link>
+                  </div>
+
+                  <div
+                    className="flex flex-col col-start-2 col-span-1"
+                    id="frag-col-2"
+                  >
                     <Link
                       to="/products/noorolain-taif-50ml-extrait-de-parfum-1"
                       className="text-black"
                       onClick={closeOnClick}
                     >
                       Noorolain Taif
+                    </Link>
+                    <Link
+                      to="/products/palace-amber-limited-edition-tester-extrait-dhuile-de-parfum"
+                      className="text-black"
+                      onClick={closeOnClick}
+                    >
+                      Palace Amber
                     </Link>
                     <Link
                       to="/products/patiala-50ml-extrait-de-parfum"
@@ -211,9 +218,6 @@ export function DesktopNavigation({openCart, countryCode}) {
                     >
                       Regent Leather
                     </Link>
-                  </div>
-
-                  <div className="flex flex-col col-start-3 col-span-1 last-frag-col">
                     <Link
                       to="/products/riviere-50ml-extrait-de-parfum"
                       className="text-black"
@@ -221,6 +225,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                     >
                       Rivière
                     </Link>
+                  </div>
+
+                  <div className="flex flex-col col-start-3 col-span-1 last-frag-col">
                     <Link
                       to="/products/royal-sapphire-50ml-extrait-de-parfum"
                       className="text-black"
@@ -290,13 +297,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                     >
                       Britologne Collection
                     </Link>
-                    <Link
-                      to="/collections/regal-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regal Collection
-                    </Link>
+
                     <Link
                       to="/collections/treasure-collection"
                       className="text-black"
@@ -310,6 +311,13 @@ export function DesktopNavigation({openCart, countryCode}) {
                       onClick={closeOnClick}
                     >
                       Sovereign Collection
+                    </Link>
+                    <Link
+                      to="/collections/regal-collection"
+                      className="text-black"
+                      onClick={closeOnClick}
+                    >
+                      Regal Collection
                     </Link>
                     <Link
                       to="/collections/exclusives"
@@ -326,13 +334,6 @@ export function DesktopNavigation({openCart, countryCode}) {
                       Hair Collection
                     </Link>
                     <Link
-                      to="/collections/baby-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Baby Collection
-                    </Link>
-                    <Link
                       to="/collections/body-collection"
                       className="text-black"
                       onClick={closeOnClick}
@@ -345,6 +346,13 @@ export function DesktopNavigation({openCart, countryCode}) {
                       onClick={closeOnClick}
                     >
                       Home Collection
+                    </Link>
+                    <Link
+                      to="/collections/baby-collection"
+                      className="text-black"
+                      onClick={closeOnClick}
+                    >
+                      Baby Collection
                     </Link>
                   </div>
                 </div>

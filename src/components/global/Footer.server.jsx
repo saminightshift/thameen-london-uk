@@ -131,6 +131,11 @@ export function Footer() {
                         </a>
                       </li>
                       <li>
+                        <a href="https://www.tiktok.com/@thameenlondon">
+                          TikTok
+                        </a>
+                      </li>
+                      <li>
                         <a href="https://linkedin.com/company/thameen-fragrance">
                           LinkedIn
                         </a>
