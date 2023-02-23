@@ -163,6 +163,13 @@ export function DesktopNavigation({openCart, countryCode}) {
                       Noorolain Taif
                     </Link>
                     <Link
+                      to="/products/palace-amber-limited-edition-tester-extrait-dhuile-de-parfum"
+                      className="text-black"
+                      onClick={closeOnClick}
+                    >
+                      Palace Amber
+                    </Link>
+                    <Link
                       to="/products/patiala-50ml-extrait-de-parfum"
                       className="text-black"
                       onClick={closeOnClick}
