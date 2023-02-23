@@ -17,12 +17,14 @@ export function Footer() {
 
   const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
+  const isOurStory = pathname === '/our-story';
+
   return (
     <>
       <footer
         aria-labelledby="footer-heading"
         className={`${
-          isHome ? '' : ' mt-8'
+          isHome || isOurStory ? '' : ' mt-8'
         } relative left-0 right-0 bottom-0 bg-black lg:bg-white`}
       >
         <h2 id="footer-heading" className="sr-only">
@@ -114,7 +116,7 @@ export function Footer() {
                 <div className="space-y-10">
                   <div>
                     <h3 className="footer-heading">
-                      <Link to="/pages/our-story">Our Story</Link>
+                      <Link to="/our-story">Our Story</Link>
                     </h3>
                   </div>
                   <div>

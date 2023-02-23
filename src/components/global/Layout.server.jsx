@@ -24,7 +24,7 @@ export function Layout({children}) {
   const {pathname} = useUrl();
 
   const isHome = pathname === `/`;
-
+  const isOurStory = pathname === `/our-story`;
   // const {customerAccessToken} = useSession();
 
   // const userLoggedIn = customerAccessToken ? true : false;
@@ -44,7 +44,7 @@ export function Layout({children}) {
           role="main"
           id="mainContent"
           className={`${
-            isHome ? 'mb-0 pb-0' : 'mb-8'
+            isHome || isOurStory ? 'mb-0 pb-0' : 'mb-8'
           }  flex flex-col flex-grow`}
         >
           {children}

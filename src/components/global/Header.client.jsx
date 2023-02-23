@@ -100,7 +100,7 @@ function MobileNavigation({
 
   return (
     <>
-      <header className="items-center w-full mobile-nav">
+      <header className="items-center w-full mobile-nav md:hidden">
         <div
           className={`mobile__nav bg-transparent  flex justify-center px-[1.125rem] w-full border-0 h-[72px] items-center  text-black align-middle ${
             !isVisible ? 'fade-out' : 'fade-in'
