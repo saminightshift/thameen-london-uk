@@ -8,9 +8,7 @@ export default function HomepageProductsSwiper({props, children}) {
   const swiperParameters = {
     modules: [A11y, Navigation],
     slidesPerView: 2,
-    spaceBetween: 45,
-    observer: true,
-    observeParents: true,
+    spaceBetween: 12,
     navigation: {
       enabled: true,
       prevEl: '.product-swiper-prev',
@@ -24,6 +22,7 @@ export default function HomepageProductsSwiper({props, children}) {
         direction: 'horizontal',
         grid: {rows: 1},
         slidesPerView: 2,
+        spaceBetween: 12,
       },
       1024: {
         observer: true,
@@ -69,7 +68,7 @@ export default function HomepageProductsSwiper({props, children}) {
         slidesPerView: 5,
         slidesPerGroup: 1,
         centeredSlides: false,
-        spaceBetween: 40,
+        spaceBetween: 12,
         initialSlide: 0,
         rewind: false,
         speed: 300,
