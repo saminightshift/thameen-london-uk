@@ -40,20 +40,12 @@ export function navigationPanelEffects() {
     });
 
     const megaMenu = document.querySelector('[data-target="mega-menu"]');
-    const journalLink = document.getElementById('journal_link');
 
     megaMenu.addEventListener('mouseenter', () => {
       const targetDiv = document.getElementById('mega-menu');
       targetDiv.style.animation = 'slide-down 2s ease-in-out';
       targetDiv.style.top = '0rem';
       targetDiv.classList.add('duration-700');
-    });
-
-    journalLink.addEventListener('mouseenter', () => {
-      const targetDiv = document.getElementById('mega-menu');
-      targetDiv.style.animation = 'slide-up 4s ease-in-out';
-      targetDiv.style.top = '-25rem';
-      targetDiv.style.animationDuration = '1s';
     });
 
     megaMenu.addEventListener('mouseleave', () => {
@@ -137,7 +129,6 @@ export function navigationPanelEffects() {
     );
       const giftingButton = document.querySelector('[data-target="gifting"]');
       
-      const journalButton = document.querySelector('[data-target="journal"]');
 
     fragrancesButton.addEventListener('mouseenter', () => {
       const targetDiv = document.getElementById('collections');
@@ -174,24 +165,6 @@ export function navigationPanelEffects() {
       targetDiv.style.animation = 'fade-out 2s ease-in-out';
       targetDiv.classList.add('hidden');
     });
-      
-      journalButton.addEventListener('mouseenter', () => {
-        const targets = [fragranceList, collectionList, giftingList]
-        targets.forEach(target => {
-          target.style.animation = 'fade-out 2s ease-in-out';
-          target.classList.add('hidden');
-        });
-      });
-
-
-      journalButton.addEventListener('mouseleave', () => {
-        if ([fragranceList, collectionList, giftingList])  {
-          const targetDiv = document.getElementById('mega-menu');
-          targetDiv.style.animation = 'slide-down 2s ease-in-out';
-          targetDiv.style.top = '0rem';
-          targetDiv.classList.add('duration-700');
-        };
-      });
 
       fragrancesButton.addEventListener('mouseleave', () => {
         const svg = document.querySelectorAll('[data-source="svg-img]');

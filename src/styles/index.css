@@ -241,7 +241,7 @@ shop-pay-button {
   z-index: 1000;
 
   h6 {
-   @apply uppercase text-center font-semibold text-[0.72rem] super-tracking md:text-sm whitespace-pre-wrap
+   @apply uppercase text-center font-semibold text-xs super-tracking md:text-sm;
   }
 }
 
