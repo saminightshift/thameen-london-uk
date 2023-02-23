@@ -58,7 +58,7 @@ export function Footer() {
               </p>
             </div>
             {/* Footer menu section */}
-            <div className="mt-12 grid grid-cols-1 col-span-6 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:col-span-10 lg:col-start-6 text-white lg:text-black">
+            <div className="mt-12 grid grid-cols-1 col-span-6 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:col-span-10 lg:col-start-6 text-white lg:text-black">
               <div className="gap-y-12">
                 <div className="space-y-10">
                   <div>
@@ -146,7 +146,7 @@ export function Footer() {
                   </div>
                 </div>
               </div>
-              <div className="gap-y-12">
+              {/* <div className="gap-y-12">
                 <div className="space-y-10">
                   <div>
                     <h3 className="footer-heading">Store Locator</h3>
@@ -161,7 +161,7 @@ export function Footer() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           {/* Bottom Footer section */}
