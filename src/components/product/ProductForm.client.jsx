@@ -111,7 +111,12 @@ export function ProductForm() {
             } w-full`}
           >
             {isOutOfStock ? (
-              <span className="btn-padding">Sold out</span>
+              <span
+                className="btn-padding disabled:cursor-not-allowed"
+                disabled
+              >
+                Sold out
+              </span>
             ) : (
               <span className="btn-padding">Add to bag</span>
             )}

@@ -54,9 +54,9 @@ export default function Collection({params}) {
       </Suspense>
       <PageHeader heading={collection.title} variant="allFragrances" />
       {collection?.description ? (
-        <div className="flex items-baseline justify-between w-full">
-          <div className="m-auto mb-8">
-            <p className="product-collection-subheading">
+        <div className="flex items-baseline justify-center w-full">
+          <div className="mx-20 mb-8">
+            <p className="product-collection-subheading text-center">
               {collection.description}
             </p>
           </div>
@@ -68,12 +68,12 @@ export default function Collection({params}) {
       <Section>
         {collection?.image && (
           // Mobile Collection image
-          <div className="flex md:hidden w-full h-72 md:h-96 m-auto justify-center mb-10">
+          <div className="flex md:hidden w-full h-[360px] m-auto justify-center mb-10">
             <div
               className="collection-image"
               style={{
                 backgroundImage: `url(${collection.image.url})`,
-                backgroundSize: 'cover',
+                backgroundSize: '100%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 width: '100%',
@@ -85,7 +85,7 @@ export default function Collection({params}) {
         <ProductGrid
           key={collection.id}
           collection={collection}
-          url={`/collections/${handle}?country=${country}`}
+          url={`/collections/${handle}`}
         />
       </Section>
     </Layout>

@@ -138,6 +138,7 @@ export function MobileProductGallery({media}) {
                 className={`${styles} w-full object-contain mobile-carousel-image mix-blend-multiply`}
                 {...mediaProps}
                 style={{
+                  TouchAction: 'none',
                   transform: `translateX(-${current * 100}%)`,
                   opacity: current === i ? 1 : 0,
                   transition: 'opacity 0.5s ease-in-out',

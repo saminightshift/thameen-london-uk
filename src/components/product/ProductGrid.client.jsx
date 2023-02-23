@@ -23,8 +23,6 @@ export function ProductGrid({url, collection}) {
       method: 'POST',
     });
     const {data} = await response.json();
-
-    // ProductGrid can paginate collection, products and search routes
     // @ts-ignore TODO: Fix types
     const newProducts = flattenConnection(
       data?.collection?.products || data?.products || [],
@@ -101,13 +99,10 @@ export function ProductGrid({url, collection}) {
     );
   } else if (allProducts) {
     return (
-      <>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+      <div className="mx-auto px-0 md:px-12">
+        <div className="product-card-grid">
           {filteredProducts.map((product, i) => (
-            <div
-              className="col-span-1 min-h-[400px] sm:min-h-[450px] md:min-h-[350px] lg:min-h-[400px] xl:min-h-[450px] max-w-[355px] w-full bg-[#F3ECEE]"
-              key={product.id}
-            >
+            <div className="product-card bg-[#F3ECEE]" key={product.id}>
               <ProductCard
                 product={product}
                 loading={getImageLoadingPriority(i)}
@@ -131,19 +126,19 @@ export function ProductGrid({url, collection}) {
             </Button>
           </div>
         )}
-      </>
+      </div>
     );
   }
 
   return (
     <>
-      {/* Responsive grid with 5 products per row */}
+      {/* COLLECTION PAGES */}
       <div className="md:page-container">
         {collection?.image ? (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-            <div className="hidden md:grid col-span-2 gap-3 md:w-full md:h-full ">
+          <div className="collection-page-grid">
+            <div className="collection-card large">
               <div
-                className="collection-image "
+                className=""
                 style={{
                   backgroundImage: `url(${collection?.image?.url})`,
                   backgroundPosition: 'center',
@@ -156,10 +151,7 @@ export function ProductGrid({url, collection}) {
             </div>
 
             {products.map((product, i) => (
-              <div
-                className="col-span-1 h-[473px] max-w-[355px] w-full bg-[#F3ECEE]"
-                key={product.id}
-              >
+              <div className="product-card bg-[#F3ECEE]" key={product.id}>
                 <ProductCard
                   product={product}
                   loading={getImageLoadingPriority(i)}
@@ -168,12 +160,9 @@ export function ProductGrid({url, collection}) {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+          <div className="product-card-grid">
             {products.map((product, i) => (
-              <div
-                className="col-span-1 h-[473px] max-w-[355px] w-full bg-[#F3ECEE]"
-                key={product.id}
-              >
+              <div className="product-card bg-[#F3ECEE]" key={product.id}>
                 <ProductCard
                   product={product}
                   loading={getImageLoadingPriority(i)}
