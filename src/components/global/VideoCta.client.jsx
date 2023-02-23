@@ -47,11 +47,3 @@ function AutoPlayVideo(...props) {
     </div>
   );
 }
-
-// <video autoPlay muted loop playsInline className="">
-//   <source
-//     className="absolute inset-0 -z-10 h-screen w-screen object-cover object-center bottom-0"
-//     src="https://cdn.shopify.com/videos/c/o/v/5450f3291ff1447e8656426286b6d2a1.mp4"
-//     type="video/mp4"
-//   />
-// </video>;

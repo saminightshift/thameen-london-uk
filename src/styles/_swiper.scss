@@ -82,6 +82,10 @@
 
 @media screen and (max-width: 768px) {
 
+  .swiper-title {
+    @apply max-w-xs !important;
+  }
+
   .swiper-pagination,
   .swiper-pagination-fraction,
   .swiper-pagination-horizontal {

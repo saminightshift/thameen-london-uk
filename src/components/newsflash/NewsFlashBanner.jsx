@@ -3,7 +3,7 @@ export function NewsFlashBanner({isHome}) {
     <>
       {isHome ? (
         <div id="newsflash-banner">
-          <div className="container mx-auto py-4">
+          <div className="container mx-auto py-2 md:py-4">
             <h6 className="">
               ENJOY TWO COMPLIMENTARY SAMPLES WITH EACH PURCHASE
             </h6>
