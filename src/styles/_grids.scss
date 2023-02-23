@@ -14,3 +14,100 @@
       @apply grid-cols-4 gap-[10px];
     }
   }
+
+/* COLLECTION IMAGE WRAPPER */
+.collection-page-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0 -10px;
+}
+
+  .collection-card {
+  width: calc(10% - 12px);
+  margin: 0 6px 12px 6px;
+}
+
+  .large {
+    flex-basis: calc(40% - 20px);
+    margin: 0 10px 12px;
+  }
+
+/* PRODUCT GRIDS */
+.product-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.product-card {
+  width: calc(20% - 12px);
+  margin: 0 6px 12px 6px;
+  padding: 20px 0 60px 0;
+}
+
+.product-card img {
+  width: 100%;
+}
+
+.product-detail {
+  margin: 0 30px;
+
+  div > span {
+    margin-top: 5px;
+  }
+}
+
+.card-label {
+  position: absolute;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.16em;
+  color: #000000;
+  rotate: 90deg;
+  top: 40px;
+  left: 10px;
+}
+
+/* First breakpoint: 4 columns */
+@media only screen and (max-width: 1200px) {
+  .product-card {
+    width: calc(25% - 12px);
+  }
+
+    .large {
+    flex-basis: calc(40% - -99px);
+    margin: 0 6px 12px;
+  }
+}
+
+@media only screen and (max-width: 1184px) {
+  .large {
+    flex-basis: calc(40% - -373px);
+  }
+}
+
+/* Second breakpoint: 3 columns */
+@media only screen and (max-width: 992px) {
+  .product-card {
+    width: calc(33.33% - 12px);
+  }
+  .large {
+    flex-basis: calc(40% - -373px);
+  }
+}
+
+/* Third breakpoint: 2 columns */
+@media only screen and (max-width: 768px) {
+  .product-card {
+    width: calc(50% - 12px);
+    margin: 0 auto 12px auto;
+  }
+
+  .large {
+    display: none;  
+  }
+}

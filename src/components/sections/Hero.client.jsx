@@ -169,8 +169,8 @@ export function Hero(data) {
           heroRef.current = swiper;
         }}
       >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
             <Link to={`${slide.handle}`}>
               <div className="h-full w-full">
                 <div

@@ -11,6 +11,7 @@
   justify-content: start;
   text-transform: uppercase;
   height: 56px;
+  animation: none !important;
 
 }
   .btn-prim {
@@ -26,6 +27,11 @@
     border: 1px solid black;
     color: black;
     width: 100%;
+  }
+
+  .btn-sec:hover {
+    background-color: white;
+    animation: none !important;
   }
 
   .lg-btn-solid {

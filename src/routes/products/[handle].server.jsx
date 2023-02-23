@@ -17,7 +17,7 @@ import {
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {getExcerpt} from '~/lib/utils';
 import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
-import {ProductCard} from '../../components/index';
+
 import {
   ProductDetail,
   ProductInfo,

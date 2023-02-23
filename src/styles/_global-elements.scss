@@ -63,21 +63,20 @@ Wide buttons for checkout
 }
 
 
-/*
-* PRODUCT CARDS
-*/
+@media only screen and (min-width: 1200px) {
+  .dektop-nav {
+    display: block !important;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
+}
 
-.card-label {
-  position: absolute;
-  top: 40px;
-  left: 10px;
-  max-width: 100%;
-  white-space: pre-wrap;
-  transform: rotate(90deg);
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.16em;
-  color: #000000;
+@media only screen and (min-width: 320px) and (max-width: 1190px) {
+  .dektop-nav {
+    display: none!important;
+  }
+  .mobile-nav {
+    display: flex!important;
+  }
 }

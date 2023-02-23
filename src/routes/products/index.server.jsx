@@ -19,13 +19,13 @@ export default function AllProducts() {
             </p>
           </div>
         </div>
-
-        <Section>
-          <Suspense>
-            <AllProductsGrid />
-          </Suspense>
-        </Section>
       </Container>
+
+      <Section>
+        <Suspense>
+          <AllProductsGrid />
+        </Suspense>
+      </Section>
     </Layout>
   );
 }
@@ -50,11 +50,7 @@ function AllProductsGrid() {
   const products = data.products;
 
   return (
-    <ProductGrid
-      key="products"
-      url={`/products?country=${countryCode}`}
-      collection={{products}}
-    />
+    <ProductGrid key="products" url={`/products`} collection={{products}} />
   );
 }
 
