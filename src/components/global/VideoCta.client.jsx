@@ -40,7 +40,7 @@ function AutoPlayVideo(...props) {
           display: 'block',
           height: '100%',
           padding: '0, 0, 10px, 0',
-          objectFit: 'contain',
+          objectFit: 'cover',
         }}
         ref={videoEl}
       />
