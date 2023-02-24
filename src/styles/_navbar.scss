@@ -7,6 +7,20 @@
   margin: 1rem auto;
   background-color: transparent;
 
+  .brand-logo,
+  .thameen-logo {
+    img {
+      max-width: 284px !important;
+      width: 284px !important;
+    }
+  }
+
+  #nav_icons {
+    width: 284px;
+    display: flex;
+    justify-content: flex-end;
+    @apply space-x-2;
+  }
 
     &:hover {
       .brand-logo {
@@ -95,7 +109,7 @@
         }
       }
 
-
+/*
  .menu-panel-content:first-of-type {
   position: relative;
   left: 30px;
@@ -121,13 +135,18 @@
 .gift-panel {
   height: 210px !important;
 }
+*/
 
     .menu-panel-content {
-
-      position: relative;
-      left: 76px;
+      margin: 1rem 1.5rem 1rem 37rem;
+      display: flex;
       gap: 5.5rem;
-      
+
+    }
+
+    #fragrances,
+    #gifting,
+    #collections {
       /* fade text in */
       opacity: 0;
       animation: fadeIn 400ms ease-in-out forwards;
@@ -141,16 +160,6 @@
           opacity: 1;
         }
       }
-
-    }
-
-    .collections {
-      position: relative;
-    }
-
-    .last-frag-col {
-      position: relative;
-      right: 20px;
     }
 
 

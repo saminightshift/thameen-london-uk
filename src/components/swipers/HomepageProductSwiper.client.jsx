@@ -17,6 +17,13 @@ export default function HomepageProductsSwiper({props, children}) {
     },
     lazy: {enabled: true},
     breakpoints: {
+      480: {
+        grid: {rows: 1},
+        slidesPerView: 1,
+        margin: 0,
+        initialSlide: 0,
+        spaceBetween: 0,
+      },
       768: {
         grid: {rows: 1},
         slidesPerView: 2,
@@ -63,7 +70,7 @@ export default function HomepageProductsSwiper({props, children}) {
         className="product-swiper"
       >
         {children.map((child, index) => (
-          <SwiperSlide key={index} className="product-swiper__slide">
+          <SwiperSlide key={index} className="product-swiper__slide mx-0">
             <div className="product-swiper__slide-content">{child}</div>
           </SwiperSlide>
         ))}
