@@ -136,10 +136,10 @@ export function DesktopNavigation({openCart, countryCode}) {
               id="mega-menu"
               className="absolute -top-[25rem] left-0 w-full h-[382px] overflow-hidden -z-10 duration-700 origin-top bg-white"
             >
-              <div className="">
+              <div className="relative">
                 {activeMenu === 0 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 relative  w-full"
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
                     style={{
                       padding: '2rem 4rem 2rem 4rem',
                     }}
@@ -148,12 +148,8 @@ export function DesktopNavigation({openCart, countryCode}) {
                     onMouseLeave={handleMouseLeaveChildren}
                   >
                     <ul
-                      className="col-span-12 md:col-span-2 mx-auto absolute"
-                      style={{
-                        gridColumnStart: 3,
-                        gridColumnEnd: 5,
-                        marginLeft: '2.8rem',
-                      }}
+                      className="col-span-12 md:col-span-2"
+                      style={{gridColumnStart: 4, gridColumnEnd: 6}}
                     >
                       <li>
                         <Link
@@ -248,11 +244,11 @@ export function DesktopNavigation({openCart, countryCode}) {
                     </ul>
 
                     <ul
-                      className="col-span-12 md:col-span-2 absolute"
+                      className="col-span-12 md:col-span-2"
                       style={{
                         gridColumnStart: 6,
                         gridColumnEnd: 8,
-                        marginLeft: '2.20rem',
+                        marginLeft: '3rem',
                       }}
                     >
                       <li>
@@ -348,11 +344,11 @@ export function DesktopNavigation({openCart, countryCode}) {
                     </ul>
 
                     <ul
-                      className="col-span-12 md:col-span-2 absolute"
+                      className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 9,
+                        gridColumnStart: 8,
                         gridColumnEnd: 11,
-                        marginLeft: '1.5rem',
+                        marginLeft: '4rem',
                       }}
                     >
                       <li>
@@ -428,9 +424,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 6,
-                        gridColumnEnd: 9,
-                        marginLeft: '6rem',
+                        gridColumnStart: 4,
+                        gridColumnEnd: 8,
+                        marginLeft: '10rem',
                       }}
                     >
                       <li>
@@ -523,58 +519,60 @@ export function DesktopNavigation({openCart, countryCode}) {
               <div className="relative">
                 {activeMenu === 2 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
                     id="gifting"
                     data-source="list"
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    style={{
+                      padding: '2rem 4rem 2rem 4rem',
+                    }}
+                    onMouseEnter={handleMouseEnterChildren}
+                    onMouseLeave={handleMouseLeaveChildren}
                   >
-                    <div
+                    <ul
                       className="col-span-12 md:col-span-2"
-                      id="gift-panel"
                       style={{
-                        padding: '2rem 4rem 2rem 4rem',
+                        gridColumnStart: 5,
+                        gridColumnEnd: 9,
+                        marginLeft: '8rem',
                       }}
-                      onMouseEnter={handleMouseEnterChildren}
-                      onMouseLeave={handleMouseLeaveChildren}
                     >
-                      <ul className="flex flex-col col-start-1 col-span-1 ">
-                        <li>
-                          <Link
-                            to="/collections/essential-sets"
-                            className="text-black"
-                            onClick={closeOnClick}
-                          >
-                            Essential Sets
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/collections/hair-fragrance-gift-sets"
-                            className="text-black"
-                            onClick={closeOnClick}
-                          >
-                            Hair Fragrance Gift Sets
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/collections/body-lotion-gift-sets"
-                            className="text-black"
-                            onClick={closeOnClick}
-                          >
-                            Body Lotion Gift Sets
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/products/2ml-discovery-set-12-in-1-22h1"
-                            className="text-black"
-                            onClick={closeOnClick}
-                          >
-                            Discovery Set
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                      <li>
+                        <Link
+                          to="/collections/essential-sets"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Essential Sets
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/hair-fragrance-gift-sets"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Hair Fragrance Gift Sets
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/body-lotion-gift-sets"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Body Lotion Gift Sets
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/2ml-discovery-set-12-in-1-22h1"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Discovery Set
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
                 )}
               </div>
