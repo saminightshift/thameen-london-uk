@@ -6,4 +6,4 @@ export {PageHeader} from './PageHeader';
 export { Container } from './Container';
 export { GiftWrapCta } from './GiftWrapCta.client';
 export { VideoCta } from './VideoCta.client';
-export {DesktopNavigation} from './DesktopNavigation.client';
+export { DesktopNavigation } from './DesktopNavigation.client';
