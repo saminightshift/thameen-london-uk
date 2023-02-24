@@ -55,6 +55,7 @@ export function Header({title, menu}) {
         isJournal={isJournal}
         countryCode={countryCode}
       />
+
       <MobileNavigation
         isHome={isHome}
         isJournal={isJournal}
@@ -75,25 +76,6 @@ function MobileNavigation({
   openMenu,
   countryCode,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      if (currentScrollPos > 0 && isVisible) {
-        setIsVisible(false);
-      } else if (currentScrollPos === 0 && !isVisible) {
-        setIsVisible(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isVisible]);
-
   const subMenu = [];
 
   const subMenuArray = (menu?.items || []).map((item) => subMenu.push(item));
@@ -102,10 +84,8 @@ function MobileNavigation({
     <>
       <header className="items-center w-full mobile-nav md:hidden">
         <div
-          className={`mobile__nav bg-transparent  flex justify-center px-[1.125rem] w-full border-0 h-[72px] items-center  text-black align-middle ${
-            !isVisible ? 'fade-out' : 'fade-in'
-          } ${
-            isHome || isJournal ? 'text-white hover:text-black' : 'text-black'
+          className={`mobile__nav flex justify-center px-[1.125rem] w-full border-0 h-[72px] items-center  text-black align-middle fixed top-0 transition-all duration-300 ease-in-out bg-transparent ${
+            isHome || isJournal ? 'text-white' : 'text-black'
           }
         `}
           id="pageHeader"
@@ -154,6 +134,7 @@ function MobileNavigation({
                     onClick={openCart}
                   >
                     <IconBag />
+                    <CartBadge />
                   </button>
                   <button
                     className="relative flex items-center p-2"
@@ -181,6 +162,7 @@ function MobileNavigation({
                     onClick={openCart}
                   >
                     <IconBagDark />
+                    <CartBadge />
                   </button>
                   <button
                     className="relative flex items-center p-2"
@@ -209,7 +191,7 @@ function CartBadge() {
   }
   return (
     <div
-      className={` -right-[8px] top-[45.5px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center mx-auto`}
+      className={` -right-[5px] top-[15px] absolute text-[0.8rem] font-semibold subpixel-antialiased h-4 w-4 flex items-center justify-center leading-none text-center mx-auto`}
     >
       <span>{totalQuantity}</span>
     </div>

@@ -10,12 +10,18 @@
   .navigation-wrapper {
     position: absolute;
     margin: auto;
-    left: -10px !important;
-    right: -10px !important;
+    left: 18px;
+    right: 18px;
     bottom: calc(50% - 0px);
     z-index: 50;
     vertical-align: middle;
 
+    .product-swiper {
+      width: 100%;
+      max-width: 1920px;
+      min-width: 320px;
+      @apply flex flex-row justify-between items-center space-x-0;
+    }
 
     .product-button-prev,
     .product-button-next {
@@ -74,8 +80,16 @@
   }
 
   .navigation-wrapper {
-    left: -23px !important;
-    right: -23px !important;
+    left: -10px !important;
+    right: -10px !important;
   }
 }
   
+@media screen and (max-width: 480px) {
+
+  .navigation-wrapper {
+    left: -15px !important;
+    right: -15px !important;
+    bottom: calc(58% - 0px) !important;
+  }
+}

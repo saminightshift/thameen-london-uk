@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useCart, useUrl} from '@shopify/hydrogen';
 import {navigationPanelEffects} from '../../lib/hooks';
 
@@ -8,6 +8,25 @@ export function DesktopNavigation({openCart, countryCode}) {
   const isJournal = pathname === `/journal`;
 
   navigationPanelEffects();
+
+  const [activeMenu, setActiveMenu] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setActiveMenu(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveMenu(null);
+  };
+
+  // keep active menu open whilse mouse is over its children
+  const handleMouseEnterChildren = () => {
+    setActiveMenu(activeMenu);
+  };
+
+  const handleMouseLeaveChildren = () => {
+    setActiveMenu(null);
+  };
 
   const closeOnClick = () => {
     useEffect(() => {
@@ -20,23 +39,35 @@ export function DesktopNavigation({openCart, countryCode}) {
     }, []);
   };
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos > 0 && isVisible) {
+        setIsVisible(false);
+      } else if (currentScrollPos === 0 && !isVisible) {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
+
   return (
     <div className="dektop-nav">
       <div className="group">
         <div
           className={`${
             isHome || isJournal ? 'text-white' : 'text-black'
-          } group-hover:text-black  relative w-screen flex justify-start items-center bg-transparent z-100 px-6 module__nav`}
+          } group-hover:text-black  relative w-screen flex justify-start items-center bg-transparent z-100 px-6 module__nav ${
+            !isVisible ? 'fade-out' : 'fade-in'
+          }`}
           data-target="flyout-panel"
         >
-          <div
-            id="flyout-panel"
-            className="absolute -top-40 left-0 w-full h-[78px] overflow-hidden -z-10 duration-700 origin-top bg-white"
-          ></div>
-          <div
-            className="px-3 md:px-10 text-2xl text-white"
-            data-source="svg-img"
-          >
+          <div className="px-3 text-2xl text-white" data-source="svg-img">
             <Link to="/">
               {isHome || isJournal ? (
                 <img
@@ -52,10 +83,15 @@ export function DesktopNavigation({openCart, countryCode}) {
                   alt="Thameen London"
                   width={284}
                   height={45}
+                  className="thameen-logo"
                 />
               )}
             </Link>
           </div>
+          <div
+            id="flyout-panel"
+            className="absolute -top-40 left-0 w-full h-[78px] overflow-hidden -z-10 duration-700 origin-top bg-white"
+          ></div>
           <div
             className="flex top-0 justify-between mx-auto w-full navbar-block"
             data-target="mega-menu"
@@ -64,403 +100,541 @@ export function DesktopNavigation({openCart, countryCode}) {
               <button
                 className="group-hover:text-black nav-items fragrance-tab"
                 data-target="fragrances"
+                onMouseEnter={() => handleMouseEnter(0)}
+                onMouseLeave={handleMouseLeave}
               >
                 <span className="text text__md-semibold uppercase nav-link">
                   Fragrances
                 </span>
               </button>
-              <div
-                id="fragrances"
-                className="hidden flex-col absolute left-0 py-4 w-full text-black duration-300"
-                data-source="list"
-              >
-                <div className="menu-panel-content grid grid-cols-3 mx-auto z-100 fragrance-tab">
-                  <div
-                    className="flex flex-col col-start-1 col-span-1"
-                    id="frag-col-1"
-                  >
-                    <Link
-                      to="/products"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      All Fragrances
-                    </Link>
-                    <Link
-                      to="/products/amber-room-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Amber Room
-                    </Link>
-                    <Link
-                      to="products/blue-heart-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Blue Heart
-                    </Link>
-                    <Link
-                      to="/products/carved-oud-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Carved Oud
-                    </Link>
-                    <Link
-                      to="/products/cullinan-diamond-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Cullinan Diamond
-                    </Link>
-                    <Link
-                      to="/products/diadem-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Diadem
-                    </Link>
-                    <Link
-                      to="/products/fanfare-100ml-cologne-elixir"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Fanfare
-                    </Link>
-                    <Link
-                      to="/products/green-pearl-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Green Pearl
-                    </Link>
-                    <Link
-                      to="/products/imperial-crown-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Imperial Crown
-                    </Link>
-                    <Link
-                      to="/products/insignia-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Insignia
-                    </Link>
-                  </div>
-
-                  <div
-                    className="flex flex-col col-start-2 col-span-1"
-                    id="frag-col-2"
-                  >
-                    <Link
-                      to="/products/noorolain-taif-50ml-extrait-de-parfum-1"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Noorolain Taif
-                    </Link>
-                    <Link
-                      to="/products/palace-amber-limited-edition-tester-extrait-dhuile-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Palace Amber
-                    </Link>
-                    <Link
-                      to="/products/patiala-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Patiala
-                    </Link>
-                    <Link
-                      to="/products/peacock-throne-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Peacock Throne
-                    </Link>
-                    <Link
-                      to="/products/peregrina-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Peregrina
-                    </Link>
-                    <Link
-                      to="/products/regal-musk-10ml-extrait-dhuile-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regal Musk
-                    </Link>
-                    <Link
-                      to="/products/regal-oud-10ml-extrait-dhuile-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regal Oud
-                    </Link>
-                    <Link
-                      to="/products/regal-rose-10ml-extrait-dhuile-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regal Rose
-                    </Link>
-                    <Link
-                      to="/products/regent-leather-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regent Leather
-                    </Link>
-                    <Link
-                      to="/products/riviere-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Rivière
-                    </Link>
-                  </div>
-
-                  <div className="flex flex-col col-start-3 col-span-1 last-frag-col">
-                    <Link
-                      to="/products/royal-sapphire-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Royal Sapphire
-                    </Link>
-                    <Link
-                      to="/products/sceptre-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Sceptre
-                    </Link>
-                    <Link
-                      to="/products/sparkling-opal-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Sparkling Opal
-                    </Link>
-                    <Link
-                      to="/products/the-cora-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      The Cora
-                    </Link>
-                    <Link
-                      to="/products/the-hope-50ml-extrait-de-parfume"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      The Hope
-                    </Link>
-                    <Link
-                      to="/products/the-rose-50ml-extrait-de-parfum"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      The Rose
-                    </Link>
-                  </div>
-                </div>
-              </div>
             </div>
             <div className="group mx-auto">
               <button
                 className="group-hover:text-black nav-items collections-tab"
                 data-target="collections"
+                onMouseEnter={() => handleMouseEnter(1)}
+                onMouseLeave={handleMouseLeave}
               >
                 <span className="text text__md-semibold uppercase nav-link">
                   Collections
                 </span>
               </button>
-              <div
-                className="hidden flex-col absolute left-0 py-4 w-full text-black duration-300"
-                id="collections"
-                data-source="list"
-              >
-                <div className="menu-panel-content collections grid grid-cols-1 z-100 mx-auto collections-tab">
-                  <div className="flex flex-col col-start-1 col-span-1">
-                    <Link
-                      to="/collections/britologne-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Britologne Collection
-                    </Link>
-
-                    <Link
-                      to="/collections/treasure-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Treasure Collection
-                    </Link>
-                    <Link
-                      to="/collections/sovereign-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Sovereign Collection
-                    </Link>
-                    <Link
-                      to="/collections/regal-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Regal Collection
-                    </Link>
-                    <Link
-                      to="/collections/exclusives"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Exclusives
-                    </Link>
-                    <Link
-                      to="/collections/hair-fragrances"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Hair Collection
-                    </Link>
-                    <Link
-                      to="/collections/body-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Body Collection
-                    </Link>
-                    <Link
-                      to="/collections/home-fragrance"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Home Collection
-                    </Link>
-                    <Link
-                      to="/collections/baby-collection"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Baby Collection
-                    </Link>
-                  </div>
-                </div>
-              </div>
             </div>
             <div className="group mx-auto">
               <button
                 className="group-hover:text-black nav-items gifting-tab"
                 data-target="gifting"
+                onMouseEnter={() => handleMouseEnter(2)}
+                onMouseLeave={handleMouseLeave}
               >
                 <span className="text text__md-semibold uppercase nav-link">
                   Gifting
                 </span>
               </button>
-              <div
-                className="hidden flex-col absolute left-0 py-4 w-full text-black duration-300"
-                id="gifting"
-                data-source="list"
-              >
-                <div
-                  className="menu-panel-content gifting grid grid-cols-1 z-100 mx-auto gifting-tab"
-                  id="gift-panel"
-                >
-                  <div className="flex flex-col col-start-1 col-span-1 ">
-                    <Link
-                      to="/collections/essential-sets"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Essential Sets
-                    </Link>
-                    <Link
-                      to="/collections/hair-fragrance-gift-sets"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Hair Fragrance Gift Sets
-                    </Link>
-                    <Link
-                      to="/collections/body-lotion-gift-sets"
-                      className="text-black"
-                      onClick={closeOnClick}
-                    >
-                      Body Lotion Gift Sets
-                    </Link>
-                  </div>
-                </div>
-              </div>
             </div>
-
             <div
               id="mega-menu"
               className="absolute -top-[25rem] left-0 w-full h-[382px] overflow-hidden -z-10 duration-700 origin-top bg-white"
-            ></div>
+            >
+              <div className="">
+                {activeMenu === 0 && (
+                  <div
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 relative  w-full"
+                    style={{
+                      padding: '2rem 4rem 2rem 4rem',
+                    }}
+                    id="fragrances"
+                    onMouseEnter={handleMouseEnterChildren}
+                    onMouseLeave={handleMouseLeaveChildren}
+                  >
+                    <ul
+                      className="col-span-12 md:col-span-2 mx-auto absolute"
+                      style={{
+                        gridColumnStart: 3,
+                        gridColumnEnd: 5,
+                        marginLeft: '2.8rem',
+                      }}
+                    >
+                      <li>
+                        <Link
+                          to="/products"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          All Fragrances
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/amber-room-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Amber Room
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="products/blue-heart-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Blue Heart
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/carved-oud-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Carved Oud
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/cullinan-diamond-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Cullinan Diamond
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/diadem-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Diadem
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/fanfare-100ml-cologne-elixir"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Fanfare
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/green-pearl-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Green Pearl
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/imperial-crown-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Imperial Crown
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/insignia-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Insignia
+                        </Link>
+                      </li>
+                    </ul>
+
+                    <ul
+                      className="col-span-12 md:col-span-2 absolute"
+                      style={{
+                        gridColumnStart: 6,
+                        gridColumnEnd: 8,
+                        marginLeft: '2.20rem',
+                      }}
+                    >
+                      <li>
+                        <Link
+                          to="/products/noorolain-taif-50ml-extrait-de-parfum-1"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Noorolain Taif
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/palace-amber-limited-edition-tester-extrait-dhuile-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Palace Amber
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/patiala-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Patiala
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/peacock-throne-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Peacock Throne
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/peregrina-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Peregrina
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/regal-musk-10ml-extrait-dhuile-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Regal Musk
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/regal-oud-10ml-extrait-dhuile-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Regal Oud
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/regal-rose-10ml-extrait-dhuile-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Regal Rose
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/regent-leather-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Regent Leather
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/riviere-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Rivière
+                        </Link>
+                      </li>
+                    </ul>
+
+                    <ul
+                      className="col-span-12 md:col-span-2 absolute"
+                      style={{
+                        gridColumnStart: 9,
+                        gridColumnEnd: 11,
+                        marginLeft: '1.5rem',
+                      }}
+                    >
+                      <li>
+                        <Link
+                          to="/products/royal-sapphire-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Royal Sapphire
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/sceptre-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Sceptre
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/sparkling-opal-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Sparkling Opal
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/the-cora-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          The Cora
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/the-hope-50ml-extrait-de-parfume"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          The Hope
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/the-rose-50ml-extrait-de-parfum"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          The Rose
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className="relative">
+                {activeMenu === 1 && (
+                  <div
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    id="collections"
+                    data-source="list"
+                    style={{
+                      padding: '2rem 4rem 2rem 4rem',
+                    }}
+                    onMouseEnter={handleMouseEnterChildren}
+                    onMouseLeave={handleMouseLeaveChildren}
+                  >
+                    <ul
+                      className="col-span-12 md:col-span-2"
+                      style={{
+                        gridColumnStart: 6,
+                        gridColumnEnd: 9,
+                        marginLeft: '6rem',
+                      }}
+                    >
+                      <li>
+                        {' '}
+                        <Link
+                          to="/collections/britologne-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Britologne Collection
+                        </Link>
+                      </li>
+
+                      <li>
+                        <Link
+                          to="/collections/treasure-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Treasure Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/sovereign-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Sovereign Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/regal-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Regal Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/exclusives"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Exclusives
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/hair-fragrances"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Hair Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/body-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Body Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/home-fragrance"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Home Collection
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/collections/baby-collection"
+                          className="text-black"
+                          onClick={closeOnClick}
+                        >
+                          Baby Collection
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className="relative">
+                {activeMenu === 2 && (
+                  <div
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    id="gifting"
+                    data-source="list"
+                  >
+                    <div
+                      className="col-span-12 md:col-span-2"
+                      id="gift-panel"
+                      style={{
+                        padding: '2rem 4rem 2rem 4rem',
+                      }}
+                      onMouseEnter={handleMouseEnterChildren}
+                      onMouseLeave={handleMouseLeaveChildren}
+                    >
+                      <ul className="flex flex-col col-start-1 col-span-1 ">
+                        <li>
+                          <Link
+                            to="/collections/essential-sets"
+                            className="text-black"
+                            onClick={closeOnClick}
+                          >
+                            Essential Sets
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/collections/hair-fragrance-gift-sets"
+                            className="text-black"
+                            onClick={closeOnClick}
+                          >
+                            Hair Fragrance Gift Sets
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/collections/body-lotion-gift-sets"
+                            className="text-black"
+                            onClick={closeOnClick}
+                          >
+                            Body Lotion Gift Sets
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/products/2ml-discovery-set-12-in-1-22h1"
+                            className="text-black"
+                            onClick={closeOnClick}
+                          >
+                            Discovery Set
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-          {isHome || isJournal ? (
-            <div className="hidden lg:flex justify-end" id="nav_icons">
-              <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
-                <button
-                  type="submit"
-                  className="hidden lg:flex items-center mr-2 p-2"
+          <div>
+            {isHome || isJournal ? (
+              <div className="hidden lg:flex " id="nav_icons">
+                <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
+                  <button
+                    type="submit"
+                    className="hidden lg:flex items-center mr-2 p-2"
+                  >
+                    <IconSearch />
+                  </button>
+                </form>
+                <Link
+                  to="/account"
+                  className="items-center mr-2 relative hover:border-white p-2"
+                  aria-expanded="false"
+                  aria-label="Account"
                 >
-                  <IconSearch />
-                </button>
-              </form>
-              <Link
-                to="/account"
-                className="items-center mr-2 relative hover:border-white p-2"
-                aria-expanded="false"
-                aria-label="Account"
-              >
-                <IconAccount />
-              </Link>
-              <button
-                onClick={openCart}
-                className="hidden lg:flex items-center p-2"
-              >
-                <IconBag />
-                <CartBadge />
-              </button>
-            </div>
-          ) : (
-            <div className="hidden lg:flex justify-end" id="nav_icons">
-              <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
+                  <IconAccount />
+                </Link>
                 <button
-                  type="submit"
-                  className="hidden lg:flex items-center mr-2 p-2"
+                  onClick={openCart}
+                  className="hidden lg:flex items-center p-2"
                 >
-                  <IconSearchDark />
+                  <IconBag />
+                  <CartBadge />
                 </button>
-              </form>
-              <Link
-                to="/account"
-                className="items-center mr-2 relative hover:border-white p-2"
-                aria-expanded="false"
-                aria-label="Account"
-              >
-                <IconAccountDark />
-              </Link>
-              <button
-                onClick={openCart}
-                className="hidden lg:flex items-center p-2"
-              >
-                <IconBagDark />
-                <CartBadge />
-              </button>
-            </div>
-          )}
+              </div>
+            ) : (
+              <div className="hidden lg:flex justify-end" id="nav_icons">
+                <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
+                  <button
+                    type="submit"
+                    className="hidden lg:flex items-center mr-2 p-2"
+                  >
+                    <IconSearchDark />
+                  </button>
+                </form>
+                <Link
+                  to="/account"
+                  className="items-center mr-2 relative hover:border-white p-2"
+                  aria-expanded="false"
+                  aria-label="Account"
+                >
+                  <IconAccountDark />
+                </Link>
+                <button
+                  onClick={openCart}
+                  className="hidden lg:flex items-center p-2"
+                >
+                  <IconBagDark />
+                  <CartBadge />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -615,3 +789,541 @@ function IconSearchDark() {
     </svg>
   );
 }
+
+/*
+
+<div className="dektop-nav">
+  <div className="group">
+    <div
+      className={`${
+        isHome || isJournal ? 'text-white' : 'text-black'
+      } group-hover:text-black  relative w-screen flex justify-start items-center bg-transparent z-100 px-6 module__nav ${
+        !isVisible ? 'fade-out' : 'fade-in'
+      }`}
+      data-target="flyout-panel"
+    >
+      <div
+        id="flyout-panel"
+        className="absolute -top-40 left-0 w-full h-[78px] overflow-hidden -z-10 duration-700 origin-top bg-white"
+      ></div>
+      <div className="px-3 text-2xl text-white" data-source="svg-img">
+        <Link to="/">
+          {isHome || isJournal ? (
+            <img
+              src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+              alt="Thameen London"
+              width={284}
+              height={45}
+              className="brand-logo"
+            />
+          ) : (
+            <img
+              src="https://studio.thameenlondon.com/wp-content/uploads/2023/01/thameen_logo.svg"
+              alt="Thameen London"
+              width={284}
+              height={45}
+              className="thameen-logo"
+            />
+          )}
+        </Link>
+      </div>
+      <div
+        className="flex top-0 justify-between mx-auto w-full navbar-block"
+        data-target="mega-menu"
+      >
+        <div className="group mx-auto">
+          <button
+            className="group-hover:text-black nav-items fragrance-tab"
+            data-target="fragrances"
+            onMouseEnter={() => handleMouseEnter(0)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <span className="text text__md-semibold uppercase nav-link">
+              Fragrances
+            </span>
+          </button>
+        </div>
+        <div className="group mx-auto">
+          <button
+            className="group-hover:text-black nav-items collections-tab"
+            data-target="collections"
+            onMouseEnter={() => handleMouseEnter(1)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <span className="text text__md-semibold uppercase nav-link">
+              Collections
+            </span>
+          </button>
+        </div>
+        <div className="group mx-auto">
+          <button
+            className="group-hover:text-black nav-items gifting-tab"
+            data-target="gifting"
+            onMouseEnter={() => handleMouseEnter(2)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <span className="text text__md-semibold uppercase nav-link">
+              Gifting
+            </span>
+          </button>
+        </div>
+      </div>
+      <div>
+        {isHome || isJournal ? (
+          <div className="hidden lg:flex " id="nav_icons">
+            <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
+              <button
+                type="submit"
+                className="hidden lg:flex items-center mr-2 p-2"
+              >
+                <IconSearch />
+              </button>
+            </form>
+            <Link
+              to="/account"
+              className="items-center mr-2 relative hover:border-white p-2"
+              aria-expanded="false"
+              aria-label="Account"
+            >
+              <IconAccount />
+            </Link>
+            <button
+              onClick={openCart}
+              className="hidden lg:flex items-center p-2"
+            >
+              <IconBag />
+              <CartBadge />
+            </button>
+          </div>
+        ) : (
+          <div className="hidden lg:flex justify-end" id="nav_icons">
+            <form action={`/${countryCode ? countryCode + '/' : ''}search`}>
+              <button
+                type="submit"
+                className="hidden lg:flex items-center mr-2 p-2"
+              >
+                <IconSearchDark />
+              </button>
+            </form>
+            <Link
+              to="/account"
+              className="items-center mr-2 relative hover:border-white p-2"
+              aria-expanded="false"
+              aria-label="Account"
+            >
+              <IconAccountDark />
+            </Link>
+            <button
+              onClick={openCart}
+              className="hidden lg:flex items-center p-2"
+            >
+              <IconBagDark />
+              <CartBadge />
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div
+      id="mega-menu"
+      className="absolute -top-[25rem] left-0 w-full h-[382px] overflow-hidden -z-10 duration-700 origin-top bg-white"
+    >
+      <div>
+        {activeMenu === 0 && (
+          <div
+            className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center"
+            style={{padding: '2rem 4rem 2rem 6rem'}}
+            onMouseEnter={handleMouseEnterChildren}
+            onMouseLeave={handleMouseLeaveChildren}
+          >
+            <ul
+              className="col-span-12 md:col-span-2"
+              style={{gridColumnStart: 4, gridColumnEnd: 7}}
+            >
+              <li>
+                <Link
+                  to="/products"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  All Fragrances
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/amber-room-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Amber Room
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="products/blue-heart-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Blue Heart
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/carved-oud-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Carved Oud
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/cullinan-diamond-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Cullinan Diamond
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/diadem-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Diadem
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/fanfare-100ml-cologne-elixir"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Fanfare
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/green-pearl-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Green Pearl
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/imperial-crown-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Imperial Crown
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/insignia-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Insignia
+                </Link>
+              </li>
+            </ul>
+
+            <ul
+              className="col-span-12 md:col-span-2"
+              style={{gridColumnStart: 7, gridColumnEnd: 9}}
+            >
+              <li>
+                <Link
+                  to="/products/noorolain-taif-50ml-extrait-de-parfum-1"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Noorolain Taif
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/palace-amber-limited-edition-tester-extrait-dhuile-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Palace Amber
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/patiala-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Patiala
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/peacock-throne-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Peacock Throne
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/peregrina-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Peregrina
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/regal-musk-10ml-extrait-dhuile-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Regal Musk
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/regal-oud-10ml-extrait-dhuile-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Regal Oud
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/regal-rose-10ml-extrait-dhuile-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Regal Rose
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/regent-leather-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Regent Leather
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/riviere-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Rivière
+                </Link>
+              </li>
+            </ul>
+
+            <ul
+              className="col-span-12 md:col-span-2"
+              style={{gridColumnStart: 10, gridColumnEnd: 12}}
+            >
+              <li>
+                <Link
+                  to="/products/royal-sapphire-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Royal Sapphire
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/sceptre-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Sceptre
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/sparkling-opal-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Sparkling Opal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/the-cora-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  The Cora
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/the-hope-50ml-extrait-de-parfume"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  The Hope
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/the-rose-50ml-extrait-de-parfum"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  The Rose
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        <>
+          {activeMenu === 1 && (
+            <div
+              className="flex-col absolute left-0 py-4 w-full text-black duration-300"
+              id="collections"
+              data-source="list"
+              onMouseEnter={handleMouseEnterChildren}
+              onMouseLeave={handleMouseLeaveChildren}
+            >
+              <div className="menu-panel-content collections grid grid-cols-1 z-100 mx-auto collections-tab">
+                <div className="flex flex-col col-start-1 col-span-1">
+                  <Link
+                    to="/collections/britologne-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Britologne Collection
+                  </Link>
+
+                  <Link
+                    to="/collections/treasure-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Treasure Collection
+                  </Link>
+                  <Link
+                    to="/collections/sovereign-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Sovereign Collection
+                  </Link>
+                  <Link
+                    to="/collections/regal-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Regal Collection
+                  </Link>
+                  <Link
+                    to="/collections/exclusives"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Exclusives
+                  </Link>
+                  <Link
+                    to="/collections/hair-fragrances"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Hair Collection
+                  </Link>
+                  <Link
+                    to="/collections/body-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Body Collection
+                  </Link>
+                  <Link
+                    to="/collections/home-fragrance"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Home Collection
+                  </Link>
+                  <Link
+                    to="/collections/baby-collection"
+                    className="text-black"
+                    onClick={closeOnClick}
+                  >
+                    Baby Collection
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      </div>
+      <>
+        {activeMenu === 2 && (
+          <div
+            className="flex-col absolute left-0 py-4 w-full text-black duration-300"
+            id="gifting"
+            data-source="list"
+          >
+            <div
+              className="menu-panel-content gifting grid grid-cols-1 z-100 mx-auto gifting-tab"
+              id="gift-panel"
+              onMouseEnter={handleMouseEnterChildren}
+              onMouseLeave={handleMouseLeaveChildren}
+            >
+              <div className="flex flex-col col-start-1 col-span-1 ">
+                <Link
+                  to="/collections/essential-sets"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Essential Sets
+                </Link>
+                <Link
+                  to="/collections/hair-fragrance-gift-sets"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Hair Fragrance Gift Sets
+                </Link>
+                <Link
+                  to="/collections/body-lotion-gift-sets"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Body Lotion Gift Sets
+                </Link>
+                <Link
+                  to="/products/2ml-discovery-set-12-in-1-22h1"
+                  className="text-black"
+                  onClick={closeOnClick}
+                >
+                  Discovery Set
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    </div>
+  </div>
+</div>;
+
+
+
+
+*/
