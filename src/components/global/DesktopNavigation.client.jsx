@@ -139,7 +139,7 @@ export function DesktopNavigation({openCart, countryCode}) {
               <div className="relative">
                 {activeMenu === 0 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
                     style={{
                       padding: '2rem 4rem 2rem 4rem',
                     }}
@@ -149,7 +149,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                   >
                     <ul
                       className="col-span-12 md:col-span-2"
-                      style={{gridColumnStart: 4, gridColumnEnd: 6}}
+                      style={{gridColumnStart: 1, gridColumnEnd: 3}}
                     >
                       <li>
                         <Link
@@ -246,9 +246,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 6,
-                        gridColumnEnd: 8,
-                        marginLeft: '3rem',
+                        gridColumnStart: 3,
+                        gridColumnEnd: 5,
+                        marginLeft: '0',
                       }}
                     >
                       <li>
@@ -346,9 +346,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 8,
-                        gridColumnEnd: 11,
-                        marginLeft: '4rem',
+                        gridColumnStart: 5,
+                        gridColumnEnd: 7,
+                        marginLeft: '0',
                       }}
                     >
                       <li>
@@ -412,7 +412,7 @@ export function DesktopNavigation({openCart, countryCode}) {
               <div className="relative">
                 {activeMenu === 1 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
                     id="collections"
                     data-source="list"
                     style={{
@@ -424,9 +424,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 4,
-                        gridColumnEnd: 8,
-                        marginLeft: '10rem',
+                        gridColumnStart: 1,
+                        gridColumnEnd: 4,
+                        marginLeft: '0',
                       }}
                     >
                       <li>
@@ -521,7 +521,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                   <div
                     id="gifting"
                     data-source="list"
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
+                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
                     style={{
                       padding: '2rem 4rem 2rem 4rem',
                     }}
@@ -529,11 +529,11 @@ export function DesktopNavigation({openCart, countryCode}) {
                     onMouseLeave={handleMouseLeaveChildren}
                   >
                     <ul
-                      className="col-span-12 md:col-span-2"
+                      className="col-span-12 md:col-span-2 "
                       style={{
-                        gridColumnStart: 5,
-                        gridColumnEnd: 9,
-                        marginLeft: '8rem',
+                        gridColumnStart: 1,
+                        gridColumnEnd: 4,
+                        marginLeft: '0',
                       }}
                     >
                       <li>
