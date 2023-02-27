@@ -17,7 +17,7 @@ export default function HomepageProductsSwiper({props, children}) {
     },
     lazy: {enabled: true},
     breakpoints: {
-      480: {
+      280: {
         grid: {rows: 1},
         slidesPerView: 1,
         margin: 0,
