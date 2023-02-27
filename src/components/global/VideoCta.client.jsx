@@ -4,7 +4,7 @@ import {Link, useEmbeddedVideoUrl} from '@shopify/hydrogen';
 export function VideoCta() {
   return (
     <Link to="/products/fanfare-100ml-cologne-elixir">
-      <div className="relative isolate h-full max-h-[1080px] bg-[#d6d5c8] mb-0">
+      <div className="relative isolate w-full bg-[#d6d5c8] mb-0">
         <div className="">
           <AutoPlayVideo />
         </div>
@@ -38,7 +38,7 @@ function AutoPlayVideo(...props) {
           maxWidth: '100%',
           margin: '0 auto',
           display: 'block',
-          height: '100%',
+          height: 'auto',
           padding: '0, 0, 10px, 0',
           objectFit: 'cover',
         }}
