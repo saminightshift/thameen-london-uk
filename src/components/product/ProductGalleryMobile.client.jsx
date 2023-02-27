@@ -56,7 +56,7 @@ export function MobileProductGallery({media}) {
   return (
     <>
       <div
-        className="w-full h-screen carousel flex lg:hidden bg-[#F3ECEE]"
+        className="w-full h-[80vh] carousel flex lg:hidden bg-[#F3ECEE]"
         data-test="mobile-product-gallery"
       >
         {media.map((med, i) => {
