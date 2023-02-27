@@ -50,8 +50,7 @@ export default function Policies() {
 
   return (
     <Layout>
-      <PageHeader heading="Policies" />
-      <Section padding="x" className="mb-24">
+      <Section padding="x" className="mb-24 mt-24 mx-12">
         {policies.map((policy) => {
           if (!policy) {
             return;
