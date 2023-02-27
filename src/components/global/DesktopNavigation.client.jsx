@@ -139,9 +139,9 @@ export function DesktopNavigation({openCart, countryCode}) {
               <div className="relative">
                 {activeMenu === 0 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
+                    className="grid grid-cols-6 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
                     style={{
-                      padding: '2rem 4rem 2rem 4rem',
+                      padding: '2rem 4rem 2rem 15rem',
                     }}
                     id="fragrances"
                     onMouseEnter={handleMouseEnterChildren}
@@ -149,7 +149,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                   >
                     <ul
                       className="col-span-12 md:col-span-2"
-                      style={{gridColumnStart: 1, gridColumnEnd: 3}}
+                      style={{gridColumnStart: 2, gridColumnEnd: 3}}
                     >
                       <li>
                         <Link
@@ -247,8 +247,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                       className="col-span-12 md:col-span-2"
                       style={{
                         gridColumnStart: 3,
-                        gridColumnEnd: 5,
-                        marginLeft: '0',
+                        gridColumnEnd: 4,
                       }}
                     >
                       <li>
@@ -346,9 +345,8 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 5,
-                        gridColumnEnd: 7,
-                        marginLeft: '0',
+                        gridColumnStart: 4,
+                        gridColumnEnd: 5,
                       }}
                     >
                       <li>
@@ -412,11 +410,11 @@ export function DesktopNavigation({openCart, countryCode}) {
               <div className="relative">
                 {activeMenu === 1 && (
                   <div
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
+                    className="grid grid-cols-6 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
                     id="collections"
                     data-source="list"
                     style={{
-                      padding: '2rem 4rem 2rem 4rem',
+                      padding: '2rem 4rem 2rem 15rem',
                     }}
                     onMouseEnter={handleMouseEnterChildren}
                     onMouseLeave={handleMouseLeaveChildren}
@@ -424,7 +422,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2"
                       style={{
-                        gridColumnStart: 1,
+                        gridColumnStart: 2,
                         gridColumnEnd: 4,
                         marginLeft: '0',
                       }}
@@ -521,9 +519,9 @@ export function DesktopNavigation({openCart, countryCode}) {
                   <div
                     id="gifting"
                     data-source="list"
-                    className="grid grid-cols-12 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full space-y-2"
+                    className="grid grid-cols-6 gap-4 p-4 text-black duration-300 z-100 mt-14 mx-auto justify-center absolute w-full"
                     style={{
-                      padding: '2rem 4rem 2rem 4rem',
+                      padding: '2rem 4rem 2rem 15rem',
                     }}
                     onMouseEnter={handleMouseEnterChildren}
                     onMouseLeave={handleMouseLeaveChildren}
@@ -531,7 +529,7 @@ export function DesktopNavigation({openCart, countryCode}) {
                     <ul
                       className="col-span-12 md:col-span-2 "
                       style={{
-                        gridColumnStart: 1,
+                        gridColumnStart: 2,
                         gridColumnEnd: 4,
                         marginLeft: '0',
                       }}
