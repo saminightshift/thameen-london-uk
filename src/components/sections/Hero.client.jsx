@@ -42,7 +42,7 @@ export function Hero(data) {
           id: '2_3200X1800',
         },
         {
-          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-2.webp?v=1676525104',
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-2_81169f3b-a51c-4336-922a-5e646017ee82.webp?v=1677531320',
           width: 720,
           height: 1080,
           id: '2_720x1080',
@@ -61,7 +61,7 @@ export function Hero(data) {
           id: '3_3200X1800',
         },
         {
-          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-3.webp?v=1676525104',
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/SLIDE_720X1080PX-3_65431ece-cbc4-4abe-a53c-16a657be0be9.webp?v=1677531320',
           width: 720,
           height: 1080,
           id: '3_720x1080',
@@ -80,7 +80,7 @@ export function Hero(data) {
           id: '4_3200X1800',
         },
         {
-          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-4.webp?v=1676525104',
+          url: 'https://cdn.shopify.com/s/files/1/0710/5796/5334/files/Slide_720x1080px-4_6f69d2b1-33b1-411a-b506-eef6696c861a.webp?v=1677531320',
           width: 720,
           height: 1080,
           id: '4_720x1080',
@@ -178,7 +178,7 @@ export function Hero(data) {
                   style={{
                     backgroundImage: `url(${slide.images[0].url})`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'top center',
+                    backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     width: '100%',
                     height: '100%',
