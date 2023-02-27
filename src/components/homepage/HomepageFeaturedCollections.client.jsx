@@ -116,9 +116,11 @@ export function HomepageFeaturedCollections() {
 
   return (
     <div className="mx-auto sm:px-6 lg:px-12">
-      <h2 className="text-center text-xl text-black super-tracking leading-7 uppercase mb-10 mt-10">
-        Discover Your Thameen Fragrance
-      </h2>
+      <div className="px-4 pt-10 pb-5">
+        <h2 className="text-center text-xl text-black super-tracking leading-7 uppercase">
+          Discover Your Thameen Fragrance
+        </h2>
+      </div>
       <div className="module_featured-collections">
         <Link to={`/collections/${data[0].handle}`}>
           <div className="relative py-0">
