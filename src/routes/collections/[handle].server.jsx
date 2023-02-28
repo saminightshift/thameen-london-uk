@@ -55,7 +55,7 @@ export default function Collection({params}) {
       <PageHeader heading={collection.title} variant="allFragrances" />
       {collection?.description ? (
         <div className="flex items-baseline justify-center w-full">
-          <div className="mx-20 mb-8">
+          <div className="mx-10 mb-8">
             <p className="product-collection-subheading text-center">
               {collection.description}
             </p>
