@@ -76,7 +76,9 @@ export function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="tel:+440207233333">Phone + 44 020 7233 333</a>
+                        <a href="tel:+4402037091414">
+                          Phone + 44 020 3709 1414
+                        </a>
                       </li>
                     </ul>
                   </div>
