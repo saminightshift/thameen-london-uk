@@ -41,7 +41,7 @@ This site uses a number of integrations:
 
 \* **Unleashed** - whilst this isnt used on the frontend, it is used as the main inventory management and logistics system. It uses webhooks to transfer product data between the two platforms. This is an optional choice for distributors but is necessary for Thameen as it automates the order workflow and manages the inventory.
 
-\* **Klaviyo** - We use Klaviyo for tracking customer behaviors: Abandonded Cart, Customer signups, Browse Abandonment, Loyalty etc. The code is integrated directly into the frontend and must be swapped out for your instance of Klaviyo. **Note:** this uses Javascript and server side rendering so experience with JS and React/SSR is needed. If you need assistance contact <sami@daze.digital> for support.
+\* **Klaviyo** - We use Klaviyo for tracking customer behaviors: Abandonded Cart, Customer signups, Browse Abandonment, Loyalty etc. The code is integrated directly into the frontend and must be swapped out for your instance of Klaviyo. **Note:** this uses Javascript and SSR so experience with JS and React/SSR is needed. If you need assistance contact <sami@daze.digital> for support.
 
 # Webhooks & API
 ### Using modern web technologies we have automated the order and checkout process, product syncing and content creation.
